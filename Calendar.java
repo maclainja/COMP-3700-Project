@@ -54,8 +54,25 @@ public class Calendar {
         return cal;
 
     }
+
+    /*
+        Finds Day object in array that corresponds to particular day
+     */
+    public Day findDate(int month, int day, int year)   {
+        for (int i =0; i <366; i++){
+            if (cal[i].month == month && cal[i].day == day && cal[i].year == year)
+                return cal[i]
+        }
+        return null;
+    }
+
+    /*
+
+        would this be start day @ start time to end day @ end time
+     */
     public int getWorkingTime(int startTime, int endTime, Day startDate, Day endDate){
-        return -1;
+        //should i change Day startdate to a string 001122 and parse it then call find day instead
+
     }
 
     public void addTempHoliday(String name, Day startDate, Day endDate) {
@@ -63,7 +80,8 @@ public class Calendar {
     }
 
     /*
-        Gets the number of days that are working days
+        find index in array?
+        delete?
      */
     public int getDayNumbers(Day startDate, Day endDate)    {
         return -1;
