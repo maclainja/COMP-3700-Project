@@ -1,11 +1,19 @@
 public class EmployeeRequestController {
    
    //we create instances of the other controllers to communicate with them
-   PersonController pc = new PersonController();
-   RequestController rc = new RequestController();
+   PersonController pc;
+   RequestController rc;
    
    //We Don't have RequestDatabaseController yet
-   //RequestDatabaseController rbd = new RequestDatabaseController();
+   //RequestDatabaseController rbd;
+   
+   public EmployeeRequestController {
+      pr = new PersonController();
+      rc = new RequestController();
+      //rbd = new RequestDatabaseController();
+   }
+   
+   
    
    
    public void makeRequest(int newStartDay, int newStartMonth, int newStartYear, int newEndDay,int newEndMonth,int newEndYear,int newEndTime,Leave newLeaveType,int currentEmployeeID,int currentSupervisorID) {
@@ -25,7 +33,8 @@ public class EmployeeRequestController {
       
    } 
    
-   public void withdrawRequest(int currentEmployeeID){
+   public void withdrawRequest(int requestID){
    
       //we will change the request status to withdrawn in the database class
+      //rbd.withdrawRequest(requestID);
    }
