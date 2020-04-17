@@ -8,11 +8,11 @@ public class ManagerRequestController {
    }
 
    public void approveRequest() {
-    // rdb.approveRequest()
+      rdb.approveRequest(requestID);
    }
  
    public void rejectRequest() {
-    // rdb.rejectRequest()
+      rdb.rejectRequest(requestID);
    }
  
 
