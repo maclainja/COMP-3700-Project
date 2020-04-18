@@ -1,22 +1,65 @@
+import java.util.*;
+import java.util.ArrayList;
+
 public class Calendar {
 
     Day[] cal = new Day[366];
     String[] dayNames = new String[] {"Wednesday", "Thursday", "Friday", "Saturday", "Sunday", "Monday", "Tuesday"};
+    public static List<NonWorkday> holis = new ArrayList<NonWorkday>();
 
     public Calendar()   {
     }
 
     public static void main(String[] args) {
         Calendar obj = new Calendar();
-        obj.create_calendar();
+        obj.create_Calendar();
         for (int i=0; i <366; i++) {
-            System.out.println("calendar at " + i + " is month: " + obj.cal[i].month + " day: " + obj.cal[i].day + " year: " + obj.cal[i].year
-                    + " the day is: " + obj.cal[i].getDayName(obj.cal[i]));
+            System.out.println("Calendar at " + i + " is month: " + obj.cal[i].month + " day: " + obj.cal[i].day + " year: " + obj.cal[i].year
+                    + " the day is: " + obj.cal[i].getDayName());
         }
+
+        obj.createWeekends();
+        obj.createWorkdays();
+
+
+        int start = obj.findDate(04, 17, 2020);
+        int end = obj.findDate(04, 20, 2020);
+
+        double total = obj.getWorkingTime(16, 00, 10, 00, start, end);
+        System.out.println("total is " + total);
+
+        int sb_start = obj.findDate(04, 7, 2020);
+        int sb_end = obj.findDate(04, 9, 2020);
+
+        obj.addTempHoliday("springbreak", obj.cal[sb_start], obj.cal[sb_end]);
+
+        System.out.println(holis.size());
+
+
+        int break_start = obj.findDate(04, 6, 2020);
+        int break_end = obj.findDate(04, 13, 2020);
+
+
+        //3.35 + 8 + 3.10 = 14.45
+        double sb_total = obj.getWorkingTime(13, 25, 11, 10, break_start, break_end);
+        System.out.println("total with spring break: " + sb_total);
+
+        obj.addRemoveNationalHoliday("springbreak", obj.cal[sb_start], obj.cal[sb_end], "remove");
+
+        //38.45
+        double remove_total = obj.getWorkingTime(13, 25, 11, 10, break_start, break_end);
+        System.out.println("total after spring break is removed: " + remove_total);
+
+        System.out.println(holis.size());
 
     }
 
-    public Day[] create_calendar()    {
+    /*
+        Realized everyday has two day instances - ex. if a day is a Saturday it has a Day instance and a nonworkday instance
+        Code works just redundant and not the most efficient
+
+     */
+    public Day[] create_Calendar()    {
         int year = 2020;
         int counter = 0;
 
@@ -48,46 +91,130 @@ public class Calendar {
             if (k >= dayNames.length)    {
                 k = 0;
             }
-            cal[j].setDayName(cal[j], dayNames[k]);
+            cal[j].setDayName(dayNames[k]);
             k++;
         }
         return cal;
 
     }
 
+    public void createWeekends()    {
+        for (int i =0; i < 366; i++)    {
+            if (cal[i].isWeekend(cal[i]))   {
+                String tempDayName = cal[i].dayName;
+                cal[i] = new NonWorkday(cal[i].month, cal[i].day, cal[i].year, NWDtype.weekend);
+                cal[i].dayName = tempDayName;
+            }
+        }
+    }
+
+    public void createWorkdays()    {
+        for (int i =0; i < 366; i++)    {
+            if (cal[i].isWorkDay(cal[i]))   {
+                String tempDayName = cal[i].dayName;
+                cal[i] = new Workday(cal[i].month, cal[i].day, cal[i].year);
+                cal[i].dayName = tempDayName;
+            }
+        }
+    }
+
+
     /*
         Finds Day object in array that corresponds to particular day
      */
-    public Day findDate(int month, int day, int year)   {
+    public int findDate(int month, int day, int year)   {
         for (int i =0; i <366; i++){
             if (cal[i].month == month && cal[i].day == day && cal[i].year == year)
-                return cal[i]
+                return i;
         }
-        return null;
-    }
-
-    /*
-
-        would this be start day @ start time to end day @ end time
-     */
-    public int getWorkingTime(int startTime, int endTime, Day startDate, Day endDate){
-        //should i change Day startdate to a string 001122 and parse it then call find day instead
-
-    }
-
-    public void addTempHoliday(String name, Day startDate, Day endDate) {
-
-    }
-
-    /*
-        find index in array?
-        delete?
-     */
-    public int getDayNumbers(Day startDate, Day endDate)    {
         return -1;
     }
 
-    public void addRemoveNationalHoliday(String name, Day startDate, Day endDate, boolean type) {
+
+    public double getWorkingTime(int startHour, int startMin, int endHour, int endMin, int startDay_index, int endDate_index){
+
+        int total_work_days = 0;
+        double total_work_min = 0;
+        int total_work_hours = 0;
+        double totalWorkTIme;
+
+        //add all full work days up
+        for(int i = startDay_index+1; i < endDate_index-1; i++) {
+            if (cal[i].isWorkDay(cal[i])) {
+                total_work_days++;
+            }
+        }
+
+        total_work_hours += total_work_days * Workday.totalTime;
+
+        //add in start day
+        if (startHour > 8) {
+            if (cal[startDay_index].isWorkDay(cal[startDay_index])) {
+                total_work_hours += Workday.endTime - startHour;
+                total_work_min += 60 - startMin;
+            }
+
+        }
+
+        if (endHour < 17) {
+            if (cal[endDate_index].isWorkDay(cal[endDate_index])) {
+                total_work_hours += endHour - Workday.startTime;
+                total_work_min += endMin;
+            }
+        }
+
+        if (total_work_min >= 60)    {
+            total_work_min = total_work_min - 60;
+            total_work_hours++;
+        }
+
+        total_work_min = total_work_min * 0.01;
+        totalWorkTIme = total_work_hours + total_work_min;
+
+        return totalWorkTIme;
+
+    }
+
+
+    public void addTempHoliday(String name, Day startDate, Day endDate) {
+        int start = findDate(startDate.month, startDate.day, startDate.year);
+        int end = findDate(endDate.month, endDate.day, endDate.year);
+        for (int i = start; i <= end; i++) {
+            NonWorkday holi = new NonWorkday(cal[i].month, cal[i].day, cal[i].year, NWDtype.holiday);
+            holi.setName(name);
+            holis.add(holi);
+        }
+
+    }
+
+
+    public void addRemoveNationalHoliday(String name, Day startDate, Day endDate, String type) {
+        int start = findDate(startDate.month, startDate.day, startDate.year);
+        int end = findDate(endDate.month, endDate.day, endDate.year);
+
+        if (type.equals("remove")) {
+            for (int i= start; i <= end; i++)    {
+                int j=0;
+                while (j < holis.size())    {
+                    if (Calendar.holis.get(j).month == cal[i].month && Calendar.holis.get(j).day == cal[i].day && Calendar.holis.get(j).year == cal[i].year)  {
+                        holis.remove(holis.get(j));
+
+                    }
+                    else    {
+                        j++;
+                    }
+                }
+
+            }
+        }
+
+        if (type.equals("add"))  {
+            for (int i = start; i < end; i++) {
+                NonWorkday holi = new NonWorkday(cal[i].month, cal[i].day, cal[i].year, NWDtype.holiday);
+                holi.setName(name);
+                holis.add(holi);
+            }
+        }
 
     }
 
