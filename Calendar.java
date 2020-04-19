@@ -22,12 +22,13 @@ public class Calendar {
         obj.createWorkdays();
 
 
-        int start = obj.findDate(04, 17, 2020);
+        int start = obj.findDate(04, 16, 2020);
         int end = obj.findDate(04, 20, 2020);
 
-        double total = obj.getWorkingTime(16, 00, 10, 00, start, end);
+        //12 hours
+        double total = obj.getWorkingTime(9, 30, 11, 30, start, end);
         System.out.println("total is " + total);
-
+/*
         int sb_start = obj.findDate(04, 7, 2020);
         int sb_end = obj.findDate(04, 9, 2020);
 
@@ -41,7 +42,7 @@ public class Calendar {
 
 
         //3.35 + 8 + 3.10 = 14.45
-        double sb_total = obj.getWorkingTime(13, 25, 11, 10, break_start, break_end);
+        double sb_total = obj.getWorkingTime(8, 25, 11, 10, break_start, break_end);
         System.out.println("total with spring break: " + sb_total);
 
         obj.addRemoveNationalHoliday("springbreak", obj.cal[sb_start], obj.cal[sb_end], "remove");
@@ -51,7 +52,7 @@ public class Calendar {
         System.out.println("total after spring break is removed: " + remove_total);
 
         System.out.println(holis.size());
-
+*/
     }
 
     /*
@@ -138,32 +139,43 @@ public class Calendar {
         int total_work_hours = 0;
         double totalWorkTIme;
 
-        //add all full work days up
-        for(int i = startDay_index+1; i < endDate_index-1; i++) {
-            if (cal[i].isWorkDay(cal[i])) {
-                total_work_days++;
-            }
-        }
+        if (startDay_index == endDate_index)    {
 
-        total_work_hours += total_work_days * Workday.totalTime;
+            total_work_hours += endHour - (startHour + 1);
 
-        //add in start day
-        if (startHour > 8) {
-            if (cal[startDay_index].isWorkDay(cal[startDay_index])) {
-                total_work_hours += Workday.endTime - startHour;
-                total_work_min += 60 - startMin;
-            }
+            total_work_min += 60 - startMin;
+            total_work_min += endMin;
 
         }
 
-        if (endHour < 17) {
-            if (cal[endDate_index].isWorkDay(cal[endDate_index])) {
-                total_work_hours += endHour - Workday.startTime;
-                total_work_min += endMin;
+        else {
+            //add all full work days up
+            for (int i = startDay_index + 1; i < endDate_index - 1; i++) {
+                if (cal[i].isWorkDay(cal[i])) {
+                    total_work_days++;
+                }
             }
+
+            total_work_hours += total_work_days * Workday.totalTime;
+
+            //add in start day
+            if (startHour >= 9) {
+                if (cal[startDay_index].isWorkDay(cal[startDay_index])) {
+                    total_work_hours += Workday.endTime - (startHour + 1);
+                    total_work_min += 60 - startMin;
+                }
+            }
+
+            if (endHour <= 17) {
+                if (cal[endDate_index].isWorkDay(cal[endDate_index])) {
+                    total_work_hours += endHour - Workday.startTime;
+                    total_work_min += endMin;
+                }
+            }
+
         }
 
-        if (total_work_min >= 60)    {
+        if (total_work_min >= 60) {
             total_work_min = total_work_min - 60;
             total_work_hours++;
         }
