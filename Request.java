@@ -50,10 +50,3 @@ public class Request
      
      
 }
-enum Leave {
-   maternity, paternity, pto, sick_leave, emergency;
-}
-
-enum Status {
-   approved, rejected, pending;
-}
