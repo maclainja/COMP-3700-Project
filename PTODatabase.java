@@ -9,11 +9,11 @@ public class PTODatabase {
       PTO = new ArrayList<Double>();
    }
 
-   public int getNewID(String type) {
-      if (type == "partTime") {
+   public int getNewID(Title title) {
+      if ((title == Title.part_time) || (title == Title.contractor)) {
          PTO.add(null);
       }
-      else if (type == "fullTime") {
+      else if ((title == Title.full_time) || (title == Title.hr) || (title == Title.hr_executive) || (title == Title.executive)) {
          PTO.add(0.0);
       }
       else {
