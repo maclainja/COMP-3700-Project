@@ -17,7 +17,8 @@ public class SystemInterface {
       tf.setBounds(50,50, 150,20); 
       window.add(tf);
       //logInScreen(window);
-      makeRequestForm( window,  tf);
+      //makeRequestForm( window,  tf);
+      employeeMenu( window,  tf);
    }
   
    public static void logInScreen(JFrame window)
@@ -30,7 +31,7 @@ public class SystemInterface {
       window.add(usernameLabel);
    
       final JTextField usernameBox=new JTextField();  
-      usernameBox.setBounds(100,50, 150,20); 
+      usernameBox.setBounds(110,50, 150,20); 
       window.add(usernameBox);
       
       final JLabel passwordLabel = new JLabel("Password:");
@@ -39,13 +40,13 @@ public class SystemInterface {
    
       
       final JTextField passwordBox=new JTextField();  
-      passwordBox.setBounds(100,100, 150,20); 
+      passwordBox.setBounds(110,100, 150,20); 
       window.add(passwordBox);
       
       
       
       JButton logInButton=new JButton("Login");  
-      logInButton.setBounds(100,150,95,30);  
+      logInButton.setBounds(110,150,95,30);  
       logInButton.addActionListener(
          new ActionListener(){  
             public void actionPerformed(ActionEvent e){
@@ -171,7 +172,7 @@ public class SystemInterface {
       viewRequestMenu.addActionListener(
          new ActionListener(){  
             public void actionPerformed(ActionEvent e){  
-               tf.setText("CURRENT REQUESTS");
+               employeeCurrentRequests( window, tf);
             }  
          }
          ); 
@@ -244,7 +245,7 @@ public class SystemInterface {
       window.add(startYearLabel);
    
       JComboBox<Integer> startYearBox= new JComboBox<>(yearDate);  
-      startYearBox.setBounds(100,50, 80,20);
+      startYearBox.setBounds(110,50, 80,20);
       startYearBox.setVisible(false);
       startYearBox.setVisible(true);
       window.add(startYearBox);
@@ -255,7 +256,7 @@ public class SystemInterface {
             public void actionPerformed(ActionEvent e){  
                Integer startYear = (Integer) startYearBox.getSelectedItem();
                final JLabel startYearEntry = new JLabel(Integer.toString(startYear));
-               startYearEntry.setBounds(100,50,80,20);
+               startYearEntry.setBounds(110,50,80,20);
                window.add(startYearEntry);
                window.remove(startYearBox);  
                submitYearButton.setVisible(false);
@@ -267,7 +268,7 @@ public class SystemInterface {
                window.add(startMonthLabel);
             
                JComboBox<Integer> startMonthBox= new JComboBox<>(monthDate);  
-               startMonthBox.setBounds(100,75, 50,20); 
+               startMonthBox.setBounds(110,75, 50,20); 
                startMonthBox.setVisible(false);
                window.add(startMonthBox);
             
@@ -282,7 +283,7 @@ public class SystemInterface {
                      public void actionPerformed(ActionEvent e){  
                         Integer startMonth = (Integer) startMonthBox.getSelectedItem();
                         final JLabel startMonthEntry = new JLabel(Integer.toString(startMonth));
-                        startMonthEntry.setBounds(100,75,70,20);
+                        startMonthEntry.setBounds(110,75,70,20);
                         window.add(startMonthEntry);
                         window.remove(startMonthBox);  
                         submitMonthButton.setVisible(false);
@@ -290,7 +291,7 @@ public class SystemInterface {
                         if (startMonth == 1 ||startMonth == 3 ||startMonth == 5 ||startMonth == 7 ||startMonth == 8 ||startMonth == 10 ||startMonth == 12 )
                         {
                            JComboBox<Integer> startDayBox = new JComboBox<>(dayLongDate);  
-                           startDayBox.setBounds(100,100, 50,20); 
+                           startDayBox.setBounds(110,100, 50,20); 
                            startDayBox.setVisible(true);
                            window.add(startDayBox);
                             
@@ -308,14 +309,14 @@ public class SystemInterface {
                                  public void actionPerformed(ActionEvent e){  
                                     Integer startDay = (Integer) startDayBox.getSelectedItem();
                                     final JLabel startDayEntry = new JLabel(Integer.toString(startDay));
-                                    startDayEntry.setBounds(100,100,70,20);
+                                    startDayEntry.setBounds(110,100,70,20);
                                     window.add(startDayEntry);
                                     window.remove(startDayBox);  
                                     submitDayButton.setVisible(false);
                                  
                                  
                                     JComboBox<Integer>  startHourBox = new JComboBox<>(hourTime);
-                                    startHourBox.setBounds(100,125, 50,20); 
+                                    startHourBox.setBounds(110,125, 50,20); 
                                     startHourBox.setVisible(true);
                                     window.add(startHourBox);
                                  
@@ -334,19 +335,19 @@ public class SystemInterface {
                                           public void actionPerformed(ActionEvent e){  
                                              Integer startHour = (Integer) startHourBox.getSelectedItem();
                                              final JLabel startHourEntry = new JLabel(Integer.toString(startHour));
-                                             startHourEntry.setBounds(100,125,70,20);
+                                             startHourEntry.setBounds(110,125,70,20);
                                              window.add(startHourEntry);
                                              window.remove(startHourBox);  
                                              submitHourButton.setVisible(false);
                                                                                 
                                                                                 
                                              JComboBox<Integer>  startMinBox = new JComboBox<>(minuteTime);
-                                             startMinBox.setBounds(100,150, 50,20); 
+                                             startMinBox.setBounds(110,150, 50,20); 
                                              startMinBox.setVisible(true);
                                              window.add(startMinBox);
                                           
                                              final JLabel startMinuteLabel = new JLabel("Start Minute:");
-                                             startMinuteLabel.setBounds(20,150,70,20);
+                                             startMinuteLabel.setBounds(20,150,80,20);
                                              startMinuteLabel.setVisible(true);
                                              window.add(startMinuteLabel);
                                           
@@ -360,7 +361,7 @@ public class SystemInterface {
                                                    public void actionPerformed(ActionEvent e){  
                                                       Integer startMinute = (Integer) startMinBox.getSelectedItem();
                                                       final JLabel startMinEntry = new JLabel(Integer.toString(startMinute));
-                                                      startMinEntry.setBounds(100,150,70,20);
+                                                      startMinEntry.setBounds(110,150,70,20);
                                                       window.add(startMinEntry);
                                                       window.remove(startMinBox);  
                                                       submitMinButton.setVisible(false);
@@ -374,7 +375,7 @@ public class SystemInterface {
                                                       window.add(endYearLabel);
                                                    
                                                       JComboBox<Integer> endYearBox= new JComboBox<>(yearDate);  
-                                                      endYearBox.setBounds(100,175, 80,20);
+                                                      endYearBox.setBounds(110,175, 80,20);
                                                    
                                                    
                                                    
@@ -388,7 +389,7 @@ public class SystemInterface {
                                                             
                                                             
                                                                final JLabel endYearEntry = new JLabel(Integer.toString(endYear));
-                                                               endYearEntry.setBounds(100,175,80,20);
+                                                               endYearEntry.setBounds(110,175,80,20);
                                                                window.add(endYearEntry);
                                                                window.remove(endYearBox);  
                                                                submitEYearButton.setVisible(false);
@@ -403,7 +404,7 @@ public class SystemInterface {
                                                                window.add(endMonthLabel);
                                                             
                                                                JComboBox<Integer> endMonthBox= new JComboBox<>(monthDate);  
-                                                               endMonthBox.setBounds(100,200, 50,20); 
+                                                               endMonthBox.setBounds(110,200, 50,20); 
                                                                endMonthBox.setVisible(true);
                                                                window.add(endMonthBox);
                                                             
@@ -415,7 +416,7 @@ public class SystemInterface {
                                                                         Integer endMonth = (Integer) endMonthBox.getSelectedItem();
                                                                      
                                                                         final JLabel endMonthEntry = new JLabel(Integer.toString(endMonth));
-                                                                        endMonthEntry.setBounds(100,200,70,20);
+                                                                        endMonthEntry.setBounds(110,200,70,20);
                                                                         window.add(endMonthEntry);
                                                                         window.remove(endMonthBox);  
                                                                         submitEMonthButton.setVisible(false);
@@ -423,7 +424,7 @@ public class SystemInterface {
                                                                         if (endMonth == 1 ||endMonth == 3 ||endMonth == 5 ||endMonth == 7 ||endMonth == 8 ||endMonth == 10 ||endMonth == 12 )
                                                                         {
                                                                            JComboBox<Integer> endDayBox = new JComboBox<>(dayLongDate);  
-                                                                           endDayBox.setBounds(100,225, 50,20); 
+                                                                           endDayBox.setBounds(110,225, 50,20); 
                                                                            endDayBox.setVisible(true);
                                                                            window.add(endDayBox);
                                                                         
@@ -442,7 +443,7 @@ public class SystemInterface {
                                                                                  public void actionPerformed(ActionEvent e){  
                                                                                     Integer endDay = (Integer) endDayBox.getSelectedItem();
                                                                                     final JLabel endDayEntry = new JLabel(Integer.toString(endDay));
-                                                                                    endDayEntry.setBounds(100,225,70,20);
+                                                                                    endDayEntry.setBounds(110,225,70,20);
                                                                                     window.add(endDayEntry);
                                                                                     window.remove(endDayBox);  
                                                                                     submitEDayButton.setVisible(false);
@@ -450,7 +451,7 @@ public class SystemInterface {
                                                                                  
                                                                                  
                                                                                     JComboBox<Integer>  endHourBox = new JComboBox<>(hourTime);
-                                                                                    endHourBox.setBounds(100,250, 50,20); 
+                                                                                    endHourBox.setBounds(110,250, 50,20); 
                                                                                     endHourBox.setVisible(true);
                                                                                     window.add(endHourBox);
                                                                                  
@@ -469,14 +470,14 @@ public class SystemInterface {
                                                                                           public void actionPerformed(ActionEvent e){  
                                                                                              Integer endHour = (Integer) endHourBox.getSelectedItem();
                                                                                              final JLabel endHourEntry = new JLabel(Integer.toString(endHour));
-                                                                                             endHourEntry.setBounds(100,250,70,20);
+                                                                                             endHourEntry.setBounds(110,250,70,20);
                                                                                              window.add(endHourEntry);
                                                                                              window.remove(endHourBox);  
                                                                                              submitHourButton.setVisible(false);
                                                                                           
                                                                                           
                                                                                              JComboBox<Integer>  endMinBox = new JComboBox<>(minuteTime);
-                                                                                             endMinBox.setBounds(100,275, 50,20); 
+                                                                                             endMinBox.setBounds(110,275, 50,20); 
                                                                                              endMinBox.setVisible(true);
                                                                                              window.add(endMinBox);
                                                                                           
@@ -495,7 +496,7 @@ public class SystemInterface {
                                                                                                    public void actionPerformed(ActionEvent e){  
                                                                                                       Integer endMinute = (Integer) endMinBox.getSelectedItem();
                                                                                                       final JLabel endMinEntry = new JLabel(Integer.toString(endMinute));
-                                                                                                      endMinEntry.setBounds(100,275,70,20);
+                                                                                                      endMinEntry.setBounds(110,275,70,20);
                                                                                                       window.add(endMinEntry);
                                                                                                       window.remove(endMinBox);  
                                                                                                       submitMinButton.setVisible(false);
@@ -504,7 +505,7 @@ public class SystemInterface {
                                                                                                       Leave[] leaveType = {Leave.maternity, Leave.paternity, Leave.pto, Leave.sick_leave };
                                                                                                    
                                                                                                       JComboBox<Leave> leaveTypeBox = new JComboBox<>(leaveType);
-                                                                                                      leaveTypeBox.setBounds(100,300, 100,20); 
+                                                                                                      leaveTypeBox.setBounds(110,300, 90,20); 
                                                                                                       leaveTypeBox.setVisible(true);
                                                                                                       window.add(leaveTypeBox);
                                                                                                    
@@ -517,7 +518,7 @@ public class SystemInterface {
                                                                                                    
                                                                                                    
                                                                                                       JButton leaveTypeButton=new JButton("Submit Request");  
-                                                                                                      leaveTypeButton.setBounds(200,300,150,30);  
+                                                                                                      leaveTypeButton.setBounds(210,300,150,30);  
                                                                                                       leaveTypeButton.addActionListener(
                                                                                                          new ActionListener(){  
                                                                                                             public void actionPerformed(ActionEvent e){  
@@ -572,7 +573,7 @@ public class SystemInterface {
                                                                         else if (endMonth == 4 ||endMonth == 6 ||endMonth == 9 ||endMonth == 11)
                                                                         {
                                                                            JComboBox<Integer> endDayBox = new JComboBox<>(dayShortDate);
-                                                                           endDayBox.setBounds(100,225, 50,20); 
+                                                                           endDayBox.setBounds(110,225, 50,20); 
                                                                            endDayBox.setVisible(true);
                                                                            window.add(endDayBox);
                                                                         
@@ -591,7 +592,7 @@ public class SystemInterface {
                                                                                  public void actionPerformed(ActionEvent e){  
                                                                                     Integer endDay = (Integer) endDayBox.getSelectedItem();
                                                                                     final JLabel endDayEntry = new JLabel(Integer.toString(endDay));
-                                                                                    endDayEntry.setBounds(100,225,70,20);
+                                                                                    endDayEntry.setBounds(110,225,70,20);
                                                                                     window.add(endDayEntry);
                                                                                     window.remove(endDayBox);  
                                                                                     submitEDayButton.setVisible(false);
@@ -600,7 +601,7 @@ public class SystemInterface {
                                                                                  
                                                                                  
                                                                                     JComboBox<Integer>  endHourBox = new JComboBox<>(hourTime);
-                                                                                    endHourBox.setBounds(100,250, 50,20); 
+                                                                                    endHourBox.setBounds(110,250, 50,20); 
                                                                                     endHourBox.setVisible(true);
                                                                                     window.add(endHourBox);
                                                                                  
@@ -619,14 +620,14 @@ public class SystemInterface {
                                                                                           public void actionPerformed(ActionEvent e){  
                                                                                              Integer endHour = (Integer) endHourBox.getSelectedItem();
                                                                                              final JLabel endHourEntry = new JLabel(Integer.toString(endHour));
-                                                                                             endHourEntry.setBounds(100,250,70,20);
+                                                                                             endHourEntry.setBounds(110,250,70,20);
                                                                                              window.add(endHourEntry);
                                                                                              window.remove(endHourBox);  
                                                                                              submitHourButton.setVisible(false);
                                                                                           
                                                                                           
                                                                                              JComboBox<Integer>  endMinBox = new JComboBox<>(minuteTime);
-                                                                                             endMinBox.setBounds(100,275, 50,20); 
+                                                                                             endMinBox.setBounds(110,275, 50,20); 
                                                                                              endMinBox.setVisible(true);
                                                                                              window.add(endMinBox);
                                                                                           
@@ -645,7 +646,7 @@ public class SystemInterface {
                                                                                                    public void actionPerformed(ActionEvent e){  
                                                                                                       Integer endMinute = (Integer) endMinBox.getSelectedItem();
                                                                                                       final JLabel endMinEntry = new JLabel(Integer.toString(endMinute));
-                                                                                                      endMinEntry.setBounds(100,275,70,20);
+                                                                                                      endMinEntry.setBounds(110,275,70,20);
                                                                                                       window.add(endMinEntry);
                                                                                                       window.remove(endMinBox);  
                                                                                                       submitMinButton.setVisible(false);
@@ -654,7 +655,7 @@ public class SystemInterface {
                                                                                                       Leave[] leaveType = {Leave.maternity, Leave.paternity, Leave.pto, Leave.sick_leave };
                                                                                                    
                                                                                                       JComboBox<Leave> leaveTypeBox = new JComboBox<>(leaveType);
-                                                                                                      leaveTypeBox.setBounds(100,300, 100,20); 
+                                                                                                      leaveTypeBox.setBounds(110,300, 90,20); 
                                                                                                       leaveTypeBox.setVisible(true);
                                                                                                       window.add(leaveTypeBox);
                                                                                                    
@@ -667,7 +668,7 @@ public class SystemInterface {
                                                                                                    
                                                                                                    
                                                                                                       JButton leaveTypeButton=new JButton("Submit Request");  
-                                                                                                      leaveTypeButton.setBounds(200,300,150,30);  
+                                                                                                      leaveTypeButton.setBounds(210,300,150,30);  
                                                                                                       leaveTypeButton.addActionListener(
                                                                                                          new ActionListener(){  
                                                                                                             public void actionPerformed(ActionEvent e){  
@@ -718,7 +719,7 @@ public class SystemInterface {
                                                                         else if (endMonth == 2 && endYear == 2020)
                                                                         {
                                                                            JComboBox<Integer> endDayBox = new JComboBox<>(dayLeapDate);
-                                                                           endDayBox.setBounds(100,225, 50,20); 
+                                                                           endDayBox.setBounds(110,225, 50,20); 
                                                                            endDayBox.setVisible(true);
                                                                            window.add(endDayBox);
                                                                         
@@ -737,7 +738,7 @@ public class SystemInterface {
                                                                                  public void actionPerformed(ActionEvent e){  
                                                                                     Integer endDay = (Integer) endDayBox.getSelectedItem();
                                                                                     final JLabel endDayEntry = new JLabel(Integer.toString(endDay));
-                                                                                    endDayEntry.setBounds(100,225,70,20);
+                                                                                    endDayEntry.setBounds(110,225,70,20);
                                                                                     window.add(endDayEntry);
                                                                                     window.remove(endDayBox);  
                                                                                     submitEDayButton.setVisible(false);
@@ -747,7 +748,7 @@ public class SystemInterface {
                                                                                  
                                                                                  
                                                                                     JComboBox<Integer>  endHourBox = new JComboBox<>(hourTime);
-                                                                                    endHourBox.setBounds(100,250, 50,20); 
+                                                                                    endHourBox.setBounds(110,250, 50,20); 
                                                                                     endHourBox.setVisible(true);
                                                                                     window.add(endHourBox);
                                                                                  
@@ -766,14 +767,14 @@ public class SystemInterface {
                                                                                           public void actionPerformed(ActionEvent e){  
                                                                                              Integer endHour = (Integer) endHourBox.getSelectedItem();
                                                                                              final JLabel endHourEntry = new JLabel(Integer.toString(endHour));
-                                                                                             endHourEntry.setBounds(100,250,70,20);
+                                                                                             endHourEntry.setBounds(110,250,70,20);
                                                                                              window.add(endHourEntry);
                                                                                              window.remove(endHourBox);  
                                                                                              submitHourButton.setVisible(false);
                                                                                           
                                                                                           
                                                                                              JComboBox<Integer>  endMinBox = new JComboBox<>(minuteTime);
-                                                                                             endMinBox.setBounds(100,275, 50,20); 
+                                                                                             endMinBox.setBounds(110,275, 50,20); 
                                                                                              endMinBox.setVisible(true);
                                                                                              window.add(endMinBox);
                                                                                           
@@ -792,7 +793,7 @@ public class SystemInterface {
                                                                                                    public void actionPerformed(ActionEvent e){  
                                                                                                       Integer endMinute = (Integer) endMinBox.getSelectedItem();
                                                                                                       final JLabel endMinEntry = new JLabel(Integer.toString(endMinute));
-                                                                                                      endMinEntry.setBounds(100,275,70,20);
+                                                                                                      endMinEntry.setBounds(110,275,70,20);
                                                                                                       window.add(endMinEntry);
                                                                                                       window.remove(endMinBox);  
                                                                                                       submitMinButton.setVisible(false);
@@ -801,7 +802,7 @@ public class SystemInterface {
                                                                                                       Leave[] leaveType = {Leave.maternity, Leave.paternity, Leave.pto, Leave.sick_leave };
                                                                                                    
                                                                                                       JComboBox<Leave> leaveTypeBox = new JComboBox<>(leaveType);
-                                                                                                      leaveTypeBox.setBounds(100,300, 100,20); 
+                                                                                                      leaveTypeBox.setBounds(110,300, 90,20); 
                                                                                                       leaveTypeBox.setVisible(true);
                                                                                                       window.add(leaveTypeBox);
                                                                                                    
@@ -814,7 +815,7 @@ public class SystemInterface {
                                                                                                    
                                                                                                    
                                                                                                       JButton leaveTypeButton=new JButton("Submit Request");  
-                                                                                                      leaveTypeButton.setBounds(200,300,150,30);  
+                                                                                                      leaveTypeButton.setBounds(210,300,150,30);  
                                                                                                       leaveTypeButton.addActionListener(
                                                                                                          new ActionListener(){  
                                                                                                             public void actionPerformed(ActionEvent e){  
@@ -867,7 +868,7 @@ public class SystemInterface {
                                                                         else 
                                                                         {
                                                                            JComboBox<Integer>  endDayBox = new JComboBox<>(dayFebDate);
-                                                                           endDayBox.setBounds(100,225, 50,20); 
+                                                                           endDayBox.setBounds(110,225, 50,20); 
                                                                            endDayBox.setVisible(true);
                                                                            window.add(endDayBox);
                                                                         
@@ -886,7 +887,7 @@ public class SystemInterface {
                                                                                  public void actionPerformed(ActionEvent e){  
                                                                                     Integer endDay = (Integer) endDayBox.getSelectedItem();
                                                                                     final JLabel endDayEntry = new JLabel(Integer.toString(endDay));
-                                                                                    endDayEntry.setBounds(100,225,70,20);
+                                                                                    endDayEntry.setBounds(110,225,70,20);
                                                                                     window.add(endDayEntry);
                                                                                     window.remove(endDayBox);  
                                                                                     submitEDayButton.setVisible(false);
@@ -896,7 +897,7 @@ public class SystemInterface {
                                                                                  
                                                                                  
                                                                                     JComboBox<Integer>  endHourBox = new JComboBox<>(hourTime);
-                                                                                    endHourBox.setBounds(100,250, 50,20); 
+                                                                                    endHourBox.setBounds(110,250, 50,20); 
                                                                                     endHourBox.setVisible(true);
                                                                                     window.add(endHourBox);
                                                                                  
@@ -915,14 +916,14 @@ public class SystemInterface {
                                                                                           public void actionPerformed(ActionEvent e){  
                                                                                              Integer endHour = (Integer) endHourBox.getSelectedItem();
                                                                                              final JLabel endHourEntry = new JLabel(Integer.toString(endHour));
-                                                                                             endHourEntry.setBounds(100,250,70,20);
+                                                                                             endHourEntry.setBounds(110,250,70,20);
                                                                                              window.add(endHourEntry);
                                                                                              window.remove(endHourBox);  
                                                                                              submitHourButton.setVisible(false);
                                                                                           
                                                                                           
                                                                                              JComboBox<Integer>  endMinBox = new JComboBox<>(minuteTime);
-                                                                                             endMinBox.setBounds(100,275, 50,20); 
+                                                                                             endMinBox.setBounds(110,275, 50,20); 
                                                                                              endMinBox.setVisible(true);
                                                                                              window.add(endMinBox);
                                                                                           
@@ -941,7 +942,7 @@ public class SystemInterface {
                                                                                                    public void actionPerformed(ActionEvent e){  
                                                                                                       Integer endMinute = (Integer) endMinBox.getSelectedItem();
                                                                                                       final JLabel endMinEntry = new JLabel(Integer.toString(endMinute));
-                                                                                                      endMinEntry.setBounds(100,275,70,20);
+                                                                                                      endMinEntry.setBounds(110,275,70,20);
                                                                                                       window.add(endMinEntry);
                                                                                                       window.remove(endMinBox);  
                                                                                                       submitMinButton.setVisible(false);
@@ -950,7 +951,7 @@ public class SystemInterface {
                                                                                                       Leave[] leaveType = {Leave.maternity, Leave.paternity, Leave.pto, Leave.sick_leave };
                                                                                                    
                                                                                                       JComboBox<Leave> leaveTypeBox = new JComboBox<>(leaveType);
-                                                                                                      leaveTypeBox.setBounds(100,300, 100,20); 
+                                                                                                      leaveTypeBox.setBounds(110,300, 90,20); 
                                                                                                       leaveTypeBox.setVisible(true);
                                                                                                       window.add(leaveTypeBox);
                                                                                                    
@@ -963,7 +964,7 @@ public class SystemInterface {
                                                                                                    
                                                                                                    
                                                                                                       JButton leaveTypeButton=new JButton("Submit Request");  
-                                                                                                      leaveTypeButton.setBounds(200,300,150,30);  
+                                                                                                      leaveTypeButton.setBounds(210,300,150,30);  
                                                                                                       leaveTypeButton.addActionListener(
                                                                                                          new ActionListener(){  
                                                                                                             public void actionPerformed(ActionEvent e){  
@@ -1077,7 +1078,7 @@ public class SystemInterface {
                         else if (startMonth == 4 ||startMonth == 6 ||startMonth == 9 ||startMonth == 11)
                         {
                            JComboBox<Integer> startDayBox = new JComboBox<>(dayShortDate);
-                           startDayBox.setBounds(100,100, 50,20); 
+                           startDayBox.setBounds(110,100, 50,20); 
                            startDayBox.setVisible(true);
                            window.add(startDayBox);
                             
@@ -1095,7 +1096,7 @@ public class SystemInterface {
                                  public void actionPerformed(ActionEvent e){  
                                     Integer startDay = (Integer) startDayBox.getSelectedItem();
                                     final JLabel startDayEntry = new JLabel(Integer.toString(startDay));
-                                    startDayEntry.setBounds(100,100,70,20);
+                                    startDayEntry.setBounds(110,100,70,20);
                                     window.add(startDayEntry);
                                     window.remove(startDayBox);  
                                     submitDayButton.setVisible(false);
@@ -1109,7 +1110,7 @@ public class SystemInterface {
                                  
                                  
                                     JComboBox<Integer>  startHourBox = new JComboBox<>(hourTime);
-                                    startHourBox.setBounds(100,125, 50,20); 
+                                    startHourBox.setBounds(110,125, 50,20); 
                                     startHourBox.setVisible(true);
                                     window.add(startHourBox);
                                  
@@ -1128,14 +1129,14 @@ public class SystemInterface {
                                           public void actionPerformed(ActionEvent e){  
                                              Integer startHour = (Integer) startHourBox.getSelectedItem();
                                              final JLabel startHourEntry = new JLabel(Integer.toString(startHour));
-                                             startHourEntry.setBounds(100,125,70,20);
+                                             startHourEntry.setBounds(110,125,70,20);
                                              window.add(startHourEntry);
                                              window.remove(startHourBox);  
                                              submitHourButton.setVisible(false);
                                                                                 
                                                                                 
                                              JComboBox<Integer>  startMinBox = new JComboBox<>(minuteTime);
-                                             startMinBox.setBounds(100,150, 50,20); 
+                                             startMinBox.setBounds(110,150, 50,20); 
                                              startMinBox.setVisible(true);
                                              window.add(startMinBox);
                                           
@@ -1154,7 +1155,7 @@ public class SystemInterface {
                                                    public void actionPerformed(ActionEvent e){  
                                                       Integer startMinute = (Integer) startMinBox.getSelectedItem();
                                                       final JLabel startMinEntry = new JLabel(Integer.toString(startMinute));
-                                                      startMinEntry.setBounds(100,150,70,20);
+                                                      startMinEntry.setBounds(110,150,70,20);
                                                       window.add(startMinEntry);
                                                       window.remove(startMinBox);  
                                                       submitMinButton.setVisible(false);
@@ -1168,7 +1169,7 @@ public class SystemInterface {
                                                       window.add(endYearLabel);
                                                    
                                                       JComboBox<Integer> endYearBox= new JComboBox<>(yearDate);  
-                                                      endYearBox.setBounds(100,175, 80,20);
+                                                      endYearBox.setBounds(110,175, 80,20);
                                                    
                                                    
                                                    
@@ -1182,7 +1183,7 @@ public class SystemInterface {
                                                             
                                                             
                                                                final JLabel endYearEntry = new JLabel(Integer.toString(endYear));
-                                                               endYearEntry.setBounds(100,175,80,20);
+                                                               endYearEntry.setBounds(110,175,80,20);
                                                                window.add(endYearEntry);
                                                                window.remove(endYearBox);  
                                                                submitEYearButton.setVisible(false);
@@ -1196,7 +1197,7 @@ public class SystemInterface {
                                                                window.add(endMonthLabel);
                                                             
                                                                JComboBox<Integer> endMonthBox= new JComboBox<>(monthDate);  
-                                                               endMonthBox.setBounds(100,200, 50,20); 
+                                                               endMonthBox.setBounds(110,200, 50,20); 
                                                                endMonthBox.setVisible(true);
                                                                window.add(endMonthBox);
                                                             
@@ -1208,7 +1209,7 @@ public class SystemInterface {
                                                                         Integer endMonth = (Integer) endMonthBox.getSelectedItem();
                                                                      
                                                                         final JLabel endMonthEntry = new JLabel(Integer.toString(endMonth));
-                                                                        endMonthEntry.setBounds(100,200,70,20);
+                                                                        endMonthEntry.setBounds(110,200,70,20);
                                                                         window.add(endMonthEntry);
                                                                         window.remove(endMonthBox);  
                                                                         submitEMonthButton.setVisible(false);
@@ -1216,7 +1217,7 @@ public class SystemInterface {
                                                                         if (endMonth == 1 ||endMonth == 3 ||endMonth == 5 ||endMonth == 7 ||endMonth == 8 ||endMonth == 10 ||endMonth == 12 )
                                                                         {
                                                                            JComboBox<Integer> endDayBox = new JComboBox<>(dayLongDate);  
-                                                                           endDayBox.setBounds(100,225, 50,20); 
+                                                                           endDayBox.setBounds(110,225, 50,20); 
                                                                            endDayBox.setVisible(true);
                                                                            window.add(endDayBox);
                                                                         
@@ -1235,7 +1236,7 @@ public class SystemInterface {
                                                                                  public void actionPerformed(ActionEvent e){  
                                                                                     Integer endDay = (Integer) endDayBox.getSelectedItem();
                                                                                     final JLabel endDayEntry = new JLabel(Integer.toString(endDay));
-                                                                                    endDayEntry.setBounds(100,225,70,20);
+                                                                                    endDayEntry.setBounds(110,225,70,20);
                                                                                     window.add(endDayEntry);
                                                                                     window.remove(endDayBox);  
                                                                                     submitEDayButton.setVisible(false);
@@ -1245,7 +1246,7 @@ public class SystemInterface {
                                                                                  
                                                                                  
                                                                                     JComboBox<Integer>  endHourBox = new JComboBox<>(hourTime);
-                                                                                    endHourBox.setBounds(100,250, 50,20); 
+                                                                                    endHourBox.setBounds(110,250, 50,20); 
                                                                                     endHourBox.setVisible(true);
                                                                                     window.add(endHourBox);
                                                                                  
@@ -1264,14 +1265,14 @@ public class SystemInterface {
                                                                                           public void actionPerformed(ActionEvent e){  
                                                                                              Integer endHour = (Integer) endHourBox.getSelectedItem();
                                                                                              final JLabel endHourEntry = new JLabel(Integer.toString(endHour));
-                                                                                             endHourEntry.setBounds(100,250,70,20);
+                                                                                             endHourEntry.setBounds(110,250,70,20);
                                                                                              window.add(endHourEntry);
                                                                                              window.remove(endHourBox);  
                                                                                              submitHourButton.setVisible(false);
                                                                                           
                                                                                           
                                                                                              JComboBox<Integer>  endMinBox = new JComboBox<>(minuteTime);
-                                                                                             endMinBox.setBounds(100,275, 50,20); 
+                                                                                             endMinBox.setBounds(110,275, 50,20); 
                                                                                              endMinBox.setVisible(true);
                                                                                              window.add(endMinBox);
                                                                                           
@@ -1290,7 +1291,7 @@ public class SystemInterface {
                                                                                                    public void actionPerformed(ActionEvent e){  
                                                                                                       Integer endMinute = (Integer) endMinBox.getSelectedItem();
                                                                                                       final JLabel endMinEntry = new JLabel(Integer.toString(endMinute));
-                                                                                                      endMinEntry.setBounds(100,275,70,20);
+                                                                                                      endMinEntry.setBounds(110,275,70,20);
                                                                                                       window.add(endMinEntry);
                                                                                                       window.remove(endMinBox);  
                                                                                                       submitMinButton.setVisible(false);
@@ -1299,7 +1300,7 @@ public class SystemInterface {
                                                                                                       Leave[] leaveType = {Leave.maternity, Leave.paternity, Leave.pto, Leave.sick_leave };
                                                                                                    
                                                                                                       JComboBox<Leave> leaveTypeBox = new JComboBox<>(leaveType);
-                                                                                                      leaveTypeBox.setBounds(100,300, 100,20); 
+                                                                                                      leaveTypeBox.setBounds(110,300, 90,20); 
                                                                                                       leaveTypeBox.setVisible(true);
                                                                                                       window.add(leaveTypeBox);
                                                                                                    
@@ -1312,7 +1313,7 @@ public class SystemInterface {
                                                                                                    
                                                                                                    
                                                                                                       JButton leaveTypeButton=new JButton("Submit Request");  
-                                                                                                      leaveTypeButton.setBounds(200,300,150,30);  
+                                                                                                      leaveTypeButton.setBounds(210,300,150,30);  
                                                                                                       leaveTypeButton.addActionListener(
                                                                                                          new ActionListener(){  
                                                                                                             public void actionPerformed(ActionEvent e){  
@@ -1366,7 +1367,7 @@ public class SystemInterface {
                                                                         else if (endMonth == 4 ||endMonth == 6 ||endMonth == 9 ||endMonth == 11)
                                                                         {
                                                                            JComboBox<Integer> endDayBox = new JComboBox<>(dayShortDate);
-                                                                           endDayBox.setBounds(100,225, 50,20); 
+                                                                           endDayBox.setBounds(110,225, 50,20); 
                                                                            endDayBox.setVisible(true);
                                                                            window.add(endDayBox);
                                                                         
@@ -1385,7 +1386,7 @@ public class SystemInterface {
                                                                                  public void actionPerformed(ActionEvent e){  
                                                                                     Integer endDay = (Integer) endDayBox.getSelectedItem();
                                                                                     final JLabel endDayEntry = new JLabel(Integer.toString(endDay));
-                                                                                    endDayEntry.setBounds(100,225,70,20);
+                                                                                    endDayEntry.setBounds(110,225,70,20);
                                                                                     window.add(endDayEntry);
                                                                                     window.remove(endDayBox);  
                                                                                     submitEDayButton.setVisible(false);
@@ -1395,7 +1396,7 @@ public class SystemInterface {
                                                                                  
                                                                                  
                                                                                     JComboBox<Integer>  endHourBox = new JComboBox<>(hourTime);
-                                                                                    endHourBox.setBounds(100,250, 50,20); 
+                                                                                    endHourBox.setBounds(110,250, 50,20); 
                                                                                     endHourBox.setVisible(true);
                                                                                     window.add(endHourBox);
                                                                                  
@@ -1414,14 +1415,14 @@ public class SystemInterface {
                                                                                           public void actionPerformed(ActionEvent e){  
                                                                                              Integer endHour = (Integer) endHourBox.getSelectedItem();
                                                                                              final JLabel endHourEntry = new JLabel(Integer.toString(endHour));
-                                                                                             endHourEntry.setBounds(100,250,70,20);
+                                                                                             endHourEntry.setBounds(110,250,70,20);
                                                                                              window.add(endHourEntry);
                                                                                              window.remove(endHourBox);  
                                                                                              submitHourButton.setVisible(false);
                                                                                           
                                                                                           
                                                                                              JComboBox<Integer>  endMinBox = new JComboBox<>(minuteTime);
-                                                                                             endMinBox.setBounds(100,275, 50,20); 
+                                                                                             endMinBox.setBounds(110,275, 50,20); 
                                                                                              endMinBox.setVisible(true);
                                                                                              window.add(endMinBox);
                                                                                           
@@ -1440,7 +1441,7 @@ public class SystemInterface {
                                                                                                    public void actionPerformed(ActionEvent e){  
                                                                                                       Integer endMinute = (Integer) endMinBox.getSelectedItem();
                                                                                                       final JLabel endMinEntry = new JLabel(Integer.toString(endMinute));
-                                                                                                      endMinEntry.setBounds(100,275,70,20);
+                                                                                                      endMinEntry.setBounds(110,275,70,20);
                                                                                                       window.add(endMinEntry);
                                                                                                       window.remove(endMinBox);  
                                                                                                       submitMinButton.setVisible(false);
@@ -1449,7 +1450,7 @@ public class SystemInterface {
                                                                                                       Leave[] leaveType = {Leave.maternity, Leave.paternity, Leave.pto, Leave.sick_leave };
                                                                                                    
                                                                                                       JComboBox<Leave> leaveTypeBox = new JComboBox<>(leaveType);
-                                                                                                      leaveTypeBox.setBounds(100,300, 100,20); 
+                                                                                                      leaveTypeBox.setBounds(110,300, 90,20); 
                                                                                                       leaveTypeBox.setVisible(true);
                                                                                                       window.add(leaveTypeBox);
                                                                                                    
@@ -1462,7 +1463,7 @@ public class SystemInterface {
                                                                                                    
                                                                                                    
                                                                                                       JButton leaveTypeButton=new JButton("Submit Request");  
-                                                                                                      leaveTypeButton.setBounds(200,300,150,30);  
+                                                                                                      leaveTypeButton.setBounds(210,300,150,30);  
                                                                                                       leaveTypeButton.addActionListener(
                                                                                                          new ActionListener(){  
                                                                                                             public void actionPerformed(ActionEvent e){  
@@ -1513,7 +1514,7 @@ public class SystemInterface {
                                                                         else if (endMonth == 2 && endYear == 2020)
                                                                         {
                                                                            JComboBox<Integer> endDayBox = new JComboBox<>(dayLeapDate);
-                                                                           endDayBox.setBounds(100,225, 50,20); 
+                                                                           endDayBox.setBounds(110,225, 50,20); 
                                                                            endDayBox.setVisible(true);
                                                                            window.add(endDayBox);
                                                                         
@@ -1532,7 +1533,7 @@ public class SystemInterface {
                                                                                  public void actionPerformed(ActionEvent e){  
                                                                                     Integer endDay = (Integer) endDayBox.getSelectedItem();
                                                                                     final JLabel endDayEntry = new JLabel(Integer.toString(endDay));
-                                                                                    endDayEntry.setBounds(100,225,70,20);
+                                                                                    endDayEntry.setBounds(110,225,70,20);
                                                                                     window.add(endDayEntry);
                                                                                     window.remove(endDayBox);  
                                                                                     submitEDayButton.setVisible(false);
@@ -1542,7 +1543,7 @@ public class SystemInterface {
                                                                                  
                                                                                  
                                                                                     JComboBox<Integer>  endHourBox = new JComboBox<>(hourTime);
-                                                                                    endHourBox.setBounds(100,250, 50,20); 
+                                                                                    endHourBox.setBounds(110,250, 50,20); 
                                                                                     endHourBox.setVisible(true);
                                                                                     window.add(endHourBox);
                                                                                  
@@ -1561,14 +1562,14 @@ public class SystemInterface {
                                                                                           public void actionPerformed(ActionEvent e){  
                                                                                              Integer endHour = (Integer) endHourBox.getSelectedItem();
                                                                                              final JLabel endHourEntry = new JLabel(Integer.toString(endHour));
-                                                                                             endHourEntry.setBounds(100,250,70,20);
+                                                                                             endHourEntry.setBounds(110,250,70,20);
                                                                                              window.add(endHourEntry);
                                                                                              window.remove(endHourBox);  
                                                                                              submitHourButton.setVisible(false);
                                                                                           
                                                                                           
                                                                                              JComboBox<Integer>  endMinBox = new JComboBox<>(minuteTime);
-                                                                                             endMinBox.setBounds(100,275, 50,20); 
+                                                                                             endMinBox.setBounds(110,275, 50,20); 
                                                                                              endMinBox.setVisible(true);
                                                                                              window.add(endMinBox);
                                                                                           
@@ -1587,7 +1588,7 @@ public class SystemInterface {
                                                                                                    public void actionPerformed(ActionEvent e){  
                                                                                                       Integer endMinute = (Integer) endMinBox.getSelectedItem();
                                                                                                       final JLabel endMinEntry = new JLabel(Integer.toString(endMinute));
-                                                                                                      endMinEntry.setBounds(100,275,70,20);
+                                                                                                      endMinEntry.setBounds(110,275,70,20);
                                                                                                       window.add(endMinEntry);
                                                                                                       window.remove(endMinBox);  
                                                                                                       submitMinButton.setVisible(false);
@@ -1596,7 +1597,7 @@ public class SystemInterface {
                                                                                                       Leave[] leaveType = {Leave.maternity, Leave.paternity, Leave.pto, Leave.sick_leave };
                                                                                                    
                                                                                                       JComboBox<Leave> leaveTypeBox = new JComboBox<>(leaveType);
-                                                                                                      leaveTypeBox.setBounds(100,300, 100,20); 
+                                                                                                      leaveTypeBox.setBounds(110,300, 90,20); 
                                                                                                       leaveTypeBox.setVisible(true);
                                                                                                       window.add(leaveTypeBox);
                                                                                                    
@@ -1609,7 +1610,7 @@ public class SystemInterface {
                                                                                                    
                                                                                                    
                                                                                                       JButton leaveTypeButton=new JButton("Submit Request");  
-                                                                                                      leaveTypeButton.setBounds(200,300,150,30);  
+                                                                                                      leaveTypeButton.setBounds(210,300,150,30);  
                                                                                                       leaveTypeButton.addActionListener(
                                                                                                          new ActionListener(){  
                                                                                                             public void actionPerformed(ActionEvent e){  
@@ -1662,7 +1663,7 @@ public class SystemInterface {
                                                                         else 
                                                                         {
                                                                            JComboBox<Integer>  endDayBox = new JComboBox<>(dayFebDate);
-                                                                           endDayBox.setBounds(100,225, 50,20); 
+                                                                           endDayBox.setBounds(110,225, 50,20); 
                                                                            endDayBox.setVisible(true);
                                                                            window.add(endDayBox);
                                                                         
@@ -1681,7 +1682,7 @@ public class SystemInterface {
                                                                                  public void actionPerformed(ActionEvent e){  
                                                                                     Integer endDay = (Integer) endDayBox.getSelectedItem();
                                                                                     final JLabel endDayEntry = new JLabel(Integer.toString(endDay));
-                                                                                    endDayEntry.setBounds(100,225,70,20);
+                                                                                    endDayEntry.setBounds(110,225,70,20);
                                                                                     window.add(endDayEntry);
                                                                                     window.remove(endDayBox);  
                                                                                     submitEDayButton.setVisible(false);
@@ -1691,7 +1692,7 @@ public class SystemInterface {
                                                                                  
                                                                                  
                                                                                     JComboBox<Integer>  endHourBox = new JComboBox<>(hourTime);
-                                                                                    endHourBox.setBounds(100,250, 50,20); 
+                                                                                    endHourBox.setBounds(110,250, 50,20); 
                                                                                     endHourBox.setVisible(true);
                                                                                     window.add(endHourBox);
                                                                                  
@@ -1710,14 +1711,14 @@ public class SystemInterface {
                                                                                           public void actionPerformed(ActionEvent e){  
                                                                                              Integer endHour = (Integer) endHourBox.getSelectedItem();
                                                                                              final JLabel endHourEntry = new JLabel(Integer.toString(endHour));
-                                                                                             endHourEntry.setBounds(100,250,70,20);
+                                                                                             endHourEntry.setBounds(110,250,70,20);
                                                                                              window.add(endHourEntry);
                                                                                              window.remove(endHourBox);  
                                                                                              submitHourButton.setVisible(false);
                                                                                           
                                                                                           
                                                                                              JComboBox<Integer>  endMinBox = new JComboBox<>(minuteTime);
-                                                                                             endMinBox.setBounds(100,275, 50,20); 
+                                                                                             endMinBox.setBounds(110,275, 50,20); 
                                                                                              endMinBox.setVisible(true);
                                                                                              window.add(endMinBox);
                                                                                           
@@ -1736,7 +1737,7 @@ public class SystemInterface {
                                                                                                    public void actionPerformed(ActionEvent e){  
                                                                                                       Integer endMinute = (Integer) endMinBox.getSelectedItem();
                                                                                                       final JLabel endMinEntry = new JLabel(Integer.toString(endMinute));
-                                                                                                      endMinEntry.setBounds(100,275,70,20);
+                                                                                                      endMinEntry.setBounds(110,275,70,20);
                                                                                                       window.add(endMinEntry);
                                                                                                       window.remove(endMinBox);  
                                                                                                       submitMinButton.setVisible(false);
@@ -1745,7 +1746,7 @@ public class SystemInterface {
                                                                                                       Leave[] leaveType = {Leave.maternity, Leave.paternity, Leave.pto, Leave.sick_leave };
                                                                                                    
                                                                                                       JComboBox<Leave> leaveTypeBox = new JComboBox<>(leaveType);
-                                                                                                      leaveTypeBox.setBounds(100,300, 100,20); 
+                                                                                                      leaveTypeBox.setBounds(110,300, 90,20); 
                                                                                                       leaveTypeBox.setVisible(true);
                                                                                                       window.add(leaveTypeBox);
                                                                                                    
@@ -1758,7 +1759,7 @@ public class SystemInterface {
                                                                                                    
                                                                                                    
                                                                                                       JButton leaveTypeButton=new JButton("Submit Request");  
-                                                                                                      leaveTypeButton.setBounds(200,300,150,30);  
+                                                                                                      leaveTypeButton.setBounds(210,300,150,30);  
                                                                                                       leaveTypeButton.addActionListener(
                                                                                                          new ActionListener(){  
                                                                                                             public void actionPerformed(ActionEvent e){  
@@ -1872,7 +1873,7 @@ public class SystemInterface {
                         else if (startMonth == 2 && startYear == 2020)
                         {
                            JComboBox<Integer> startDayBox = new JComboBox<>(dayLeapDate);
-                           startDayBox.setBounds(100,100, 50,20); 
+                           startDayBox.setBounds(110,100, 50,20); 
                            startDayBox.setVisible(true);
                            window.add(startDayBox);
                             
@@ -1890,7 +1891,7 @@ public class SystemInterface {
                                  public void actionPerformed(ActionEvent e){  
                                     Integer startDay = (Integer) startDayBox.getSelectedItem();
                                     final JLabel startDayEntry = new JLabel(Integer.toString(startDay));
-                                    startDayEntry.setBounds(100,100,70,20);
+                                    startDayEntry.setBounds(110,100,70,20);
                                     window.add(startDayEntry);
                                     window.remove(startDayBox);  
                                     submitDayButton.setVisible(false);
@@ -1905,7 +1906,7 @@ public class SystemInterface {
                                  
                                  
                                     JComboBox<Integer>  startHourBox = new JComboBox<>(hourTime);
-                                    startHourBox.setBounds(100,125, 50,20); 
+                                    startHourBox.setBounds(110,125, 50,20); 
                                     startHourBox.setVisible(true);
                                     window.add(startHourBox);
                                  
@@ -1924,14 +1925,14 @@ public class SystemInterface {
                                           public void actionPerformed(ActionEvent e){  
                                              Integer startHour = (Integer) startHourBox.getSelectedItem();
                                              final JLabel startHourEntry = new JLabel(Integer.toString(startHour));
-                                             startHourEntry.setBounds(100,125,70,20);
+                                             startHourEntry.setBounds(110,125,70,20);
                                              window.add(startHourEntry);
                                              window.remove(startHourBox);  
                                              submitHourButton.setVisible(false);
                                                                                 
                                                                                 
                                              JComboBox<Integer>  startMinBox = new JComboBox<>(minuteTime);
-                                             startMinBox.setBounds(100,150, 50,20); 
+                                             startMinBox.setBounds(110,150, 50,20); 
                                              startMinBox.setVisible(true);
                                              window.add(startMinBox);
                                           
@@ -1950,7 +1951,7 @@ public class SystemInterface {
                                                    public void actionPerformed(ActionEvent e){  
                                                       Integer startMinute = (Integer) startMinBox.getSelectedItem();
                                                       final JLabel startMinEntry = new JLabel(Integer.toString(startMinute));
-                                                      startMinEntry.setBounds(100,150,70,20);
+                                                      startMinEntry.setBounds(110,150,70,20);
                                                       window.add(startMinEntry);
                                                       window.remove(startMinBox);  
                                                       submitMinButton.setVisible(false);
@@ -1963,7 +1964,7 @@ public class SystemInterface {
                                                       window.add(endYearLabel);
                                                    
                                                       JComboBox<Integer> endYearBox= new JComboBox<>(yearDate);  
-                                                      endYearBox.setBounds(100,175, 80,20);
+                                                      endYearBox.setBounds(110,175, 80,20);
                                                    
                                                    
                                                    
@@ -1977,7 +1978,7 @@ public class SystemInterface {
                                                             
                                                             
                                                                final JLabel endYearEntry = new JLabel(Integer.toString(endYear));
-                                                               endYearEntry.setBounds(100,175,80,20);
+                                                               endYearEntry.setBounds(110,175,80,20);
                                                                window.add(endYearEntry);
                                                                window.remove(endYearBox);  
                                                                submitEYearButton.setVisible(false);
@@ -1992,7 +1993,7 @@ public class SystemInterface {
                                                                window.add(endMonthLabel);
                                                             
                                                                JComboBox<Integer> endMonthBox= new JComboBox<>(monthDate);  
-                                                               endMonthBox.setBounds(100,200, 50,20); 
+                                                               endMonthBox.setBounds(110,200, 50,20); 
                                                                endMonthBox.setVisible(true);
                                                                window.add(endMonthBox);
                                                             
@@ -2004,7 +2005,7 @@ public class SystemInterface {
                                                                         Integer endMonth = (Integer) endMonthBox.getSelectedItem();
                                                                      
                                                                         final JLabel endMonthEntry = new JLabel(Integer.toString(endMonth));
-                                                                        endMonthEntry.setBounds(100,200,70,20);
+                                                                        endMonthEntry.setBounds(110,200,70,20);
                                                                         window.add(endMonthEntry);
                                                                         window.remove(endMonthBox);  
                                                                         submitEMonthButton.setVisible(false);
@@ -2012,7 +2013,7 @@ public class SystemInterface {
                                                                         if (endMonth == 1 ||endMonth == 3 ||endMonth == 5 ||endMonth == 7 ||endMonth == 8 ||endMonth == 10 ||endMonth == 12 )
                                                                         {
                                                                            JComboBox<Integer> endDayBox = new JComboBox<>(dayLongDate);  
-                                                                           endDayBox.setBounds(100,225, 50,20); 
+                                                                           endDayBox.setBounds(110,225, 50,20); 
                                                                            endDayBox.setVisible(true);
                                                                            window.add(endDayBox);
                                                                         
@@ -2031,7 +2032,7 @@ public class SystemInterface {
                                                                                  public void actionPerformed(ActionEvent e){  
                                                                                     Integer endDay = (Integer) endDayBox.getSelectedItem();
                                                                                     final JLabel endDayEntry = new JLabel(Integer.toString(endDay));
-                                                                                    endDayEntry.setBounds(100,225,70,20);
+                                                                                    endDayEntry.setBounds(110,225,70,20);
                                                                                     window.add(endDayEntry);
                                                                                     window.remove(endDayBox);  
                                                                                     submitEDayButton.setVisible(false);
@@ -2041,7 +2042,7 @@ public class SystemInterface {
                                                                                  
                                                                                  
                                                                                     JComboBox<Integer>  endHourBox = new JComboBox<>(hourTime);
-                                                                                    endHourBox.setBounds(100,250, 50,20); 
+                                                                                    endHourBox.setBounds(110,250, 50,20); 
                                                                                     endHourBox.setVisible(true);
                                                                                     window.add(endHourBox);
                                                                                  
@@ -2060,14 +2061,14 @@ public class SystemInterface {
                                                                                           public void actionPerformed(ActionEvent e){  
                                                                                              Integer endHour = (Integer) endHourBox.getSelectedItem();
                                                                                              final JLabel endHourEntry = new JLabel(Integer.toString(endHour));
-                                                                                             endHourEntry.setBounds(100,250,70,20);
+                                                                                             endHourEntry.setBounds(110,250,70,20);
                                                                                              window.add(endHourEntry);
                                                                                              window.remove(endHourBox);  
                                                                                              submitHourButton.setVisible(false);
                                                                                           
                                                                                           
                                                                                              JComboBox<Integer>  endMinBox = new JComboBox<>(minuteTime);
-                                                                                             endMinBox.setBounds(100,275, 50,20); 
+                                                                                             endMinBox.setBounds(110,275, 50,20); 
                                                                                              endMinBox.setVisible(true);
                                                                                              window.add(endMinBox);
                                                                                           
@@ -2086,7 +2087,7 @@ public class SystemInterface {
                                                                                                    public void actionPerformed(ActionEvent e){  
                                                                                                       Integer endMinute = (Integer) endMinBox.getSelectedItem();
                                                                                                       final JLabel endMinEntry = new JLabel(Integer.toString(endMinute));
-                                                                                                      endMinEntry.setBounds(100,275,70,20);
+                                                                                                      endMinEntry.setBounds(110,275,70,20);
                                                                                                       window.add(endMinEntry);
                                                                                                       window.remove(endMinBox);  
                                                                                                       submitMinButton.setVisible(false);
@@ -2095,7 +2096,7 @@ public class SystemInterface {
                                                                                                       Leave[] leaveType = {Leave.maternity, Leave.paternity, Leave.pto, Leave.sick_leave };
                                                                                                    
                                                                                                       JComboBox<Leave> leaveTypeBox = new JComboBox<>(leaveType);
-                                                                                                      leaveTypeBox.setBounds(100,300, 100,20); 
+                                                                                                      leaveTypeBox.setBounds(110,300, 90,20); 
                                                                                                       leaveTypeBox.setVisible(true);
                                                                                                       window.add(leaveTypeBox);
                                                                                                    
@@ -2108,7 +2109,7 @@ public class SystemInterface {
                                                                                                    
                                                                                                    
                                                                                                       JButton leaveTypeButton=new JButton("Submit Request");  
-                                                                                                      leaveTypeButton.setBounds(200,300,150,30);  
+                                                                                                      leaveTypeButton.setBounds(210,300,150,30);  
                                                                                                       leaveTypeButton.addActionListener(
                                                                                                          new ActionListener(){  
                                                                                                             public void actionPerformed(ActionEvent e){  
@@ -2162,7 +2163,7 @@ public class SystemInterface {
                                                                         else if (endMonth == 4 ||endMonth == 6 ||endMonth == 9 ||endMonth == 11)
                                                                         {
                                                                            JComboBox<Integer> endDayBox = new JComboBox<>(dayShortDate);
-                                                                           endDayBox.setBounds(100,225, 50,20); 
+                                                                           endDayBox.setBounds(110,225, 50,20); 
                                                                            endDayBox.setVisible(true);
                                                                            window.add(endDayBox);
                                                                         
@@ -2181,7 +2182,7 @@ public class SystemInterface {
                                                                                  public void actionPerformed(ActionEvent e){  
                                                                                     Integer endDay = (Integer) endDayBox.getSelectedItem();
                                                                                     final JLabel endDayEntry = new JLabel(Integer.toString(endDay));
-                                                                                    endDayEntry.setBounds(100,225,70,20);
+                                                                                    endDayEntry.setBounds(110,225,70,20);
                                                                                     window.add(endDayEntry);
                                                                                     window.remove(endDayBox);  
                                                                                     submitEDayButton.setVisible(false);
@@ -2191,7 +2192,7 @@ public class SystemInterface {
                                                                                  
                                                                                  
                                                                                     JComboBox<Integer>  endHourBox = new JComboBox<>(hourTime);
-                                                                                    endHourBox.setBounds(100,250, 50,20); 
+                                                                                    endHourBox.setBounds(110,250, 50,20); 
                                                                                     endHourBox.setVisible(true);
                                                                                     window.add(endHourBox);
                                                                                  
@@ -2210,14 +2211,14 @@ public class SystemInterface {
                                                                                           public void actionPerformed(ActionEvent e){  
                                                                                              Integer endHour = (Integer) endHourBox.getSelectedItem();
                                                                                              final JLabel endHourEntry = new JLabel(Integer.toString(endHour));
-                                                                                             endHourEntry.setBounds(100,250,70,20);
+                                                                                             endHourEntry.setBounds(110,250,70,20);
                                                                                              window.add(endHourEntry);
                                                                                              window.remove(endHourBox);  
                                                                                              submitHourButton.setVisible(false);
                                                                                           
                                                                                           
                                                                                              JComboBox<Integer>  endMinBox = new JComboBox<>(minuteTime);
-                                                                                             endMinBox.setBounds(100,275, 50,20); 
+                                                                                             endMinBox.setBounds(110,275, 50,20); 
                                                                                              endMinBox.setVisible(true);
                                                                                              window.add(endMinBox);
                                                                                           
@@ -2236,7 +2237,7 @@ public class SystemInterface {
                                                                                                    public void actionPerformed(ActionEvent e){  
                                                                                                       Integer endMinute = (Integer) endMinBox.getSelectedItem();
                                                                                                       final JLabel endMinEntry = new JLabel(Integer.toString(endMinute));
-                                                                                                      endMinEntry.setBounds(100,275,70,20);
+                                                                                                      endMinEntry.setBounds(110,275,70,20);
                                                                                                       window.add(endMinEntry);
                                                                                                       window.remove(endMinBox);  
                                                                                                       submitMinButton.setVisible(false);
@@ -2245,7 +2246,7 @@ public class SystemInterface {
                                                                                                       Leave[] leaveType = {Leave.maternity, Leave.paternity, Leave.pto, Leave.sick_leave };
                                                                                                    
                                                                                                       JComboBox<Leave> leaveTypeBox = new JComboBox<>(leaveType);
-                                                                                                      leaveTypeBox.setBounds(100,300, 100,20); 
+                                                                                                      leaveTypeBox.setBounds(110,300, 90,20); 
                                                                                                       leaveTypeBox.setVisible(true);
                                                                                                       window.add(leaveTypeBox);
                                                                                                    
@@ -2258,7 +2259,7 @@ public class SystemInterface {
                                                                                                    
                                                                                                    
                                                                                                       JButton leaveTypeButton=new JButton("Submit Request");  
-                                                                                                      leaveTypeButton.setBounds(200,300,150,30);  
+                                                                                                      leaveTypeButton.setBounds(210,300,150,30);  
                                                                                                       leaveTypeButton.addActionListener(
                                                                                                          new ActionListener(){  
                                                                                                             public void actionPerformed(ActionEvent e){  
@@ -2309,7 +2310,7 @@ public class SystemInterface {
                                                                         else if (endMonth == 2 && endYear == 2020)
                                                                         {
                                                                            JComboBox<Integer> endDayBox = new JComboBox<>(dayLeapDate);
-                                                                           endDayBox.setBounds(100,225, 50,20); 
+                                                                           endDayBox.setBounds(110,225, 50,20); 
                                                                            endDayBox.setVisible(true);
                                                                            window.add(endDayBox);
                                                                         
@@ -2328,7 +2329,7 @@ public class SystemInterface {
                                                                                  public void actionPerformed(ActionEvent e){  
                                                                                     Integer endDay = (Integer) endDayBox.getSelectedItem();
                                                                                     final JLabel endDayEntry = new JLabel(Integer.toString(endDay));
-                                                                                    endDayEntry.setBounds(100,225,70,20);
+                                                                                    endDayEntry.setBounds(110,225,70,20);
                                                                                     window.add(endDayEntry);
                                                                                     window.remove(endDayBox);  
                                                                                     submitEDayButton.setVisible(false);
@@ -2338,7 +2339,7 @@ public class SystemInterface {
                                                                                  
                                                                                  
                                                                                     JComboBox<Integer>  endHourBox = new JComboBox<>(hourTime);
-                                                                                    endHourBox.setBounds(100,250, 50,20); 
+                                                                                    endHourBox.setBounds(110,250, 50,20); 
                                                                                     endHourBox.setVisible(true);
                                                                                     window.add(endHourBox);
                                                                                  
@@ -2357,14 +2358,14 @@ public class SystemInterface {
                                                                                           public void actionPerformed(ActionEvent e){  
                                                                                              Integer endHour = (Integer) endHourBox.getSelectedItem();
                                                                                              final JLabel endHourEntry = new JLabel(Integer.toString(endHour));
-                                                                                             endHourEntry.setBounds(100,250,70,20);
+                                                                                             endHourEntry.setBounds(110,250,70,20);
                                                                                              window.add(endHourEntry);
                                                                                              window.remove(endHourBox);  
                                                                                              submitHourButton.setVisible(false);
                                                                                           
                                                                                           
                                                                                              JComboBox<Integer>  endMinBox = new JComboBox<>(minuteTime);
-                                                                                             endMinBox.setBounds(100,275, 50,20); 
+                                                                                             endMinBox.setBounds(110,275, 50,20); 
                                                                                              endMinBox.setVisible(true);
                                                                                              window.add(endMinBox);
                                                                                           
@@ -2383,7 +2384,7 @@ public class SystemInterface {
                                                                                                    public void actionPerformed(ActionEvent e){  
                                                                                                       Integer endMinute = (Integer) endMinBox.getSelectedItem();
                                                                                                       final JLabel endMinEntry = new JLabel(Integer.toString(endMinute));
-                                                                                                      endMinEntry.setBounds(100,275,70,20);
+                                                                                                      endMinEntry.setBounds(110,275,70,20);
                                                                                                       window.add(endMinEntry);
                                                                                                       window.remove(endMinBox);  
                                                                                                       submitMinButton.setVisible(false);
@@ -2392,7 +2393,7 @@ public class SystemInterface {
                                                                                                       Leave[] leaveType = {Leave.maternity, Leave.paternity, Leave.pto, Leave.sick_leave };
                                                                                                    
                                                                                                       JComboBox<Leave> leaveTypeBox = new JComboBox<>(leaveType);
-                                                                                                      leaveTypeBox.setBounds(100,300, 100,20); 
+                                                                                                      leaveTypeBox.setBounds(110,300, 90,20); 
                                                                                                       leaveTypeBox.setVisible(true);
                                                                                                       window.add(leaveTypeBox);
                                                                                                    
@@ -2405,7 +2406,7 @@ public class SystemInterface {
                                                                                                    
                                                                                                    
                                                                                                       JButton leaveTypeButton=new JButton("Submit Request");  
-                                                                                                      leaveTypeButton.setBounds(200,300,150,30);  
+                                                                                                      leaveTypeButton.setBounds(210,300,150,30);  
                                                                                                       leaveTypeButton.addActionListener(
                                                                                                          new ActionListener(){  
                                                                                                             public void actionPerformed(ActionEvent e){  
@@ -2459,7 +2460,7 @@ public class SystemInterface {
                                                                         else 
                                                                         {
                                                                            JComboBox<Integer>  endDayBox = new JComboBox<>(dayFebDate);
-                                                                           endDayBox.setBounds(100,225, 50,20); 
+                                                                           endDayBox.setBounds(110,225, 50,20); 
                                                                            endDayBox.setVisible(true);
                                                                            window.add(endDayBox);
                                                                         
@@ -2478,7 +2479,7 @@ public class SystemInterface {
                                                                                  public void actionPerformed(ActionEvent e){  
                                                                                     Integer endDay = (Integer) endDayBox.getSelectedItem();
                                                                                     final JLabel endDayEntry = new JLabel(Integer.toString(endDay));
-                                                                                    endDayEntry.setBounds(100,225,70,20);
+                                                                                    endDayEntry.setBounds(110,225,70,20);
                                                                                     window.add(endDayEntry);
                                                                                     window.remove(endDayBox);  
                                                                                     submitEDayButton.setVisible(false);
@@ -2488,7 +2489,7 @@ public class SystemInterface {
                                                                                  
                                                                                  
                                                                                     JComboBox<Integer>  endHourBox = new JComboBox<>(hourTime);
-                                                                                    endHourBox.setBounds(100,250, 50,20); 
+                                                                                    endHourBox.setBounds(110,250, 50,20); 
                                                                                     endHourBox.setVisible(true);
                                                                                     window.add(endHourBox);
                                                                                  
@@ -2507,14 +2508,14 @@ public class SystemInterface {
                                                                                           public void actionPerformed(ActionEvent e){  
                                                                                              Integer endHour = (Integer) endHourBox.getSelectedItem();
                                                                                              final JLabel endHourEntry = new JLabel(Integer.toString(endHour));
-                                                                                             endHourEntry.setBounds(100,250,70,20);
+                                                                                             endHourEntry.setBounds(110,250,70,20);
                                                                                              window.add(endHourEntry);
                                                                                              window.remove(endHourBox);  
                                                                                              submitHourButton.setVisible(false);
                                                                                           
                                                                                           
                                                                                              JComboBox<Integer>  endMinBox = new JComboBox<>(minuteTime);
-                                                                                             endMinBox.setBounds(100,275, 50,20); 
+                                                                                             endMinBox.setBounds(110,275, 50,20); 
                                                                                              endMinBox.setVisible(true);
                                                                                              window.add(endMinBox);
                                                                                           
@@ -2533,7 +2534,7 @@ public class SystemInterface {
                                                                                                    public void actionPerformed(ActionEvent e){  
                                                                                                       Integer endMinute = (Integer) endMinBox.getSelectedItem();
                                                                                                       final JLabel endMinEntry = new JLabel(Integer.toString(endMinute));
-                                                                                                      endMinEntry.setBounds(100,275,70,20);
+                                                                                                      endMinEntry.setBounds(110,275,70,20);
                                                                                                       window.add(endMinEntry);
                                                                                                       window.remove(endMinBox);  
                                                                                                       submitMinButton.setVisible(false);
@@ -2542,7 +2543,7 @@ public class SystemInterface {
                                                                                                       Leave[] leaveType = {Leave.maternity, Leave.paternity, Leave.pto, Leave.sick_leave };
                                                                                                    
                                                                                                       JComboBox<Leave> leaveTypeBox = new JComboBox<>(leaveType);
-                                                                                                      leaveTypeBox.setBounds(100,300, 100,20); 
+                                                                                                      leaveTypeBox.setBounds(110,300, 90,20); 
                                                                                                       leaveTypeBox.setVisible(true);
                                                                                                       window.add(leaveTypeBox);
                                                                                                    
@@ -2555,7 +2556,7 @@ public class SystemInterface {
                                                                                                    
                                                                                                    
                                                                                                       JButton leaveTypeButton=new JButton("Submit Request");  
-                                                                                                      leaveTypeButton.setBounds(200,300,150,30);  
+                                                                                                      leaveTypeButton.setBounds(210,300,150,30);  
                                                                                                       leaveTypeButton.addActionListener(
                                                                                                          new ActionListener(){  
                                                                                                             public void actionPerformed(ActionEvent e){  
@@ -2670,7 +2671,7 @@ public class SystemInterface {
                         else 
                         {
                            JComboBox<Integer>  startDayBox = new JComboBox<>(dayFebDate);
-                           startDayBox.setBounds(100,100, 50,20); 
+                           startDayBox.setBounds(110,100, 50,20); 
                            startDayBox.setVisible(true);
                            window.add(startDayBox);
                            
@@ -2689,7 +2690,7 @@ public class SystemInterface {
                                  public void actionPerformed(ActionEvent e){  
                                     Integer startDay = (Integer) startDayBox.getSelectedItem();
                                     final JLabel startDayEntry = new JLabel(Integer.toString(startDay));
-                                    startDayEntry.setBounds(100,100,70,20);
+                                    startDayEntry.setBounds(110,100,70,20);
                                     window.add(startDayEntry);
                                     window.remove(startDayBox);  
                                     submitDayButton.setVisible(false);
@@ -2702,7 +2703,7 @@ public class SystemInterface {
                                  
                                  
                                     JComboBox<Integer>  startHourBox = new JComboBox<>(hourTime);
-                                    startHourBox.setBounds(100,125, 50,20); 
+                                    startHourBox.setBounds(110,125, 50,20); 
                                     startHourBox.setVisible(true);
                                     window.add(startHourBox);
                                  
@@ -2721,14 +2722,14 @@ public class SystemInterface {
                                           public void actionPerformed(ActionEvent e){  
                                              Integer startHour = (Integer) startHourBox.getSelectedItem();
                                              final JLabel startHourEntry = new JLabel(Integer.toString(startHour));
-                                             startHourEntry.setBounds(100,125,70,20);
+                                             startHourEntry.setBounds(110,125,70,20);
                                              window.add(startHourEntry);
                                              window.remove(startHourBox);  
                                              submitHourButton.setVisible(false);
                                                                                 
                                                                                 
                                              JComboBox<Integer>  startMinBox = new JComboBox<>(minuteTime);
-                                             startMinBox.setBounds(100,150, 50,20); 
+                                             startMinBox.setBounds(110,150, 50,20); 
                                              startMinBox.setVisible(true);
                                              window.add(startMinBox);
                                           
@@ -2747,7 +2748,7 @@ public class SystemInterface {
                                                    public void actionPerformed(ActionEvent e){  
                                                       Integer startMinute = (Integer) startMinBox.getSelectedItem();
                                                       final JLabel startMinEntry = new JLabel(Integer.toString(startMinute));
-                                                      startMinEntry.setBounds(100,150,70,20);
+                                                      startMinEntry.setBounds(110,150,70,20);
                                                       window.add(startMinEntry);
                                                       window.remove(startMinBox);  
                                                       submitMinButton.setVisible(false);
@@ -2761,7 +2762,7 @@ public class SystemInterface {
                                                       window.add(endYearLabel);
                                                    
                                                       JComboBox<Integer> endYearBox= new JComboBox<>(yearDate);  
-                                                      endYearBox.setBounds(100,175, 80,20);
+                                                      endYearBox.setBounds(110,175, 80,20);
                                                    
                                                    
                                                    
@@ -2775,7 +2776,7 @@ public class SystemInterface {
                                                             
                                                             
                                                                final JLabel endYearEntry = new JLabel(Integer.toString(endYear));
-                                                               endYearEntry.setBounds(100,175,80,20);
+                                                               endYearEntry.setBounds(110,175,80,20);
                                                                window.add(endYearEntry);
                                                                window.remove(endYearBox);  
                                                                submitEYearButton.setVisible(false);
@@ -2790,7 +2791,7 @@ public class SystemInterface {
                                                                window.add(endMonthLabel);
                                                             
                                                                JComboBox<Integer> endMonthBox= new JComboBox<>(monthDate);  
-                                                               endMonthBox.setBounds(100,200, 50,20); 
+                                                               endMonthBox.setBounds(110,200, 50,20); 
                                                                endMonthBox.setVisible(true);
                                                                window.add(endMonthBox);
                                                             
@@ -2802,7 +2803,7 @@ public class SystemInterface {
                                                                         Integer endMonth = (Integer) endMonthBox.getSelectedItem();
                                                                      
                                                                         final JLabel endMonthEntry = new JLabel(Integer.toString(endMonth));
-                                                                        endMonthEntry.setBounds(100,200,70,20);
+                                                                        endMonthEntry.setBounds(110,200,70,20);
                                                                         window.add(endMonthEntry);
                                                                         window.remove(endMonthBox);  
                                                                         submitEMonthButton.setVisible(false);
@@ -2810,7 +2811,7 @@ public class SystemInterface {
                                                                         if (endMonth == 1 ||endMonth == 3 ||endMonth == 5 ||endMonth == 7 ||endMonth == 8 ||endMonth == 10 ||endMonth == 12 )
                                                                         {
                                                                            JComboBox<Integer> endDayBox = new JComboBox<>(dayLongDate);  
-                                                                           endDayBox.setBounds(100,225, 50,20); 
+                                                                           endDayBox.setBounds(110,225, 50,20); 
                                                                            endDayBox.setVisible(true);
                                                                            window.add(endDayBox);
                                                                         
@@ -2829,7 +2830,7 @@ public class SystemInterface {
                                                                                  public void actionPerformed(ActionEvent e){  
                                                                                     Integer endDay = (Integer) endDayBox.getSelectedItem();
                                                                                     final JLabel endDayEntry = new JLabel(Integer.toString(endDay));
-                                                                                    endDayEntry.setBounds(100,225,70,20);
+                                                                                    endDayEntry.setBounds(110,225,70,20);
                                                                                     window.add(endDayEntry);
                                                                                     window.remove(endDayBox);  
                                                                                     submitEDayButton.setVisible(false);
@@ -2839,7 +2840,7 @@ public class SystemInterface {
                                                                                  
                                                                                  
                                                                                     JComboBox<Integer>  endHourBox = new JComboBox<>(hourTime);
-                                                                                    endHourBox.setBounds(100,250, 50,20); 
+                                                                                    endHourBox.setBounds(110,250, 50,20); 
                                                                                     endHourBox.setVisible(true);
                                                                                     window.add(endHourBox);
                                                                                  
@@ -2858,14 +2859,14 @@ public class SystemInterface {
                                                                                           public void actionPerformed(ActionEvent e){  
                                                                                              Integer endHour = (Integer) endHourBox.getSelectedItem();
                                                                                              final JLabel endHourEntry = new JLabel(Integer.toString(endHour));
-                                                                                             endHourEntry.setBounds(100,250,70,20);
+                                                                                             endHourEntry.setBounds(110,250,70,20);
                                                                                              window.add(endHourEntry);
                                                                                              window.remove(endHourBox);  
                                                                                              submitHourButton.setVisible(false);
                                                                                           
                                                                                           
                                                                                              JComboBox<Integer>  endMinBox = new JComboBox<>(minuteTime);
-                                                                                             endMinBox.setBounds(100,275, 50,20); 
+                                                                                             endMinBox.setBounds(110,275, 50,20); 
                                                                                              endMinBox.setVisible(true);
                                                                                              window.add(endMinBox);
                                                                                           
@@ -2884,7 +2885,7 @@ public class SystemInterface {
                                                                                                    public void actionPerformed(ActionEvent e){  
                                                                                                       Integer endMinute = (Integer) endMinBox.getSelectedItem();
                                                                                                       final JLabel endMinEntry = new JLabel(Integer.toString(endMinute));
-                                                                                                      endMinEntry.setBounds(100,275,70,20);
+                                                                                                      endMinEntry.setBounds(110,275,70,20);
                                                                                                       window.add(endMinEntry);
                                                                                                       window.remove(endMinBox);  
                                                                                                       submitMinButton.setVisible(false);
@@ -2893,7 +2894,7 @@ public class SystemInterface {
                                                                                                       Leave[] leaveType = {Leave.maternity, Leave.paternity, Leave.pto, Leave.sick_leave };
                                                                                                    
                                                                                                       JComboBox<Leave> leaveTypeBox = new JComboBox<>(leaveType);
-                                                                                                      leaveTypeBox.setBounds(100,300, 100,20); 
+                                                                                                      leaveTypeBox.setBounds(110,300, 90,20); 
                                                                                                       leaveTypeBox.setVisible(true);
                                                                                                       window.add(leaveTypeBox);
                                                                                                    
@@ -2906,7 +2907,7 @@ public class SystemInterface {
                                                                                                    
                                                                                                    
                                                                                                       JButton leaveTypeButton=new JButton("Submit Request");  
-                                                                                                      leaveTypeButton.setBounds(200,300,150,30);  
+                                                                                                      leaveTypeButton.setBounds(210,300,150,30);  
                                                                                                       leaveTypeButton.addActionListener(
                                                                                                          new ActionListener(){  
                                                                                                             public void actionPerformed(ActionEvent e){  
@@ -2960,7 +2961,7 @@ public class SystemInterface {
                                                                         else if (endMonth == 4 ||endMonth == 6 ||endMonth == 9 ||endMonth == 11)
                                                                         {
                                                                            JComboBox<Integer> endDayBox = new JComboBox<>(dayShortDate);
-                                                                           endDayBox.setBounds(100,225, 50,20); 
+                                                                           endDayBox.setBounds(110,225, 50,20); 
                                                                            endDayBox.setVisible(true);
                                                                            window.add(endDayBox);
                                                                         
@@ -2979,7 +2980,7 @@ public class SystemInterface {
                                                                                  public void actionPerformed(ActionEvent e){  
                                                                                     Integer endDay = (Integer) endDayBox.getSelectedItem();
                                                                                     final JLabel endDayEntry = new JLabel(Integer.toString(endDay));
-                                                                                    endDayEntry.setBounds(100,225,70,20);
+                                                                                    endDayEntry.setBounds(110,225,70,20);
                                                                                     window.add(endDayEntry);
                                                                                     window.remove(endDayBox);  
                                                                                     submitEDayButton.setVisible(false);
@@ -2989,7 +2990,7 @@ public class SystemInterface {
                                                                                  
                                                                                  
                                                                                     JComboBox<Integer>  endHourBox = new JComboBox<>(hourTime);
-                                                                                    endHourBox.setBounds(100,250, 50,20); 
+                                                                                    endHourBox.setBounds(110,250, 50,20); 
                                                                                     endHourBox.setVisible(true);
                                                                                     window.add(endHourBox);
                                                                                  
@@ -3008,14 +3009,14 @@ public class SystemInterface {
                                                                                           public void actionPerformed(ActionEvent e){  
                                                                                              Integer endHour = (Integer) endHourBox.getSelectedItem();
                                                                                              final JLabel endHourEntry = new JLabel(Integer.toString(endHour));
-                                                                                             endHourEntry.setBounds(100,250,70,20);
+                                                                                             endHourEntry.setBounds(110,250,70,20);
                                                                                              window.add(endHourEntry);
                                                                                              window.remove(endHourBox);  
                                                                                              submitHourButton.setVisible(false);
                                                                                           
                                                                                           
                                                                                              JComboBox<Integer>  endMinBox = new JComboBox<>(minuteTime);
-                                                                                             endMinBox.setBounds(100,275, 50,20); 
+                                                                                             endMinBox.setBounds(110,275, 50,20); 
                                                                                              endMinBox.setVisible(true);
                                                                                              window.add(endMinBox);
                                                                                           
@@ -3034,7 +3035,7 @@ public class SystemInterface {
                                                                                                    public void actionPerformed(ActionEvent e){  
                                                                                                       Integer endMinute = (Integer) endMinBox.getSelectedItem();
                                                                                                       final JLabel endMinEntry = new JLabel(Integer.toString(endMinute));
-                                                                                                      endMinEntry.setBounds(100,275,70,20);
+                                                                                                      endMinEntry.setBounds(110,275,70,20);
                                                                                                       window.add(endMinEntry);
                                                                                                       window.remove(endMinBox);  
                                                                                                       submitMinButton.setVisible(false);
@@ -3043,7 +3044,7 @@ public class SystemInterface {
                                                                                                       Leave[] leaveType = {Leave.maternity, Leave.paternity, Leave.pto, Leave.sick_leave };
                                                                                                    
                                                                                                       JComboBox<Leave> leaveTypeBox = new JComboBox<>(leaveType);
-                                                                                                      leaveTypeBox.setBounds(100,300, 100,20); 
+                                                                                                      leaveTypeBox.setBounds(110,300, 90,20); 
                                                                                                       leaveTypeBox.setVisible(true);
                                                                                                       window.add(leaveTypeBox);
                                                                                                    
@@ -3056,7 +3057,7 @@ public class SystemInterface {
                                                                                                    
                                                                                                    
                                                                                                       JButton leaveTypeButton=new JButton("Submit Request");  
-                                                                                                      leaveTypeButton.setBounds(200,300,150,30);  
+                                                                                                      leaveTypeButton.setBounds(210,300,150,30);  
                                                                                                       leaveTypeButton.addActionListener(
                                                                                                          new ActionListener(){  
                                                                                                             public void actionPerformed(ActionEvent e){  
@@ -3107,7 +3108,7 @@ public class SystemInterface {
                                                                         else if (endMonth == 2 && endYear == 2020)
                                                                         {
                                                                            JComboBox<Integer> endDayBox = new JComboBox<>(dayLeapDate);
-                                                                           endDayBox.setBounds(100,225, 50,20); 
+                                                                           endDayBox.setBounds(110,225, 50,20); 
                                                                            endDayBox.setVisible(true);
                                                                            window.add(endDayBox);
                                                                         
@@ -3126,7 +3127,7 @@ public class SystemInterface {
                                                                                  public void actionPerformed(ActionEvent e){  
                                                                                     Integer endDay = (Integer) endDayBox.getSelectedItem();
                                                                                     final JLabel endDayEntry = new JLabel(Integer.toString(endDay));
-                                                                                    endDayEntry.setBounds(100,225,70,20);
+                                                                                    endDayEntry.setBounds(110,225,70,20);
                                                                                     window.add(endDayEntry);
                                                                                     window.remove(endDayBox);  
                                                                                     submitEDayButton.setVisible(false);
@@ -3136,7 +3137,7 @@ public class SystemInterface {
                                                                                  
                                                                                  
                                                                                     JComboBox<Integer>  endHourBox = new JComboBox<>(hourTime);
-                                                                                    endHourBox.setBounds(100,250, 50,20); 
+                                                                                    endHourBox.setBounds(110,250, 50,20); 
                                                                                     endHourBox.setVisible(true);
                                                                                     window.add(endHourBox);
                                                                                  
@@ -3155,14 +3156,14 @@ public class SystemInterface {
                                                                                           public void actionPerformed(ActionEvent e){  
                                                                                              Integer endHour = (Integer) endHourBox.getSelectedItem();
                                                                                              final JLabel endHourEntry = new JLabel(Integer.toString(endHour));
-                                                                                             endHourEntry.setBounds(100,250,70,20);
+                                                                                             endHourEntry.setBounds(110,250,70,20);
                                                                                              window.add(endHourEntry);
                                                                                              window.remove(endHourBox);  
                                                                                              submitHourButton.setVisible(false);
                                                                                           
                                                                                           
                                                                                              JComboBox<Integer>  endMinBox = new JComboBox<>(minuteTime);
-                                                                                             endMinBox.setBounds(100,275, 50,20); 
+                                                                                             endMinBox.setBounds(110,275, 50,20); 
                                                                                              endMinBox.setVisible(true);
                                                                                              window.add(endMinBox);
                                                                                           
@@ -3181,7 +3182,7 @@ public class SystemInterface {
                                                                                                    public void actionPerformed(ActionEvent e){  
                                                                                                       Integer endMinute = (Integer) endMinBox.getSelectedItem();
                                                                                                       final JLabel endMinEntry = new JLabel(Integer.toString(endMinute));
-                                                                                                      endMinEntry.setBounds(100,275,70,20);
+                                                                                                      endMinEntry.setBounds(110,275,70,20);
                                                                                                       window.add(endMinEntry);
                                                                                                       window.remove(endMinBox);  
                                                                                                       submitMinButton.setVisible(false);
@@ -3190,7 +3191,7 @@ public class SystemInterface {
                                                                                                       Leave[] leaveType = {Leave.maternity, Leave.paternity, Leave.pto, Leave.sick_leave };
                                                                                                    
                                                                                                       JComboBox<Leave> leaveTypeBox = new JComboBox<>(leaveType);
-                                                                                                      leaveTypeBox.setBounds(100,300, 100,20); 
+                                                                                                      leaveTypeBox.setBounds(110,300, 90,20); 
                                                                                                       leaveTypeBox.setVisible(true);
                                                                                                       window.add(leaveTypeBox);
                                                                                                    
@@ -3203,7 +3204,7 @@ public class SystemInterface {
                                                                                                    
                                                                                                    
                                                                                                       JButton leaveTypeButton=new JButton("Submit Request");  
-                                                                                                      leaveTypeButton.setBounds(200,300,150,30);  
+                                                                                                      leaveTypeButton.setBounds(210,300,150,30);  
                                                                                                       leaveTypeButton.addActionListener(
                                                                                                          new ActionListener(){  
                                                                                                             public void actionPerformed(ActionEvent e){  
@@ -3257,7 +3258,7 @@ public class SystemInterface {
                                                                         else 
                                                                         {
                                                                            JComboBox<Integer>  endDayBox = new JComboBox<>(dayFebDate);
-                                                                           endDayBox.setBounds(100,225, 50,20); 
+                                                                           endDayBox.setBounds(110,225, 50,20); 
                                                                            endDayBox.setVisible(true);
                                                                            window.add(endDayBox);
                                                                         
@@ -3276,7 +3277,7 @@ public class SystemInterface {
                                                                                  public void actionPerformed(ActionEvent e){  
                                                                                     Integer endDay = (Integer) endDayBox.getSelectedItem();
                                                                                     final JLabel endDayEntry = new JLabel(Integer.toString(endDay));
-                                                                                    endDayEntry.setBounds(100,225,70,20);
+                                                                                    endDayEntry.setBounds(110,225,70,20);
                                                                                     window.add(endDayEntry);
                                                                                     window.remove(endDayBox);  
                                                                                     submitEDayButton.setVisible(false);
@@ -3286,7 +3287,7 @@ public class SystemInterface {
                                                                                  
                                                                                  
                                                                                     JComboBox<Integer>  endHourBox = new JComboBox<>(hourTime);
-                                                                                    endHourBox.setBounds(100,250, 50,20); 
+                                                                                    endHourBox.setBounds(110,250, 50,20); 
                                                                                     endHourBox.setVisible(true);
                                                                                     window.add(endHourBox);
                                                                                  
@@ -3305,14 +3306,14 @@ public class SystemInterface {
                                                                                           public void actionPerformed(ActionEvent e){  
                                                                                              Integer endHour = (Integer) endHourBox.getSelectedItem();
                                                                                              final JLabel endHourEntry = new JLabel(Integer.toString(endHour));
-                                                                                             endHourEntry.setBounds(100,250,70,20);
+                                                                                             endHourEntry.setBounds(110,250,70,20);
                                                                                              window.add(endHourEntry);
                                                                                              window.remove(endHourBox);  
                                                                                              submitHourButton.setVisible(false);
                                                                                           
                                                                                           
                                                                                              JComboBox<Integer>  endMinBox = new JComboBox<>(minuteTime);
-                                                                                             endMinBox.setBounds(100,275, 50,20); 
+                                                                                             endMinBox.setBounds(110,275, 50,20); 
                                                                                              endMinBox.setVisible(true);
                                                                                              window.add(endMinBox);
                                                                                           
@@ -3331,7 +3332,7 @@ public class SystemInterface {
                                                                                                    public void actionPerformed(ActionEvent e){  
                                                                                                       Integer endMinute = (Integer) endMinBox.getSelectedItem();
                                                                                                       final JLabel endMinEntry = new JLabel(Integer.toString(endMinute));
-                                                                                                      endMinEntry.setBounds(100,275,70,20);
+                                                                                                      endMinEntry.setBounds(110,275,70,20);
                                                                                                       window.add(endMinEntry);
                                                                                                       window.remove(endMinBox);  
                                                                                                       submitMinButton.setVisible(false);
@@ -3340,7 +3341,7 @@ public class SystemInterface {
                                                                                                       Leave[] leaveType = {Leave.maternity, Leave.paternity, Leave.pto, Leave.sick_leave };
                                                                                                    
                                                                                                       JComboBox<Leave> leaveTypeBox = new JComboBox<>(leaveType);
-                                                                                                      leaveTypeBox.setBounds(100,300, 100,20); 
+                                                                                                      leaveTypeBox.setBounds(110,300, 90,20); 
                                                                                                       leaveTypeBox.setVisible(true);
                                                                                                       window.add(leaveTypeBox);
                                                                                                    
@@ -3353,7 +3354,7 @@ public class SystemInterface {
                                                                                                    
                                                                                                    
                                                                                                       JButton leaveTypeButton=new JButton("Submit Request");  
-                                                                                                      leaveTypeButton.setBounds(200,300,150,30);  
+                                                                                                      leaveTypeButton.setBounds(210,300,150,30);  
                                                                                                       leaveTypeButton.addActionListener(
                                                                                                          new ActionListener(){  
                                                                                                             public void actionPerformed(ActionEvent e){  
@@ -3478,6 +3479,25 @@ public class SystemInterface {
       window.repaint();   
    }
 
+   public static void employeeCurrentRequests(JFrame window, JTextField tf)
+   {
+      window.getContentPane().removeAll();
+      window.repaint();
+      
+      JButton backButton=new JButton("Back");  
+      backButton.setBounds(280,1,80,30);  
+      backButton.addActionListener(
+         new ActionListener(){  
+            public void actionPerformed(ActionEvent e){  
+               employeeMenu(window, tf);         
+            }  
+         }
+         ); 
+      window.add(backButton);
+      window.repaint();
+   }
+
+
    public static void managerMenu(JFrame window, JTextField tf)
    {
       window.getContentPane().removeAll();
@@ -3579,7 +3599,7 @@ public class SystemInterface {
       hireEmployeeForm.addActionListener(
          new ActionListener(){  
             public void actionPerformed(ActionEvent e){  
-               tf.setText("Hired");
+               hireEmployee(window, tf);
             }  
          }
          ); 
@@ -3622,6 +3642,42 @@ public class SystemInterface {
          
       window.repaint();   
    }
-        
+     
+   public static void hireEmployee(JFrame window, JTextField tf)
+   {
+   window.getContentPane().removeAll();
+      window.repaint();
+     
+      JButton backButton=new JButton("Back");  
+      backButton.setBounds(280,1,80,30);  
+      backButton.addActionListener(
+         new ActionListener(){  
+            public void actionPerformed(ActionEvent e){  
+               hrMenu(window, tf);         
+            }  
+         }
+         ); 
+      window.add(backButton);
+
+         final JLabel usernameLabel = new JLabel("Username:");
+      usernameLabel.setBounds(20,50,70,20);
+      window.add(usernameLabel);
+   
+      final JTextField usernameBox=new JTextField();  
+      usernameBox.setBounds(110,50, 150,20); 
+      window.add(usernameBox);
+      
+      final JLabel passwordLabel = new JLabel("Password:");
+      passwordLabel.setBounds(20,100,70,20);
+      window.add(passwordLabel);
+   
+      
+      final JTextField passwordBox=new JTextField();  
+      passwordBox.setBounds(110,100, 150,20); 
+      window.add(passwordBox);
+
+     
+     window.repaint();   
+   }   
 }
 
