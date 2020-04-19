@@ -9,8 +9,6 @@ public class RequestDatabaseController {
    
    public RequestDatabaseController() {
       rd = new RequestDatabase();
-      ptoc = new PTOController();
-      c = new Company();
    }
 
    public void addRequest(Request newRequest) {
