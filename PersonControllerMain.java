@@ -10,15 +10,16 @@ public class PersonControllerMain
       
       int[] b = {0};
       int[] d = {5,6};
+      String password = "password";
       
       int c = 0;
-      erc.pc.hireEmployee(Title.full_time, Gender.male, "Coulson", 0, b);
-      erc.pc.hireEmployee(Title.full_time, Gender.male, "may", 1, b);
-      erc.pc.hireEmployee(Title.full_time, Gender.female, "fitz", 2, b);
-      erc.pc.hireEmployee(Title.full_time, Gender.male, "simmons", 2, b);
-      erc.pc.hireEmployee(Title.full_time, Gender.male, "intern 1", 4, b);
-      erc.pc.hireEmployee(Title.full_time, Gender.female, "intern 2", 4, b);
-      erc.pc.hireEmployee(Title.part_time, Gender.female, "Skye", 2, d); 
+      erc.pc.hireEmployee(Title.full_time, Gender.male, "Coulson", 0, b, password);
+      erc.pc.hireEmployee(Title.full_time, Gender.male, "may", 1, b, password);
+      erc.pc.hireEmployee(Title.full_time, Gender.female, "fitz", 2, b, password);
+      erc.pc.hireEmployee(Title.full_time, Gender.male, "simmons", 2, b, password);
+      erc.pc.hireEmployee(Title.full_time, Gender.male, "intern 1", 4, b, password);
+      erc.pc.hireEmployee(Title.full_time, Gender.female, "intern 2", 4, b, password);
+      erc.pc.hireEmployee(Title.part_time, Gender.female, "Skye", 2, d, password); 
    
      erc.makeRequest(1,1,2020, 7, 2,1,2020,17, Leave.pto, 3, 2  );
     
