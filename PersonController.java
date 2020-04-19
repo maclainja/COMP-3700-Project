@@ -24,8 +24,13 @@ public class PersonController{
       return employeeIndex.get(ID).getGender();
    }
 
+public String getPassword(int ID)
+   {
+      return employeeIndex.get(ID).getPassword();
+   }
 
-   public void hireEmployee(Title newTitle, Gender fm, String newName, int newSupervisorID, int[] newSuperviseeIDs)
+
+   public void hireEmployee(Title newTitle, Gender fm, String newName, int newSupervisorID, int[] newSuperviseeIDs, String newPassword)
    {
    
       int ptoID = newID;
@@ -42,7 +47,7 @@ public class PersonController{
       }
       
       Person newSupervisor = employeeIndex.get(newSupervisorID);
-      Person newEmployee = new Person( newName, ptoID, newTitle,  fm,  newSupervisor,  newSupervisees);
+      Person newEmployee = new Person( newName, ptoID, newTitle,  fm,  newSupervisor,  newSupervisees, newPassword);
    
    
       Person[] supervisees = newEmployee.getSupervisees();
