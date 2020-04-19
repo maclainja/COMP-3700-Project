@@ -2,8 +2,8 @@ import java.awt.event.*;
 import javax.swing.*;    
 public class SystemInterface { 
 
-   int employeeID =33;
-   int supervisorID =44; 
+   static int employeeID =33;
+   static int supervisorID =44; 
 
 
    public static void main(String[] args) {
@@ -16,8 +16,8 @@ public class SystemInterface {
       final JTextField tf=new JTextField();  
       tf.setBounds(50,50, 150,20); 
       window.add(tf);
-      logInScreen(window);
-      //makeRequestForm( window,  tf);
+      //logInScreen(window);
+      makeRequestForm( window,  tf);
    }
   
    public static void logInScreen(JFrame window)
@@ -54,6 +54,8 @@ public class SystemInterface {
             
                if(username.equals("Michael") && password.equals("password"))
                {
+                  //employeeID = ;
+                  //supervisorID =;
                   final JTextField tf=new JTextField();  
                   tf.setBounds(50,50, 150,20); 
                   window.add(tf);
@@ -217,7 +219,7 @@ public class SystemInterface {
       Integer[] dayLongDate = new Integer[] {1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31};
       Integer[] hourTime = new Integer[] {8,9,10,11,12,13,14,15,16,17};
       Integer[] minuteTime= new Integer[]{ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25,26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59};
-      Integer[] yearDate = new Integer[] {2020,2021};
+      Integer[] yearDate = new Integer[] {2020};
       
       
             
@@ -235,33 +237,7 @@ public class SystemInterface {
    
       
       
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-           
-    
-      
+               
       final JLabel startYearLabel = new JLabel("Start Year:");
       startYearLabel.setBounds(20,50,70,20);
      
@@ -336,411 +312,744 @@ public class SystemInterface {
                                     window.add(startDayEntry);
                                     window.remove(startDayBox);  
                                     submitDayButton.setVisible(false);
-                                 //submitYearButton.setVisible(true);
-                                 //endYearBox.setVisible(true);
-                                 //endYearLabel.setVisible(true);
-                                    //window.repaint();  
+                                 
+                                 
+                                    JComboBox<Integer>  startHourBox = new JComboBox<>(hourTime);
+                                    startHourBox.setBounds(100,125, 50,20); 
+                                    startHourBox.setVisible(true);
+                                    window.add(startHourBox);
+                                 
+                                    final JLabel startHourLabel = new JLabel("Start Hour:");
+                                    startHourLabel.setBounds(20,125,70,20);
+                                    startHourLabel.setVisible(true);
+                                    window.add(startHourLabel);
                                  
                                  
                                  
                                  
-                                 //BREAKPOINT start time
-                                 
-                                 
-                                    final JLabel endYearLabel = new JLabel("End Year:");
-                                    endYearLabel.setBounds(20,125,70,20);
-                                    //endYearLabel.setVisible(false);
-                                    window.add(endYearLabel);
-                                 
-                                    JComboBox<Integer> endYearBox= new JComboBox<>(yearDate);  
-                                    endYearBox.setBounds(100,125, 80,20);
-                                    //endYearBox.setVisible(false);
-                                 
-                                    window.add(endYearBox);
-                                    JButton submitEYearButton=new JButton("Submit Year");  
-                                    submitEYearButton.setBounds(200,125,150,30);  
-                                    submitEYearButton.addActionListener(
+                                    JButton submitHourButton=new JButton("Submit Hour:");  
+                                    submitHourButton.setBounds(200,125,150,30);  
+                                    submitHourButton.addActionListener(
                                        new ActionListener(){  
                                           public void actionPerformed(ActionEvent e){  
-                                             Integer endYear = (Integer) endYearBox.getSelectedItem();
+                                             Integer startHour = (Integer) startHourBox.getSelectedItem();
+                                             final JLabel startHourEntry = new JLabel(Integer.toString(startHour));
+                                             startHourEntry.setBounds(100,125,70,20);
+                                             window.add(startHourEntry);
+                                             window.remove(startHourBox);  
+                                             submitHourButton.setVisible(false);
+                                                                                
+                                                                                
+                                             JComboBox<Integer>  startMinBox = new JComboBox<>(minuteTime);
+                                             startMinBox.setBounds(100,150, 50,20); 
+                                             startMinBox.setVisible(true);
+                                             window.add(startMinBox);
+                                          
+                                             final JLabel startMinuteLabel = new JLabel("Start Minute:");
+                                             startMinuteLabel.setBounds(20,150,70,20);
+                                             startMinuteLabel.setVisible(true);
+                                             window.add(startMinuteLabel);
                                           
                                           
-                                             final JLabel endYearEntry = new JLabel(Integer.toString(endYear));
-                                             endYearEntry.setBounds(100,125,80,20);
-                                             window.add(endYearEntry);
-                                             window.remove(endYearBox);  
-                                             submitEYearButton.setVisible(false);
-                                             //submitEMonthButton.setVisible(true);
-                                             //endMonthBox.setVisible(true);
-                                             //endMonthLabel.setVisible(true);
-                                            
                                           
                                           
-                                             final JLabel endMonthLabel = new JLabel("End Month:");
-                                             endMonthLabel.setBounds(20,150,70,20);
-                                             endMonthLabel.setVisible(true);
-                                             window.add(endMonthLabel);
-                                          
-                                             JComboBox<Integer> endMonthBox= new JComboBox<>(monthDate);  
-                                             endMonthBox.setBounds(100,150, 50,20); 
-                                             endMonthBox.setVisible(true);
-                                             window.add(endMonthBox);
-                                          
-                                             JButton submitEMonthButton=new JButton("Submit Month");  
-                                             submitEMonthButton.setBounds(200,150,150,30);  
-                                             submitEMonthButton.addActionListener(
+                                             JButton submitMinButton=new JButton("Submit Minute:");  
+                                             submitMinButton.setBounds(200,150,150,30);  
+                                             submitMinButton.addActionListener(
                                                 new ActionListener(){  
                                                    public void actionPerformed(ActionEvent e){  
-                                                      Integer endMonth = (Integer) endMonthBox.getSelectedItem();
+                                                      Integer startMinute = (Integer) startMinBox.getSelectedItem();
+                                                      final JLabel startMinEntry = new JLabel(Integer.toString(startMinute));
+                                                      startMinEntry.setBounds(100,150,70,20);
+                                                      window.add(startMinEntry);
+                                                      window.remove(startMinBox);  
+                                                      submitMinButton.setVisible(false);
                                                    
-                                                      final JLabel endMonthEntry = new JLabel(Integer.toString(endMonth));
-                                                      endMonthEntry.setBounds(100,150,70,20);
-                                                      window.add(endMonthEntry);
-                                                      window.remove(endMonthBox);  
-                                                      submitEMonthButton.setVisible(false);
                                                    
-                                                      if (endMonth == 1 ||endMonth == 3 ||endMonth == 5 ||endMonth == 7 ||endMonth == 8 ||endMonth == 10 ||endMonth == 12 )
-                                                      {
-                                                         JComboBox<Integer> endDayBox = new JComboBox<>(dayLongDate);  
-                                                         endDayBox.setBounds(100,175, 50,20); 
-                                                         endDayBox.setVisible(true);
-                                                         window.add(endDayBox);
-                                                      
-                                                         final JLabel endDayLabel = new JLabel("End Day:");
-                                                         endDayLabel.setBounds(20,175,70,20);
-                                                         endDayLabel.setVisible(true);
-                                                         window.add(endDayLabel);
-                                                      
-                                                      
-                                                      
-                                                      
-                                                         JButton submitEDayButton=new JButton("Submit Day");  
-                                                         submitEDayButton.setBounds(200,175,150,30);  
-                                                         submitEDayButton.addActionListener(
-                                                            new ActionListener(){  
-                                                               public void actionPerformed(ActionEvent e){  
-                                                                  Integer endDay = (Integer) endDayBox.getSelectedItem();
-                                                                  final JLabel endDayEntry = new JLabel(Integer.toString(endDay));
-                                                                  endDayEntry.setBounds(100,175,70,20);
-                                                                  window.add(endDayEntry);
-                                                                  window.remove(endDayBox);  
-                                                                  submitEDayButton.setVisible(false);
-                                                               //submitEYearButton.setVisible(true);
-                                                               //startEYearBox.setVisible(true);
-                                                               //startEYearLabel.setVisible(true);
-                                                                  window.repaint();  
-                                                               
-                                                               
-                                                               
-                                                                  Leave[] leaveType = {Leave.maternity, Leave.paternity, Leave.pto, Leave.sick_leave, Leave.emergency};
-                                                               
-                                                                  JComboBox<Leave> leaveTypeBox = new JComboBox<>(leaveType);
-                                                                  leaveTypeBox.setBounds(100,200, 100,20); 
-                                                                  leaveTypeBox.setVisible(true);
-                                                                  window.add(leaveTypeBox);
-                                                               
-                                                                  final JLabel leaveTypeLabel = new JLabel("Leave Type:");
-                                                                  leaveTypeLabel.setBounds(20,200,70,20);
-                                                                  leaveTypeLabel.setVisible(true);
-                                                                  window.add(leaveTypeLabel);
-                                                               
-                                                               
-                                                               
-                                                               
-                                                                  JButton leaveTypeButton=new JButton("Submit Request");  
-                                                                  leaveTypeButton.setBounds(200,200,150,30);  
-                                                                  leaveTypeButton.addActionListener(
-                                                                     new ActionListener(){  
-                                                                        public void actionPerformed(ActionEvent e){  
-                                                                           Leave leaveTypeEntry =  (Leave) leaveTypeBox.getSelectedItem();
-                                                                           window.add(endDayEntry);
-                                                                            
-                                                                           leaveTypeButton.setVisible(true);
-                                                                           window.repaint();  
-                                                                        }  
-                                                                     }
-                                                                     ); 
-                                                                  window.add(leaveTypeButton);
-                                                               
-                                                               
-                                                               
-                                                               
-                                                               
-                                                               }  
-                                                            }
-                                                            ); 
-                                                         window.add(submitEDayButton);
-                                                         submitEDayButton.setVisible(false);
-                                                      
-                                                      
-                                                      
-                                                         submitEDayButton.setVisible(true);
-                                                      
-                                                      
-                                                         endDayBox.setVisible(true);
-                                                         window.repaint();  
-                                                      
-                                                      
-                                                      
-                                                      
-                                                      
-                                                      }
-                                                      else if (endMonth == 4 ||endMonth == 6 ||endMonth == 9 ||endMonth == 11)
-                                                      {
-                                                         JComboBox<Integer> endDayBox = new JComboBox<>(dayShortDate);
-                                                         endDayBox.setBounds(100,175, 50,20); 
-                                                         endDayBox.setVisible(true);
-                                                         window.add(endDayBox);
-                                                      
-                                                         final JLabel endDayLabel = new JLabel("End Day:");
-                                                         endDayLabel.setBounds(20,175,70,20);
-                                                         endDayLabel.setVisible(true);
-                                                         window.add(endDayLabel);
-                                                      
-                                                      
-                                                      
-                                                      
-                                                         JButton submitEDayButton=new JButton("Submit Day");  
-                                                         submitEDayButton.setBounds(200,175,150,30);  
-                                                         submitEDayButton.addActionListener(
-                                                            new ActionListener(){  
-                                                               public void actionPerformed(ActionEvent e){  
-                                                                  Integer endDay = (Integer) endDayBox.getSelectedItem();
-                                                                  final JLabel endDayEntry = new JLabel(Integer.toString(endDay));
-                                                                  endDayEntry.setBounds(100,175,70,20);
-                                                                  window.add(endDayEntry);
-                                                                  window.remove(endDayBox);  
-                                                                  submitEDayButton.setVisible(false);
-                                                               //submitEYearButton.setVisible(true);
-                                                               //startEYearBox.setVisible(true);
-                                                               //startEYearLabel.setVisible(true);
-                                                                  window.repaint();  
-                                                               
-                                                               
-                                                               
-                                                                  Leave[] leaveType = {Leave.maternity, Leave.paternity, Leave.pto, Leave.sick_leave, Leave.emergency};
-                                                               
-                                                                  JComboBox<Leave> leaveTypeBox = new JComboBox<>(leaveType);
-                                                                  leaveTypeBox.setBounds(100,200, 100,20); 
-                                                                  leaveTypeBox.setVisible(true);
-                                                                  window.add(leaveTypeBox);
-                                                               
-                                                                  final JLabel leaveTypeLabel = new JLabel("Leave Type:");
-                                                                  leaveTypeLabel.setBounds(20,200,70,20);
-                                                                  leaveTypeLabel.setVisible(true);
-                                                                  window.add(leaveTypeLabel);
-                                                               
-                                                               
-                                                               
-                                                               
-                                                                  JButton leaveTypeButton=new JButton("Submit Request");  
-                                                                  leaveTypeButton.setBounds(200,200,150,30);  
-                                                                  leaveTypeButton.addActionListener(
-                                                                     new ActionListener(){  
-                                                                        public void actionPerformed(ActionEvent e){  
-                                                                           Leave leaveTypeEntry =  (Leave) leaveTypeBox.getSelectedItem();
-                                                                           window.add(endDayEntry);
-                                                                            
-                                                                           leaveTypeButton.setVisible(true);
-                                                                           window.repaint();  
-                                                                        }  
-                                                                     }
-                                                                     ); 
-                                                                  window.add(leaveTypeButton);
-                                                               
-                                                               
-                                                               
-                                                               
-                                                               
-                                                               }  
-                                                            }
-                                                            ); 
-                                                         window.add(submitEDayButton);
-                                                         submitEDayButton.setVisible(false);
-                                                      
-                                                      
-                                                      
-                                                         submitEDayButton.setVisible(true);
-                                                      
-                                                      
-                                                         endDayBox.setVisible(true);
-                                                         window.repaint();  
-                                                      
-                                                      
-                                                      }
-                                                      else if (endMonth == 2 && endYear == 2020)
-                                                      {
-                                                         JComboBox<Integer> endDayBox = new JComboBox<>(dayLeapDate);
-                                                         endDayBox.setBounds(100,175, 50,20); 
-                                                         endDayBox.setVisible(true);
-                                                         window.add(endDayBox);
-                                                      
-                                                         final JLabel endDayLabel = new JLabel("End Day:");
-                                                         endDayLabel.setBounds(20,175,70,20);
-                                                         endDayLabel.setVisible(true);
-                                                         window.add(endDayLabel);
-                                                      
-                                                      
-                                                      
-                                                      
-                                                         JButton submitEDayButton=new JButton("Submit Day");  
-                                                         submitEDayButton.setBounds(200,175,150,30);  
-                                                         submitEDayButton.addActionListener(
-                                                            new ActionListener(){  
-                                                               public void actionPerformed(ActionEvent e){  
-                                                                  Integer endDay = (Integer) endDayBox.getSelectedItem();
-                                                                  final JLabel endDayEntry = new JLabel(Integer.toString(endDay));
-                                                                  endDayEntry.setBounds(100,175,70,20);
-                                                                  window.add(endDayEntry);
-                                                                  window.remove(endDayBox);  
-                                                                  submitEDayButton.setVisible(false);
-                                                                  window.repaint(); 
-                                                                  
-                                                                  Leave[] leaveType = {Leave.maternity, Leave.paternity, Leave.pto, Leave.sick_leave, Leave.emergency};
-                                                               
-                                                                  JComboBox<Leave> leaveTypeBox = new JComboBox<>(leaveType);
-                                                                  leaveTypeBox.setBounds(100,200, 100,20); 
-                                                                  leaveTypeBox.setVisible(true);
-                                                                  window.add(leaveTypeBox);
-                                                               
-                                                                  final JLabel leaveTypeLabel = new JLabel("Leave Type:");
-                                                                  leaveTypeLabel.setBounds(20,200,70,20);
-                                                                  leaveTypeLabel.setVisible(true);
-                                                                  window.add(leaveTypeLabel);
-                                                               
-                                                               
-                                                               
-                                                               
-                                                                  JButton leaveTypeButton=new JButton("Submit Request");  
-                                                                  leaveTypeButton.setBounds(200,200,150,30);  
-                                                                  leaveTypeButton.addActionListener(
-                                                                     new ActionListener(){  
-                                                                        public void actionPerformed(ActionEvent e){  
-                                                                           Leave leaveTypeEntry =  (Leave) leaveTypeBox.getSelectedItem();
-                                                                           window.add(endDayEntry);
-                                                                            
-                                                                           leaveTypeButton.setVisible(true);
-                                                                           window.repaint();  
-                                                                        }  
-                                                                     }
-                                                                     ); 
-                                                                  window.add(leaveTypeButton);
-                                                               
-                                                               
-                                                               
-                                                               }  
-                                                            }
-                                                            ); 
-                                                         window.add(submitEDayButton);
-                                                         submitEDayButton.setVisible(false);
-                                                      
-                                                      
-                                                      
-                                                         submitEDayButton.setVisible(true);
-                                                      
-                                                      
-                                                         endDayBox.setVisible(true);
-                                                         window.repaint();  
-                                                      
-                                                      }
-                                                      else 
-                                                      {
-                                                         JComboBox<Integer>  endDayBox = new JComboBox<>(dayFebDate);
-                                                         endDayBox.setBounds(100,175, 50,20); 
-                                                         endDayBox.setVisible(true);
-                                                         window.add(endDayBox);
-                                                      
-                                                         final JLabel endDayLabel = new JLabel("End Day:");
-                                                         endDayLabel.setBounds(20,175,70,20);
-                                                         endDayLabel.setVisible(true);
-                                                         window.add(endDayLabel);
-                                                      
-                                                      
-                                                      
-                                                      
-                                                         JButton submitEDayButton=new JButton("Submit Day");  
-                                                         submitEDayButton.setBounds(200,175,150,30);  
-                                                         submitEDayButton.addActionListener(
-                                                            new ActionListener(){  
-                                                               public void actionPerformed(ActionEvent e){  
-                                                                  Integer endDay = (Integer) endDayBox.getSelectedItem();
-                                                                  final JLabel endDayEntry = new JLabel(Integer.toString(endDay));
-                                                                  endDayEntry.setBounds(100,175,70,20);
-                                                                  window.add(endDayEntry);
-                                                                  window.remove(endDayBox);  
-                                                                  submitEDayButton.setVisible(false);
-                                                               //submitEYearButton.setVisible(true);
-                                                               //startEYearBox.setVisible(true);
-                                                               //startEYearLabel.setVisible(true);
-                                                                  window.repaint();  
-                                                               
-                                                               
-                                                                  Leave[] leaveType = {Leave.maternity, Leave.paternity, Leave.pto, Leave.sick_leave, Leave.emergency};
-                                                               
-                                                                  JComboBox<Leave> leaveTypeBox = new JComboBox<>(leaveType);
-                                                                  leaveTypeBox.setBounds(100,200, 100,20); 
-                                                                  leaveTypeBox.setVisible(true);
-                                                                  window.add(leaveTypeBox);
-                                                               
-                                                                  final JLabel leaveTypeLabel = new JLabel("Leave Type:");
-                                                                  leaveTypeLabel.setBounds(20,200,70,20);
-                                                                  leaveTypeLabel.setVisible(true);
-                                                                  window.add(leaveTypeLabel);
-                                                               
-                                                               
-                                                               
-                                                               
-                                                                  JButton leaveTypeButton=new JButton("Submit Request");  
-                                                                  leaveTypeButton.setBounds(200,200,150,30);  
-                                                                  leaveTypeButton.addActionListener(
-                                                                     new ActionListener(){  
-                                                                        public void actionPerformed(ActionEvent e){  
-                                                                           Leave leaveTypeEntry =  (Leave) leaveTypeBox.getSelectedItem();
-                                                                           window.add(endDayEntry);
-                                                                            
-                                                                           leaveTypeButton.setVisible(true);
-                                                                           window.repaint();  
-                                                                        }  
-                                                                     }
-                                                                     ); 
-                                                                  window.add(leaveTypeButton);
-                                                               
-                                                               
-                                                               
-                                                               }  
-                                                            }
-                                                            ); 
-                                                         window.add(submitEDayButton);
-                                                         submitEDayButton.setVisible(false);
-                                                      
-                                                      
-                                                      
-                                                         submitEDayButton.setVisible(true);
-                                                      
-                                                      
-                                                         endDayBox.setVisible(true);
-                                                         window.repaint();  
-                                                      
-                                                      
-                                                      
-                                                      }
                                                    
+                                                      final JLabel endYearLabel = new JLabel("End Year:");
+                                                      endYearLabel.setBounds(20,175,70,20);
+                                                   
+                                                   
+                                                      window.add(endYearLabel);
+                                                   
+                                                      JComboBox<Integer> endYearBox= new JComboBox<>(yearDate);  
+                                                      endYearBox.setBounds(100,175, 80,20);
+                                                   
+                                                   
+                                                   
+                                                      window.add(endYearBox);
+                                                      JButton submitEYearButton=new JButton("Submit Year");  
+                                                      submitEYearButton.setBounds(200,175,150,30);  
+                                                      submitEYearButton.addActionListener(
+                                                         new ActionListener(){  
+                                                            public void actionPerformed(ActionEvent e){  
+                                                               Integer endYear = (Integer) endYearBox.getSelectedItem();
+                                                            
+                                                            
+                                                               final JLabel endYearEntry = new JLabel(Integer.toString(endYear));
+                                                               endYearEntry.setBounds(100,175,80,20);
+                                                               window.add(endYearEntry);
+                                                               window.remove(endYearBox);  
+                                                               submitEYearButton.setVisible(false);
+                                                            
+                                                            
+                                                            
+                                                            
+                                                            
+                                                               final JLabel endMonthLabel = new JLabel("End Month:");
+                                                               endMonthLabel.setBounds(20,200,70,20);
+                                                               endMonthLabel.setVisible(true);
+                                                               window.add(endMonthLabel);
+                                                            
+                                                               JComboBox<Integer> endMonthBox= new JComboBox<>(monthDate);  
+                                                               endMonthBox.setBounds(100,200, 50,20); 
+                                                               endMonthBox.setVisible(true);
+                                                               window.add(endMonthBox);
+                                                            
+                                                               JButton submitEMonthButton=new JButton("Submit Month");  
+                                                               submitEMonthButton.setBounds(200,200,150,30);  
+                                                               submitEMonthButton.addActionListener(
+                                                                  new ActionListener(){  
+                                                                     public void actionPerformed(ActionEvent e){  
+                                                                        Integer endMonth = (Integer) endMonthBox.getSelectedItem();
+                                                                     
+                                                                        final JLabel endMonthEntry = new JLabel(Integer.toString(endMonth));
+                                                                        endMonthEntry.setBounds(100,200,70,20);
+                                                                        window.add(endMonthEntry);
+                                                                        window.remove(endMonthBox);  
+                                                                        submitEMonthButton.setVisible(false);
+                                                                     
+                                                                        if (endMonth == 1 ||endMonth == 3 ||endMonth == 5 ||endMonth == 7 ||endMonth == 8 ||endMonth == 10 ||endMonth == 12 )
+                                                                        {
+                                                                           JComboBox<Integer> endDayBox = new JComboBox<>(dayLongDate);  
+                                                                           endDayBox.setBounds(100,225, 50,20); 
+                                                                           endDayBox.setVisible(true);
+                                                                           window.add(endDayBox);
+                                                                        
+                                                                           final JLabel endDayLabel = new JLabel("End Day:");
+                                                                           endDayLabel.setBounds(20,225,70,20);
+                                                                           endDayLabel.setVisible(true);
+                                                                           window.add(endDayLabel);
+                                                                        
+                                                                        
+                                                                        
+                                                                        
+                                                                           JButton submitEDayButton=new JButton("Submit Day");  
+                                                                           submitEDayButton.setBounds(200,225,150,30);  
+                                                                           submitEDayButton.addActionListener(
+                                                                              new ActionListener(){  
+                                                                                 public void actionPerformed(ActionEvent e){  
+                                                                                    Integer endDay = (Integer) endDayBox.getSelectedItem();
+                                                                                    final JLabel endDayEntry = new JLabel(Integer.toString(endDay));
+                                                                                    endDayEntry.setBounds(100,225,70,20);
+                                                                                    window.add(endDayEntry);
+                                                                                    window.remove(endDayBox);  
+                                                                                    submitEDayButton.setVisible(false);
+                                                                                    window.repaint();  
+                                                                                 
+                                                                                 
+                                                                                    JComboBox<Integer>  endHourBox = new JComboBox<>(hourTime);
+                                                                                    endHourBox.setBounds(100,250, 50,20); 
+                                                                                    endHourBox.setVisible(true);
+                                                                                    window.add(endHourBox);
+                                                                                 
+                                                                                    final JLabel endHourLabel = new JLabel("End Hour:");
+                                                                                    endHourLabel.setBounds(20,250,70,20);
+                                                                                    endHourLabel.setVisible(true);
+                                                                                    window.add(endHourLabel);
+                                                                                 
+                                                                                 
+                                                                                 
+                                                                                 
+                                                                                    JButton submitHourButton=new JButton("Submit Hour:");  
+                                                                                    submitHourButton.setBounds(200,250,150,30);  
+                                                                                    submitHourButton.addActionListener(
+                                                                                       new ActionListener(){  
+                                                                                          public void actionPerformed(ActionEvent e){  
+                                                                                             Integer endHour = (Integer) endHourBox.getSelectedItem();
+                                                                                             final JLabel endHourEntry = new JLabel(Integer.toString(endHour));
+                                                                                             endHourEntry.setBounds(100,250,70,20);
+                                                                                             window.add(endHourEntry);
+                                                                                             window.remove(endHourBox);  
+                                                                                             submitHourButton.setVisible(false);
+                                                                                          
+                                                                                          
+                                                                                             JComboBox<Integer>  endMinBox = new JComboBox<>(minuteTime);
+                                                                                             endMinBox.setBounds(100,275, 50,20); 
+                                                                                             endMinBox.setVisible(true);
+                                                                                             window.add(endMinBox);
+                                                                                          
+                                                                                             final JLabel endMinuteLabel = new JLabel("End Minute:");
+                                                                                             endMinuteLabel.setBounds(20,275,70,20);
+                                                                                             endMinuteLabel.setVisible(true);
+                                                                                             window.add(endMinuteLabel);
+                                                                                          
+                                                                                          
+                                                                                          
+                                                                                          
+                                                                                             JButton submitMinButton=new JButton("Submit Minute:");  
+                                                                                             submitMinButton.setBounds(200,275,150,30);  
+                                                                                             submitMinButton.addActionListener(
+                                                                                                new ActionListener(){  
+                                                                                                   public void actionPerformed(ActionEvent e){  
+                                                                                                      Integer endMinute = (Integer) endMinBox.getSelectedItem();
+                                                                                                      final JLabel endMinEntry = new JLabel(Integer.toString(endMinute));
+                                                                                                      endMinEntry.setBounds(100,275,70,20);
+                                                                                                      window.add(endMinEntry);
+                                                                                                      window.remove(endMinBox);  
+                                                                                                      submitMinButton.setVisible(false);
+                                                                                                   
+                                                                                                   
+                                                                                                      Leave[] leaveType = {Leave.maternity, Leave.paternity, Leave.pto, Leave.sick_leave };
+                                                                                                   
+                                                                                                      JComboBox<Leave> leaveTypeBox = new JComboBox<>(leaveType);
+                                                                                                      leaveTypeBox.setBounds(100,300, 100,20); 
+                                                                                                      leaveTypeBox.setVisible(true);
+                                                                                                      window.add(leaveTypeBox);
+                                                                                                   
+                                                                                                      final JLabel leaveTypeLabel = new JLabel("Leave Type:");
+                                                                                                      leaveTypeLabel.setBounds(20,300,70,20);
+                                                                                                      leaveTypeLabel.setVisible(true);
+                                                                                                      window.add(leaveTypeLabel);
+                                                                                                   
+                                                                                                   
+                                                                                                   
+                                                                                                   
+                                                                                                      JButton leaveTypeButton=new JButton("Submit Request");  
+                                                                                                      leaveTypeButton.setBounds(200,300,150,30);  
+                                                                                                      leaveTypeButton.addActionListener(
+                                                                                                         new ActionListener(){  
+                                                                                                            public void actionPerformed(ActionEvent e){  
+                                                                                                               Leave leaveTypeEntry =  (Leave) leaveTypeBox.getSelectedItem();
+                                                                                                               window.add(endDayEntry);
+                                                                                                            
+                                                                                                               leaveTypeButton.setVisible(true);
+                                                                                                               window.repaint(); 
+                                                                                                               
+                                                                                                            }  
+                                                                                                         }
+                                                                                                         ); 
+                                                                                                      window.add(leaveTypeButton);
+                                                                                                      window.repaint(); 
+                                                                                                   
+                                                                                                   }  
+                                                                                                }
+                                                                                                ); 
+                                                                                             window.add(submitMinButton);
+                                                                                             submitMinButton.setVisible(true);
+                                                                                             endMinBox.setVisible(true);
+                                                                                             window.repaint();  
+                                                                                          
+                                                                                          }  
+                                                                                       }
+                                                                                       ); 
+                                                                                    window.add(submitHourButton);
+                                                                                    submitHourButton.setVisible(true);
+                                                                                    endHourBox.setVisible(true);
+                                                                                    window.repaint();   
+                                                                                 
+                                                                                 
+                                                                                 }  
+                                                                              }
+                                                                              ); 
+                                                                           window.add(submitEDayButton);
+                                                                           submitEDayButton.setVisible(false);
+                                                                        
+                                                                        
+                                                                        
+                                                                           submitEDayButton.setVisible(true);
+                                                                        
+                                                                        
+                                                                           endDayBox.setVisible(true);
+                                                                           window.repaint();  
+                                                                        
+                                                                        
+                                                                        
+                                                                        
+                                                                        
+                                                                        }
+                                                                        else if (endMonth == 4 ||endMonth == 6 ||endMonth == 9 ||endMonth == 11)
+                                                                        {
+                                                                           JComboBox<Integer> endDayBox = new JComboBox<>(dayShortDate);
+                                                                           endDayBox.setBounds(100,225, 50,20); 
+                                                                           endDayBox.setVisible(true);
+                                                                           window.add(endDayBox);
+                                                                        
+                                                                           final JLabel endDayLabel = new JLabel("End Day:");
+                                                                           endDayLabel.setBounds(20,225,70,20);
+                                                                           endDayLabel.setVisible(true);
+                                                                           window.add(endDayLabel);
+                                                                        
+                                                                        
+                                                                        
+                                                                        
+                                                                           JButton submitEDayButton=new JButton("Submit Day");  
+                                                                           submitEDayButton.setBounds(200,225,150,30);  
+                                                                           submitEDayButton.addActionListener(
+                                                                              new ActionListener(){  
+                                                                                 public void actionPerformed(ActionEvent e){  
+                                                                                    Integer endDay = (Integer) endDayBox.getSelectedItem();
+                                                                                    final JLabel endDayEntry = new JLabel(Integer.toString(endDay));
+                                                                                    endDayEntry.setBounds(100,225,70,20);
+                                                                                    window.add(endDayEntry);
+                                                                                    window.remove(endDayBox);  
+                                                                                    submitEDayButton.setVisible(false);
+                                                                                 
+                                                                                    window.repaint();  
+                                                                                 
+                                                                                 
+                                                                                    JComboBox<Integer>  endHourBox = new JComboBox<>(hourTime);
+                                                                                    endHourBox.setBounds(100,250, 50,20); 
+                                                                                    endHourBox.setVisible(true);
+                                                                                    window.add(endHourBox);
+                                                                                 
+                                                                                    final JLabel endHourLabel = new JLabel("End Hour:");
+                                                                                    endHourLabel.setBounds(20,250,70,20);
+                                                                                    endHourLabel.setVisible(true);
+                                                                                    window.add(endHourLabel);
+                                                                                 
+                                                                                 
+                                                                                 
+                                                                                 
+                                                                                    JButton submitHourButton=new JButton("Submit Hour:");  
+                                                                                    submitHourButton.setBounds(200,250,150,30);  
+                                                                                    submitHourButton.addActionListener(
+                                                                                       new ActionListener(){  
+                                                                                          public void actionPerformed(ActionEvent e){  
+                                                                                             Integer endHour = (Integer) endHourBox.getSelectedItem();
+                                                                                             final JLabel endHourEntry = new JLabel(Integer.toString(endHour));
+                                                                                             endHourEntry.setBounds(100,250,70,20);
+                                                                                             window.add(endHourEntry);
+                                                                                             window.remove(endHourBox);  
+                                                                                             submitHourButton.setVisible(false);
+                                                                                          
+                                                                                          
+                                                                                             JComboBox<Integer>  endMinBox = new JComboBox<>(minuteTime);
+                                                                                             endMinBox.setBounds(100,275, 50,20); 
+                                                                                             endMinBox.setVisible(true);
+                                                                                             window.add(endMinBox);
+                                                                                          
+                                                                                             final JLabel endMinuteLabel = new JLabel("End Minute:");
+                                                                                             endMinuteLabel.setBounds(20,275,70,20);
+                                                                                             endMinuteLabel.setVisible(true);
+                                                                                             window.add(endMinuteLabel);
+                                                                                          
+                                                                                          
+                                                                                          
+                                                                                          
+                                                                                             JButton submitMinButton=new JButton("Submit Minute:");  
+                                                                                             submitMinButton.setBounds(200,275,150,30);  
+                                                                                             submitMinButton.addActionListener(
+                                                                                                new ActionListener(){  
+                                                                                                   public void actionPerformed(ActionEvent e){  
+                                                                                                      Integer endMinute = (Integer) endMinBox.getSelectedItem();
+                                                                                                      final JLabel endMinEntry = new JLabel(Integer.toString(endMinute));
+                                                                                                      endMinEntry.setBounds(100,275,70,20);
+                                                                                                      window.add(endMinEntry);
+                                                                                                      window.remove(endMinBox);  
+                                                                                                      submitMinButton.setVisible(false);
+                                                                                                   
+                                                                                                   
+                                                                                                      Leave[] leaveType = {Leave.maternity, Leave.paternity, Leave.pto, Leave.sick_leave };
+                                                                                                   
+                                                                                                      JComboBox<Leave> leaveTypeBox = new JComboBox<>(leaveType);
+                                                                                                      leaveTypeBox.setBounds(100,300, 100,20); 
+                                                                                                      leaveTypeBox.setVisible(true);
+                                                                                                      window.add(leaveTypeBox);
+                                                                                                   
+                                                                                                      final JLabel leaveTypeLabel = new JLabel("Leave Type:");
+                                                                                                      leaveTypeLabel.setBounds(20,300,70,20);
+                                                                                                      leaveTypeLabel.setVisible(true);
+                                                                                                      window.add(leaveTypeLabel);
+                                                                                                   
+                                                                                                   
+                                                                                                   
+                                                                                                   
+                                                                                                      JButton leaveTypeButton=new JButton("Submit Request");  
+                                                                                                      leaveTypeButton.setBounds(200,300,150,30);  
+                                                                                                      leaveTypeButton.addActionListener(
+                                                                                                         new ActionListener(){  
+                                                                                                            public void actionPerformed(ActionEvent e){  
+                                                                                                               Leave leaveTypeEntry =  (Leave) leaveTypeBox.getSelectedItem();
+                                                                                                               window.add(endDayEntry);
+                                                                                                            
+                                                                                                               leaveTypeButton.setVisible(true);
+                                                                                                               window.repaint();  
+                                                                                                            }  
+                                                                                                         }
+                                                                                                         ); 
+                                                                                                      window.add(leaveTypeButton);
+                                                                                                      window.repaint(); 
+                                                                                                   
+                                                                                                   }  
+                                                                                                }
+                                                                                                ); 
+                                                                                             window.add(submitMinButton);
+                                                                                             submitMinButton.setVisible(true);
+                                                                                             endMinBox.setVisible(true);
+                                                                                             window.repaint();  
+                                                                                          
+                                                                                          }  
+                                                                                       }
+                                                                                       ); 
+                                                                                    window.add(submitHourButton);
+                                                                                    submitHourButton.setVisible(true);
+                                                                                    endHourBox.setVisible(true);
+                                                                                    window.repaint();   
+                                                                                 
+                                                                                 
+                                                                                 }  
+                                                                              }
+                                                                              ); 
+                                                                           window.add(submitEDayButton);
+                                                                           submitEDayButton.setVisible(false);
+                                                                        
+                                                                        
+                                                                        
+                                                                           submitEDayButton.setVisible(true);
+                                                                        
+                                                                        
+                                                                           endDayBox.setVisible(true);
+                                                                           window.repaint();  
+                                                                        
+                                                                        
+                                                                        }
+                                                                        else if (endMonth == 2 && endYear == 2020)
+                                                                        {
+                                                                           JComboBox<Integer> endDayBox = new JComboBox<>(dayLeapDate);
+                                                                           endDayBox.setBounds(100,225, 50,20); 
+                                                                           endDayBox.setVisible(true);
+                                                                           window.add(endDayBox);
+                                                                        
+                                                                           final JLabel endDayLabel = new JLabel("End Day:");
+                                                                           endDayLabel.setBounds(20,225,70,20);
+                                                                           endDayLabel.setVisible(true);
+                                                                           window.add(endDayLabel);
+                                                                        
+                                                                        
+                                                                        
+                                                                        
+                                                                           JButton submitEDayButton=new JButton("Submit Day");  
+                                                                           submitEDayButton.setBounds(200,225,150,30);  
+                                                                           submitEDayButton.addActionListener(
+                                                                              new ActionListener(){  
+                                                                                 public void actionPerformed(ActionEvent e){  
+                                                                                    Integer endDay = (Integer) endDayBox.getSelectedItem();
+                                                                                    final JLabel endDayEntry = new JLabel(Integer.toString(endDay));
+                                                                                    endDayEntry.setBounds(100,225,70,20);
+                                                                                    window.add(endDayEntry);
+                                                                                    window.remove(endDayBox);  
+                                                                                    submitEDayButton.setVisible(false);
+                                                                                 
+                                                                                 
+                                                                                    window.repaint();  
+                                                                                 
+                                                                                 
+                                                                                    JComboBox<Integer>  endHourBox = new JComboBox<>(hourTime);
+                                                                                    endHourBox.setBounds(100,250, 50,20); 
+                                                                                    endHourBox.setVisible(true);
+                                                                                    window.add(endHourBox);
+                                                                                 
+                                                                                    final JLabel endHourLabel = new JLabel("End Hour:");
+                                                                                    endHourLabel.setBounds(20,250,70,20);
+                                                                                    endHourLabel.setVisible(true);
+                                                                                    window.add(endHourLabel);
+                                                                                 
+                                                                                 
+                                                                                 
+                                                                                 
+                                                                                    JButton submitHourButton=new JButton("Submit Hour:");  
+                                                                                    submitHourButton.setBounds(200,250,150,30);  
+                                                                                    submitHourButton.addActionListener(
+                                                                                       new ActionListener(){  
+                                                                                          public void actionPerformed(ActionEvent e){  
+                                                                                             Integer endHour = (Integer) endHourBox.getSelectedItem();
+                                                                                             final JLabel endHourEntry = new JLabel(Integer.toString(endHour));
+                                                                                             endHourEntry.setBounds(100,250,70,20);
+                                                                                             window.add(endHourEntry);
+                                                                                             window.remove(endHourBox);  
+                                                                                             submitHourButton.setVisible(false);
+                                                                                          
+                                                                                          
+                                                                                             JComboBox<Integer>  endMinBox = new JComboBox<>(minuteTime);
+                                                                                             endMinBox.setBounds(100,275, 50,20); 
+                                                                                             endMinBox.setVisible(true);
+                                                                                             window.add(endMinBox);
+                                                                                          
+                                                                                             final JLabel endMinuteLabel = new JLabel("End Minute:");
+                                                                                             endMinuteLabel.setBounds(20,275,70,20);
+                                                                                             endMinuteLabel.setVisible(true);
+                                                                                             window.add(endMinuteLabel);
+                                                                                          
+                                                                                          
+                                                                                          
+                                                                                          
+                                                                                             JButton submitMinButton=new JButton("Submit Minute:");  
+                                                                                             submitMinButton.setBounds(200,275,150,30);  
+                                                                                             submitMinButton.addActionListener(
+                                                                                                new ActionListener(){  
+                                                                                                   public void actionPerformed(ActionEvent e){  
+                                                                                                      Integer endMinute = (Integer) endMinBox.getSelectedItem();
+                                                                                                      final JLabel endMinEntry = new JLabel(Integer.toString(endMinute));
+                                                                                                      endMinEntry.setBounds(100,275,70,20);
+                                                                                                      window.add(endMinEntry);
+                                                                                                      window.remove(endMinBox);  
+                                                                                                      submitMinButton.setVisible(false);
+                                                                                                   
+                                                                                                   
+                                                                                                      Leave[] leaveType = {Leave.maternity, Leave.paternity, Leave.pto, Leave.sick_leave };
+                                                                                                   
+                                                                                                      JComboBox<Leave> leaveTypeBox = new JComboBox<>(leaveType);
+                                                                                                      leaveTypeBox.setBounds(100,300, 100,20); 
+                                                                                                      leaveTypeBox.setVisible(true);
+                                                                                                      window.add(leaveTypeBox);
+                                                                                                   
+                                                                                                      final JLabel leaveTypeLabel = new JLabel("Leave Type:");
+                                                                                                      leaveTypeLabel.setBounds(20,300,70,20);
+                                                                                                      leaveTypeLabel.setVisible(true);
+                                                                                                      window.add(leaveTypeLabel);
+                                                                                                   
+                                                                                                   
+                                                                                                   
+                                                                                                   
+                                                                                                      JButton leaveTypeButton=new JButton("Submit Request");  
+                                                                                                      leaveTypeButton.setBounds(200,300,150,30);  
+                                                                                                      leaveTypeButton.addActionListener(
+                                                                                                         new ActionListener(){  
+                                                                                                            public void actionPerformed(ActionEvent e){  
+                                                                                                               Leave leaveTypeEntry =  (Leave) leaveTypeBox.getSelectedItem();
+                                                                                                               window.add(endDayEntry);
+                                                                                                            
+                                                                                                               leaveTypeButton.setVisible(true);
+                                                                                                               window.repaint();  
+                                                                                                            }  
+                                                                                                         }
+                                                                                                         ); 
+                                                                                                      window.add(leaveTypeButton);
+                                                                                                      window.repaint(); 
+                                                                                                   
+                                                                                                   }  
+                                                                                                }
+                                                                                                ); 
+                                                                                             window.add(submitMinButton);
+                                                                                             submitMinButton.setVisible(true);
+                                                                                             endMinBox.setVisible(true);
+                                                                                             window.repaint();  
+                                                                                          
+                                                                                          }  
+                                                                                       }
+                                                                                       ); 
+                                                                                    window.add(submitHourButton);
+                                                                                    submitHourButton.setVisible(true);
+                                                                                    endHourBox.setVisible(true);
+                                                                                    window.repaint();   
+                                                                                 
+                                                                                 
+                                                                                 }  
+                                                                              }
+                                                                              ); 
+                                                                           window.add(submitEDayButton);
+                                                                           submitEDayButton.setVisible(false);
+                                                                        
+                                                                        
+                                                                        
+                                                                           submitEDayButton.setVisible(true);
+                                                                        
+                                                                        
+                                                                           endDayBox.setVisible(true);
+                                                                           window.repaint();  
+                                                                        
+                                                                        
+                                                                           //Please  
+                                                                        
+                                                                        }
+                                                                        else 
+                                                                        {
+                                                                           JComboBox<Integer>  endDayBox = new JComboBox<>(dayFebDate);
+                                                                           endDayBox.setBounds(100,225, 50,20); 
+                                                                           endDayBox.setVisible(true);
+                                                                           window.add(endDayBox);
+                                                                        
+                                                                           final JLabel endDayLabel = new JLabel("End Day:");
+                                                                           endDayLabel.setBounds(20,225,70,20);
+                                                                           endDayLabel.setVisible(true);
+                                                                           window.add(endDayLabel);
+                                                                        
+                                                                        
+                                                                        
+                                                                        
+                                                                           JButton submitEDayButton=new JButton("Submit Day");  
+                                                                           submitEDayButton.setBounds(200,225,150,30);  
+                                                                           submitEDayButton.addActionListener(
+                                                                              new ActionListener(){  
+                                                                                 public void actionPerformed(ActionEvent e){  
+                                                                                    Integer endDay = (Integer) endDayBox.getSelectedItem();
+                                                                                    final JLabel endDayEntry = new JLabel(Integer.toString(endDay));
+                                                                                    endDayEntry.setBounds(100,225,70,20);
+                                                                                    window.add(endDayEntry);
+                                                                                    window.remove(endDayBox);  
+                                                                                    submitEDayButton.setVisible(false);
+                                                                                 
+                                                                                 
+                                                                                    window.repaint();  
+                                                                                 
+                                                                                 
+                                                                                    JComboBox<Integer>  endHourBox = new JComboBox<>(hourTime);
+                                                                                    endHourBox.setBounds(100,250, 50,20); 
+                                                                                    endHourBox.setVisible(true);
+                                                                                    window.add(endHourBox);
+                                                                                 
+                                                                                    final JLabel endHourLabel = new JLabel("End Hour:");
+                                                                                    endHourLabel.setBounds(20,250,70,20);
+                                                                                    endHourLabel.setVisible(true);
+                                                                                    window.add(endHourLabel);
+                                                                                 
+                                                                                 
+                                                                                 
+                                                                                 
+                                                                                    JButton submitHourButton=new JButton("Submit Hour:");  
+                                                                                    submitHourButton.setBounds(200,250,150,30);  
+                                                                                    submitHourButton.addActionListener(
+                                                                                       new ActionListener(){  
+                                                                                          public void actionPerformed(ActionEvent e){  
+                                                                                             Integer endHour = (Integer) endHourBox.getSelectedItem();
+                                                                                             final JLabel endHourEntry = new JLabel(Integer.toString(endHour));
+                                                                                             endHourEntry.setBounds(100,250,70,20);
+                                                                                             window.add(endHourEntry);
+                                                                                             window.remove(endHourBox);  
+                                                                                             submitHourButton.setVisible(false);
+                                                                                          
+                                                                                          
+                                                                                             JComboBox<Integer>  endMinBox = new JComboBox<>(minuteTime);
+                                                                                             endMinBox.setBounds(100,275, 50,20); 
+                                                                                             endMinBox.setVisible(true);
+                                                                                             window.add(endMinBox);
+                                                                                          
+                                                                                             final JLabel endMinuteLabel = new JLabel("End Minute:");
+                                                                                             endMinuteLabel.setBounds(20,275,70,20);
+                                                                                             endMinuteLabel.setVisible(true);
+                                                                                             window.add(endMinuteLabel);
+                                                                                          
+                                                                                          
+                                                                                          
+                                                                                          
+                                                                                             JButton submitMinButton=new JButton("Submit Minute:");  
+                                                                                             submitMinButton.setBounds(200,275,150,30);  
+                                                                                             submitMinButton.addActionListener(
+                                                                                                new ActionListener(){  
+                                                                                                   public void actionPerformed(ActionEvent e){  
+                                                                                                      Integer endMinute = (Integer) endMinBox.getSelectedItem();
+                                                                                                      final JLabel endMinEntry = new JLabel(Integer.toString(endMinute));
+                                                                                                      endMinEntry.setBounds(100,275,70,20);
+                                                                                                      window.add(endMinEntry);
+                                                                                                      window.remove(endMinBox);  
+                                                                                                      submitMinButton.setVisible(false);
+                                                                                                   
+                                                                                                   
+                                                                                                      Leave[] leaveType = {Leave.maternity, Leave.paternity, Leave.pto, Leave.sick_leave };
+                                                                                                   
+                                                                                                      JComboBox<Leave> leaveTypeBox = new JComboBox<>(leaveType);
+                                                                                                      leaveTypeBox.setBounds(100,300, 100,20); 
+                                                                                                      leaveTypeBox.setVisible(true);
+                                                                                                      window.add(leaveTypeBox);
+                                                                                                   
+                                                                                                      final JLabel leaveTypeLabel = new JLabel("Leave Type:");
+                                                                                                      leaveTypeLabel.setBounds(20,300,70,20);
+                                                                                                      leaveTypeLabel.setVisible(true);
+                                                                                                      window.add(leaveTypeLabel);
+                                                                                                   
+                                                                                                   
+                                                                                                   
+                                                                                                   
+                                                                                                      JButton leaveTypeButton=new JButton("Submit Request");  
+                                                                                                      leaveTypeButton.setBounds(200,300,150,30);  
+                                                                                                      leaveTypeButton.addActionListener(
+                                                                                                         new ActionListener(){  
+                                                                                                            public void actionPerformed(ActionEvent e){  
+                                                                                                               Leave leaveTypeEntry =  (Leave) leaveTypeBox.getSelectedItem();
+                                                                                                               window.add(endDayEntry);
+                                                                                                            
+                                                                                                               leaveTypeButton.setVisible(true);
+                                                                                                               window.repaint();  
+                                                                                                            }  
+                                                                                                         }
+                                                                                                         ); 
+                                                                                                      window.add(leaveTypeButton);
+                                                                                                      window.repaint(); 
+                                                                                                   
+                                                                                                   }  
+                                                                                                }
+                                                                                                ); 
+                                                                                             window.add(submitMinButton);
+                                                                                             submitMinButton.setVisible(true);
+                                                                                             endMinBox.setVisible(true);
+                                                                                             window.repaint();  
+                                                                                          
+                                                                                          }  
+                                                                                       }
+                                                                                       ); 
+                                                                                    window.add(submitHourButton);
+                                                                                    submitHourButton.setVisible(true);
+                                                                                    endHourBox.setVisible(true);
+                                                                                    window.repaint();   
+                                                                                 
+                                                                                 
+                                                                                 }  
+                                                                              }
+                                                                              ); 
+                                                                           window.add(submitEDayButton);
+                                                                           submitEDayButton.setVisible(false);
+                                                                        
+                                                                        
+                                                                        
+                                                                           submitEDayButton.setVisible(true);
+                                                                        
+                                                                        
+                                                                           endDayBox.setVisible(true);
+                                                                           window.repaint();  
+                                                                        
+                                                                        
+                                                                        }
+                                                                     
+                                                                     
+                                                                     }  
+                                                                  }
+                                                                  ); 
+                                                               window.add(submitEMonthButton);
+                                                               submitEMonthButton.setVisible(true);
+                                                               window.repaint(); 
+                                                            
+                                                            
+                                                            }  
+                                                         }
+                                                         ); 
+                                                      window.add(submitEYearButton);
+                                                      submitEYearButton.setVisible(true);
+                                                      window.repaint();  
                                                    
                                                    }  
                                                 }
                                                 ); 
-                                             window.add(submitEMonthButton);
-                                             submitEMonthButton.setVisible(true);
-                                             window.repaint(); 
+                                          
+                                          
+                                             window.add(submitMinButton);
+                                             submitMinButton.setVisible(false);
+                                             submitMinButton.setVisible(true);
+                                             startMinBox.setVisible(true);
+                                             window.repaint();  
                                           
                                           
                                           }  
                                        }
                                        ); 
-                                    window.add(submitEYearButton);
-                                    submitEYearButton.setVisible(true);
+                                       
+                                      
+                                    window.add(submitHourButton);
+                                    submitHourButton.setVisible(false);
+                                    submitHourButton.setVisible(true);
+                                    startHourBox.setVisible(true);
                                     window.repaint();  
-                                 
                                  
                                  
                                  
@@ -790,415 +1099,752 @@ public class SystemInterface {
                                     window.add(startDayEntry);
                                     window.remove(startDayBox);  
                                     submitDayButton.setVisible(false);
-                                 //submitYearButton.setVisible(true);
-                                 //endYearBox.setVisible(true);
-                                 //endYearLabel.setVisible(true);
-                                    //window.repaint();  
+                                 
+                                 
+                                    window.repaint();  
                                  
                                  
                                  
                                  
-                                 //BREAKPOINT start time
                                  
                                  
-                                    final JLabel endYearLabel = new JLabel("End Year:");
-                                    endYearLabel.setBounds(20,125,70,20);
-                                    //endYearLabel.setVisible(false);
-                                    window.add(endYearLabel);
+                                    JComboBox<Integer>  startHourBox = new JComboBox<>(hourTime);
+                                    startHourBox.setBounds(100,125, 50,20); 
+                                    startHourBox.setVisible(true);
+                                    window.add(startHourBox);
                                  
-                                    JComboBox<Integer> endYearBox= new JComboBox<>(yearDate);  
-                                    endYearBox.setBounds(100,125, 80,20);
-                                    //endYearBox.setVisible(false);
+                                    final JLabel startHourLabel = new JLabel("Start Hour:");
+                                    startHourLabel.setBounds(20,125,70,20);
+                                    startHourLabel.setVisible(true);
+                                    window.add(startHourLabel);
                                  
-                                    window.add(endYearBox);
-                                    JButton submitEYearButton=new JButton("Submit Year");  
-                                    submitEYearButton.setBounds(200,125,150,30);  
-                                    submitEYearButton.addActionListener(
+                                 
+                                 
+                                 
+                                    JButton submitHourButton=new JButton("Submit Hour:");  
+                                    submitHourButton.setBounds(200,125,150,30);  
+                                    submitHourButton.addActionListener(
                                        new ActionListener(){  
                                           public void actionPerformed(ActionEvent e){  
-                                             Integer endYear = (Integer) endYearBox.getSelectedItem();
+                                             Integer startHour = (Integer) startHourBox.getSelectedItem();
+                                             final JLabel startHourEntry = new JLabel(Integer.toString(startHour));
+                                             startHourEntry.setBounds(100,125,70,20);
+                                             window.add(startHourEntry);
+                                             window.remove(startHourBox);  
+                                             submitHourButton.setVisible(false);
+                                                                                
+                                                                                
+                                             JComboBox<Integer>  startMinBox = new JComboBox<>(minuteTime);
+                                             startMinBox.setBounds(100,150, 50,20); 
+                                             startMinBox.setVisible(true);
+                                             window.add(startMinBox);
+                                          
+                                             final JLabel startMinuteLabel = new JLabel("Start Minute:");
+                                             startMinuteLabel.setBounds(20,150,70,20);
+                                             startMinuteLabel.setVisible(true);
+                                             window.add(startMinuteLabel);
                                           
                                           
-                                             final JLabel endYearEntry = new JLabel(Integer.toString(endYear));
-                                             endYearEntry.setBounds(100,125,80,20);
-                                             window.add(endYearEntry);
-                                             window.remove(endYearBox);  
-                                             submitEYearButton.setVisible(false);
-                                             //submitEMonthButton.setVisible(true);
-                                             //endMonthBox.setVisible(true);
-                                             //endMonthLabel.setVisible(true);
-                                            
                                           
                                           
-                                             final JLabel endMonthLabel = new JLabel("End Month:");
-                                             endMonthLabel.setBounds(20,150,70,20);
-                                             endMonthLabel.setVisible(true);
-                                             window.add(endMonthLabel);
-                                          
-                                             JComboBox<Integer> endMonthBox= new JComboBox<>(monthDate);  
-                                             endMonthBox.setBounds(100,150, 50,20); 
-                                             endMonthBox.setVisible(true);
-                                             window.add(endMonthBox);
-                                          
-                                             JButton submitEMonthButton=new JButton("Submit Month");  
-                                             submitEMonthButton.setBounds(200,150,150,30);  
-                                             submitEMonthButton.addActionListener(
+                                             JButton submitMinButton=new JButton("Submit Minute:");  
+                                             submitMinButton.setBounds(200,150,150,30);  
+                                             submitMinButton.addActionListener(
                                                 new ActionListener(){  
                                                    public void actionPerformed(ActionEvent e){  
-                                                      Integer endMonth = (Integer) endMonthBox.getSelectedItem();
+                                                      Integer startMinute = (Integer) startMinBox.getSelectedItem();
+                                                      final JLabel startMinEntry = new JLabel(Integer.toString(startMinute));
+                                                      startMinEntry.setBounds(100,150,70,20);
+                                                      window.add(startMinEntry);
+                                                      window.remove(startMinBox);  
+                                                      submitMinButton.setVisible(false);
                                                    
-                                                      final JLabel endMonthEntry = new JLabel(Integer.toString(endMonth));
-                                                      endMonthEntry.setBounds(100,150,70,20);
-                                                      window.add(endMonthEntry);
-                                                      window.remove(endMonthBox);  
-                                                      submitEMonthButton.setVisible(false);
                                                    
-                                                      if (endMonth == 1 ||endMonth == 3 ||endMonth == 5 ||endMonth == 7 ||endMonth == 8 ||endMonth == 10 ||endMonth == 12 )
-                                                      {
-                                                         JComboBox<Integer> endDayBox = new JComboBox<>(dayLongDate);  
-                                                         endDayBox.setBounds(100,175, 50,20); 
-                                                         endDayBox.setVisible(true);
-                                                         window.add(endDayBox);
-                                                      
-                                                         final JLabel endDayLabel = new JLabel("End Day:");
-                                                         endDayLabel.setBounds(20,175,70,20);
-                                                         endDayLabel.setVisible(true);
-                                                         window.add(endDayLabel);
-                                                      
-                                                      
-                                                      
-                                                      
-                                                         JButton submitEDayButton=new JButton("Submit Day");  
-                                                         submitEDayButton.setBounds(200,175,150,30);  
-                                                         submitEDayButton.addActionListener(
-                                                            new ActionListener(){  
-                                                               public void actionPerformed(ActionEvent e){  
-                                                                  Integer endDay = (Integer) endDayBox.getSelectedItem();
-                                                                  final JLabel endDayEntry = new JLabel(Integer.toString(endDay));
-                                                                  endDayEntry.setBounds(100,175,70,20);
-                                                                  window.add(endDayEntry);
-                                                                  window.remove(endDayBox);  
-                                                                  submitEDayButton.setVisible(false);
-                                                               //submitEYearButton.setVisible(true);
-                                                               //startEYearBox.setVisible(true);
-                                                               //startEYearLabel.setVisible(true);
-                                                                  window.repaint();  
-                                                               
-                                                               
-                                                               
-                                                                  Leave[] leaveType = {Leave.maternity, Leave.paternity, Leave.pto, Leave.sick_leave, Leave.emergency};
-                                                               
-                                                                  JComboBox<Leave> leaveTypeBox = new JComboBox<>(leaveType);
-                                                                  leaveTypeBox.setBounds(100,200, 100,20); 
-                                                                  leaveTypeBox.setVisible(true);
-                                                                  window.add(leaveTypeBox);
-                                                               
-                                                                  final JLabel leaveTypeLabel = new JLabel("Leave Type:");
-                                                                  leaveTypeLabel.setBounds(20,200,70,20);
-                                                                  leaveTypeLabel.setVisible(true);
-                                                                  window.add(leaveTypeLabel);
-                                                               
-                                                               
-                                                               
-                                                               
-                                                                  JButton leaveTypeButton=new JButton("Submit Request");  
-                                                                  leaveTypeButton.setBounds(200,200,150,30);  
-                                                                  leaveTypeButton.addActionListener(
-                                                                     new ActionListener(){  
-                                                                        public void actionPerformed(ActionEvent e){  
-                                                                           Leave leaveTypeEntry =  (Leave) leaveTypeBox.getSelectedItem();
-                                                                           window.add(endDayEntry);
-                                                                            
-                                                                           leaveTypeButton.setVisible(true);
-                                                                           window.repaint();  
-                                                                        }  
-                                                                     }
-                                                                     ); 
-                                                                  window.add(leaveTypeButton);
-                                                               
-                                                               
-                                                               
-                                                               
-                                                               
-                                                               }  
-                                                            }
-                                                            ); 
-                                                         window.add(submitEDayButton);
-                                                         submitEDayButton.setVisible(false);
-                                                      
-                                                      
-                                                      
-                                                         submitEDayButton.setVisible(true);
-                                                      
-                                                      
-                                                         endDayBox.setVisible(true);
-                                                         window.repaint();  
-                                                      
-                                                      
-                                                      
-                                                      
-                                                      
-                                                      }
-                                                      else if (endMonth == 4 ||endMonth == 6 ||endMonth == 9 ||endMonth == 11)
-                                                      {
-                                                         JComboBox<Integer> endDayBox = new JComboBox<>(dayShortDate);
-                                                         endDayBox.setBounds(100,175, 50,20); 
-                                                         endDayBox.setVisible(true);
-                                                         window.add(endDayBox);
-                                                      
-                                                         final JLabel endDayLabel = new JLabel("End Day:");
-                                                         endDayLabel.setBounds(20,175,70,20);
-                                                         endDayLabel.setVisible(true);
-                                                         window.add(endDayLabel);
-                                                      
-                                                      
-                                                      
-                                                      
-                                                         JButton submitEDayButton=new JButton("Submit Day");  
-                                                         submitEDayButton.setBounds(200,175,150,30);  
-                                                         submitEDayButton.addActionListener(
-                                                            new ActionListener(){  
-                                                               public void actionPerformed(ActionEvent e){  
-                                                                  Integer endDay = (Integer) endDayBox.getSelectedItem();
-                                                                  final JLabel endDayEntry = new JLabel(Integer.toString(endDay));
-                                                                  endDayEntry.setBounds(100,175,70,20);
-                                                                  window.add(endDayEntry);
-                                                                  window.remove(endDayBox);  
-                                                                  submitEDayButton.setVisible(false);
-                                                               //submitEYearButton.setVisible(true);
-                                                               //startEYearBox.setVisible(true);
-                                                               //startEYearLabel.setVisible(true);
-                                                                  window.repaint();  
-                                                               
-                                                               
-                                                                  Leave[] leaveType = {Leave.maternity, Leave.paternity, Leave.pto, Leave.sick_leave, Leave.emergency};
-                                                               
-                                                                  JComboBox<Leave> leaveTypeBox = new JComboBox<>(leaveType);
-                                                                  leaveTypeBox.setBounds(100,200, 100,20); 
-                                                                  leaveTypeBox.setVisible(true);
-                                                                  window.add(leaveTypeBox);
-                                                               
-                                                                  final JLabel leaveTypeLabel = new JLabel("Leave Type:");
-                                                                  leaveTypeLabel.setBounds(20,200,70,20);
-                                                                  leaveTypeLabel.setVisible(true);
-                                                                  window.add(leaveTypeLabel);
-                                                               
-                                                               
-                                                               
-                                                               
-                                                                  JButton leaveTypeButton=new JButton("Submit Request");  
-                                                                  leaveTypeButton.setBounds(200,200,150,30);  
-                                                                  leaveTypeButton.addActionListener(
-                                                                     new ActionListener(){  
-                                                                        public void actionPerformed(ActionEvent e){  
-                                                                           Leave leaveTypeEntry =  (Leave) leaveTypeBox.getSelectedItem();
-                                                                           window.add(endDayEntry);
-                                                                            
-                                                                           leaveTypeButton.setVisible(true);
-                                                                           window.repaint();  
-                                                                        }  
-                                                                     }
-                                                                     ); 
-                                                                  window.add(leaveTypeButton);
-                                                               
-                                                               
-                                                               
-                                                               
-                                                               
-                                                               
-                                                               }  
-                                                            }
-                                                            ); 
-                                                         window.add(submitEDayButton);
-                                                         submitEDayButton.setVisible(false);
-                                                      
-                                                      
-                                                      
-                                                         submitEDayButton.setVisible(true);
-                                                      
-                                                      
-                                                         endDayBox.setVisible(true);
-                                                         window.repaint();  
-                                                      
-                                                      
-                                                      }
-                                                      else if (endMonth == 2 && endYear == 2020)
-                                                      {
-                                                         JComboBox<Integer> endDayBox = new JComboBox<>(dayLeapDate);
-                                                         endDayBox.setBounds(100,175, 50,20); 
-                                                         endDayBox.setVisible(true);
-                                                         window.add(endDayBox);
-                                                      
-                                                         final JLabel endDayLabel = new JLabel("End Day:");
-                                                         endDayLabel.setBounds(20,175,70,20);
-                                                         endDayLabel.setVisible(true);
-                                                         window.add(endDayLabel);
-                                                      
-                                                      
-                                                      
-                                                      
-                                                         JButton submitEDayButton=new JButton("Submit Day");  
-                                                         submitEDayButton.setBounds(200,175,150,30);  
-                                                         submitEDayButton.addActionListener(
-                                                            new ActionListener(){  
-                                                               public void actionPerformed(ActionEvent e){  
-                                                                  Integer endDay = (Integer) endDayBox.getSelectedItem();
-                                                                  final JLabel endDayEntry = new JLabel(Integer.toString(endDay));
-                                                                  endDayEntry.setBounds(100,175,70,20);
-                                                                  window.add(endDayEntry);
-                                                                  window.remove(endDayBox);  
-                                                                  submitEDayButton.setVisible(false);
-                                                                  window.repaint();  
-                                                                  
-                                                                  
-                                                                  Leave[] leaveType = {Leave.maternity, Leave.paternity, Leave.pto, Leave.sick_leave, Leave.emergency};
-                                                               
-                                                                  JComboBox<Leave> leaveTypeBox = new JComboBox<>(leaveType);
-                                                                  leaveTypeBox.setBounds(100,200, 100,20); 
-                                                                  leaveTypeBox.setVisible(true);
-                                                                  window.add(leaveTypeBox);
-                                                               
-                                                                  final JLabel leaveTypeLabel = new JLabel("Leave Type:");
-                                                                  leaveTypeLabel.setBounds(20,200,70,20);
-                                                                  leaveTypeLabel.setVisible(true);
-                                                                  window.add(leaveTypeLabel);
-                                                               
-                                                               
-                                                               
-                                                               
-                                                                  JButton leaveTypeButton=new JButton("Submit Request");  
-                                                                  leaveTypeButton.setBounds(200,200,150,30);  
-                                                                  leaveTypeButton.addActionListener(
-                                                                     new ActionListener(){  
-                                                                        public void actionPerformed(ActionEvent e){  
-                                                                           Leave leaveTypeEntry =  (Leave) leaveTypeBox.getSelectedItem();
-                                                                           window.add(endDayEntry);
-                                                                            
-                                                                           leaveTypeButton.setVisible(true);
-                                                                           window.repaint();  
-                                                                        }  
-                                                                     }
-                                                                     ); 
-                                                                  window.add(leaveTypeButton);
-                                                               
-                                                               
-                                                               
-                                                               }  
-                                                            }
-                                                            ); 
-                                                         window.add(submitEDayButton);
-                                                         submitEDayButton.setVisible(false);
-                                                      
-                                                      
-                                                      
-                                                         submitEDayButton.setVisible(true);
-                                                      
-                                                      
-                                                         endDayBox.setVisible(true);
-                                                         window.repaint();  
-                                                      
-                                                      }
-                                                      else 
-                                                      {
-                                                         JComboBox<Integer>  endDayBox = new JComboBox<>(dayFebDate);
-                                                         endDayBox.setBounds(100,175, 50,20); 
-                                                         endDayBox.setVisible(true);
-                                                         window.add(endDayBox);
-                                                      
-                                                         final JLabel endDayLabel = new JLabel("End Day:");
-                                                         endDayLabel.setBounds(20,175,70,20);
-                                                         endDayLabel.setVisible(true);
-                                                         window.add(endDayLabel);
-                                                      
-                                                      
-                                                      
-                                                      
-                                                         JButton submitEDayButton=new JButton("Submit Day");  
-                                                         submitEDayButton.setBounds(200,175,150,30);  
-                                                         submitEDayButton.addActionListener(
-                                                            new ActionListener(){  
-                                                               public void actionPerformed(ActionEvent e){  
-                                                                  Integer endDay = (Integer) endDayBox.getSelectedItem();
-                                                                  final JLabel endDayEntry = new JLabel(Integer.toString(endDay));
-                                                                  endDayEntry.setBounds(100,175,70,20);
-                                                                  window.add(endDayEntry);
-                                                                  window.remove(endDayBox);  
-                                                                  submitEDayButton.setVisible(false);
-                                                               //submitEYearButton.setVisible(true);
-                                                               //startEYearBox.setVisible(true);
-                                                               //startEYearLabel.setVisible(true);
-                                                                  window.repaint(); 
-                                                                  
-                                                                  
-                                                                  
-                                                                  Leave[] leaveType = {Leave.maternity, Leave.paternity, Leave.pto, Leave.sick_leave, Leave.emergency};
-                                                               
-                                                                  JComboBox<Leave> leaveTypeBox = new JComboBox<>(leaveType);
-                                                                  leaveTypeBox.setBounds(100,200, 100,20); 
-                                                                  leaveTypeBox.setVisible(true);
-                                                                  window.add(leaveTypeBox);
-                                                               
-                                                                  final JLabel leaveTypeLabel = new JLabel("Leave Type:");
-                                                                  leaveTypeLabel.setBounds(20,200,70,20);
-                                                                  leaveTypeLabel.setVisible(true);
-                                                                  window.add(leaveTypeLabel);
-                                                               
-                                                               
-                                                               
-                                                               
-                                                                  JButton leaveTypeButton=new JButton("Submit Request");  
-                                                                  leaveTypeButton.setBounds(200,200,150,30);  
-                                                                  leaveTypeButton.addActionListener(
-                                                                     new ActionListener(){  
-                                                                        public void actionPerformed(ActionEvent e){  
-                                                                           Leave leaveTypeEntry =  (Leave) leaveTypeBox.getSelectedItem();
-                                                                           window.add(endDayEntry);
-                                                                            
-                                                                           leaveTypeButton.setVisible(true);
-                                                                           window.repaint();  
-                                                                        }  
-                                                                     }
-                                                                     ); 
-                                                                  window.add(leaveTypeButton);
-                                                               
-                                                               
-                                                               
-                                                               
-                                                               
-                                                               }  
-                                                            }
-                                                            ); 
-                                                         window.add(submitEDayButton);
-                                                         submitEDayButton.setVisible(false);
-                                                      
-                                                      
-                                                      
-                                                         submitEDayButton.setVisible(true);
-                                                      
-                                                      
-                                                         endDayBox.setVisible(true);
-                                                         window.repaint();  
-                                                      
-                                                      
-                                                      
-                                                      }
                                                    
+                                                      final JLabel endYearLabel = new JLabel("End Year:");
+                                                      endYearLabel.setBounds(20,175,70,20);
+                                                   
+                                                   
+                                                      window.add(endYearLabel);
+                                                   
+                                                      JComboBox<Integer> endYearBox= new JComboBox<>(yearDate);  
+                                                      endYearBox.setBounds(100,175, 80,20);
+                                                   
+                                                   
+                                                   
+                                                      window.add(endYearBox);
+                                                      JButton submitEYearButton=new JButton("Submit Year");  
+                                                      submitEYearButton.setBounds(200,175,150,30);  
+                                                      submitEYearButton.addActionListener(
+                                                         new ActionListener(){  
+                                                            public void actionPerformed(ActionEvent e){  
+                                                               Integer endYear = (Integer) endYearBox.getSelectedItem();
+                                                            
+                                                            
+                                                               final JLabel endYearEntry = new JLabel(Integer.toString(endYear));
+                                                               endYearEntry.setBounds(100,175,80,20);
+                                                               window.add(endYearEntry);
+                                                               window.remove(endYearBox);  
+                                                               submitEYearButton.setVisible(false);
+                                                            
+                                                            
+                                                            
+                                                            
+                                                               final JLabel endMonthLabel = new JLabel("End Month:");
+                                                               endMonthLabel.setBounds(20,200,70,20);
+                                                               endMonthLabel.setVisible(true);
+                                                               window.add(endMonthLabel);
+                                                            
+                                                               JComboBox<Integer> endMonthBox= new JComboBox<>(monthDate);  
+                                                               endMonthBox.setBounds(100,200, 50,20); 
+                                                               endMonthBox.setVisible(true);
+                                                               window.add(endMonthBox);
+                                                            
+                                                               JButton submitEMonthButton=new JButton("Submit Month");  
+                                                               submitEMonthButton.setBounds(200,200,150,30);  
+                                                               submitEMonthButton.addActionListener(
+                                                                  new ActionListener(){  
+                                                                     public void actionPerformed(ActionEvent e){  
+                                                                        Integer endMonth = (Integer) endMonthBox.getSelectedItem();
+                                                                     
+                                                                        final JLabel endMonthEntry = new JLabel(Integer.toString(endMonth));
+                                                                        endMonthEntry.setBounds(100,200,70,20);
+                                                                        window.add(endMonthEntry);
+                                                                        window.remove(endMonthBox);  
+                                                                        submitEMonthButton.setVisible(false);
+                                                                     
+                                                                        if (endMonth == 1 ||endMonth == 3 ||endMonth == 5 ||endMonth == 7 ||endMonth == 8 ||endMonth == 10 ||endMonth == 12 )
+                                                                        {
+                                                                           JComboBox<Integer> endDayBox = new JComboBox<>(dayLongDate);  
+                                                                           endDayBox.setBounds(100,225, 50,20); 
+                                                                           endDayBox.setVisible(true);
+                                                                           window.add(endDayBox);
+                                                                        
+                                                                           final JLabel endDayLabel = new JLabel("End Day:");
+                                                                           endDayLabel.setBounds(20,225,70,20);
+                                                                           endDayLabel.setVisible(true);
+                                                                           window.add(endDayLabel);
+                                                                        
+                                                                        
+                                                                        
+                                                                        
+                                                                           JButton submitEDayButton=new JButton("Submit Day");  
+                                                                           submitEDayButton.setBounds(200,225,150,30);  
+                                                                           submitEDayButton.addActionListener(
+                                                                              new ActionListener(){  
+                                                                                 public void actionPerformed(ActionEvent e){  
+                                                                                    Integer endDay = (Integer) endDayBox.getSelectedItem();
+                                                                                    final JLabel endDayEntry = new JLabel(Integer.toString(endDay));
+                                                                                    endDayEntry.setBounds(100,225,70,20);
+                                                                                    window.add(endDayEntry);
+                                                                                    window.remove(endDayBox);  
+                                                                                    submitEDayButton.setVisible(false);
+                                                                                 
+                                                                                 
+                                                                                    window.repaint();  
+                                                                                 
+                                                                                 
+                                                                                    JComboBox<Integer>  endHourBox = new JComboBox<>(hourTime);
+                                                                                    endHourBox.setBounds(100,250, 50,20); 
+                                                                                    endHourBox.setVisible(true);
+                                                                                    window.add(endHourBox);
+                                                                                 
+                                                                                    final JLabel endHourLabel = new JLabel("End Hour:");
+                                                                                    endHourLabel.setBounds(20,250,70,20);
+                                                                                    endHourLabel.setVisible(true);
+                                                                                    window.add(endHourLabel);
+                                                                                 
+                                                                                 
+                                                                                 
+                                                                                 
+                                                                                    JButton submitHourButton=new JButton("Submit Hour:");  
+                                                                                    submitHourButton.setBounds(200,250,150,30);  
+                                                                                    submitHourButton.addActionListener(
+                                                                                       new ActionListener(){  
+                                                                                          public void actionPerformed(ActionEvent e){  
+                                                                                             Integer endHour = (Integer) endHourBox.getSelectedItem();
+                                                                                             final JLabel endHourEntry = new JLabel(Integer.toString(endHour));
+                                                                                             endHourEntry.setBounds(100,250,70,20);
+                                                                                             window.add(endHourEntry);
+                                                                                             window.remove(endHourBox);  
+                                                                                             submitHourButton.setVisible(false);
+                                                                                          
+                                                                                          
+                                                                                             JComboBox<Integer>  endMinBox = new JComboBox<>(minuteTime);
+                                                                                             endMinBox.setBounds(100,275, 50,20); 
+                                                                                             endMinBox.setVisible(true);
+                                                                                             window.add(endMinBox);
+                                                                                          
+                                                                                             final JLabel endMinuteLabel = new JLabel("End Minute:");
+                                                                                             endMinuteLabel.setBounds(20,275,70,20);
+                                                                                             endMinuteLabel.setVisible(true);
+                                                                                             window.add(endMinuteLabel);
+                                                                                          
+                                                                                          
+                                                                                          
+                                                                                          
+                                                                                             JButton submitMinButton=new JButton("Submit Minute:");  
+                                                                                             submitMinButton.setBounds(200,275,150,30);  
+                                                                                             submitMinButton.addActionListener(
+                                                                                                new ActionListener(){  
+                                                                                                   public void actionPerformed(ActionEvent e){  
+                                                                                                      Integer endMinute = (Integer) endMinBox.getSelectedItem();
+                                                                                                      final JLabel endMinEntry = new JLabel(Integer.toString(endMinute));
+                                                                                                      endMinEntry.setBounds(100,275,70,20);
+                                                                                                      window.add(endMinEntry);
+                                                                                                      window.remove(endMinBox);  
+                                                                                                      submitMinButton.setVisible(false);
+                                                                                                   
+                                                                                                   
+                                                                                                      Leave[] leaveType = {Leave.maternity, Leave.paternity, Leave.pto, Leave.sick_leave };
+                                                                                                   
+                                                                                                      JComboBox<Leave> leaveTypeBox = new JComboBox<>(leaveType);
+                                                                                                      leaveTypeBox.setBounds(100,300, 100,20); 
+                                                                                                      leaveTypeBox.setVisible(true);
+                                                                                                      window.add(leaveTypeBox);
+                                                                                                   
+                                                                                                      final JLabel leaveTypeLabel = new JLabel("Leave Type:");
+                                                                                                      leaveTypeLabel.setBounds(20,300,70,20);
+                                                                                                      leaveTypeLabel.setVisible(true);
+                                                                                                      window.add(leaveTypeLabel);
+                                                                                                   
+                                                                                                   
+                                                                                                   
+                                                                                                   
+                                                                                                      JButton leaveTypeButton=new JButton("Submit Request");  
+                                                                                                      leaveTypeButton.setBounds(200,300,150,30);  
+                                                                                                      leaveTypeButton.addActionListener(
+                                                                                                         new ActionListener(){  
+                                                                                                            public void actionPerformed(ActionEvent e){  
+                                                                                                               Leave leaveTypeEntry =  (Leave) leaveTypeBox.getSelectedItem();
+                                                                                                               window.add(endDayEntry);
+                                                                                                            
+                                                                                                               leaveTypeButton.setVisible(true);
+                                                                                                               window.repaint();  
+                                                                                                            }  
+                                                                                                         }
+                                                                                                         ); 
+                                                                                                      window.add(leaveTypeButton);
+                                                                                                      window.repaint(); 
+                                                                                                   
+                                                                                                   }  
+                                                                                                }
+                                                                                                ); 
+                                                                                             window.add(submitMinButton);
+                                                                                             submitMinButton.setVisible(true);
+                                                                                             endMinBox.setVisible(true);
+                                                                                             window.repaint();  
+                                                                                          
+                                                                                          }  
+                                                                                       }
+                                                                                       ); 
+                                                                                    window.add(submitHourButton);
+                                                                                    submitHourButton.setVisible(true);
+                                                                                    endHourBox.setVisible(true);
+                                                                                    window.repaint();   
+                                                                                 
+                                                                                 
+                                                                                 }  
+                                                                              }
+                                                                              ); 
+                                                                           window.add(submitEDayButton);
+                                                                           submitEDayButton.setVisible(false);
+                                                                        
+                                                                        
+                                                                        
+                                                                           submitEDayButton.setVisible(true);
+                                                                        
+                                                                        
+                                                                           endDayBox.setVisible(true);
+                                                                           window.repaint();  
+                                                                        
+                                                                        
+                                                                        
+                                                                        
+                                                                        
+                                                                        }
+                                                                        else if (endMonth == 4 ||endMonth == 6 ||endMonth == 9 ||endMonth == 11)
+                                                                        {
+                                                                           JComboBox<Integer> endDayBox = new JComboBox<>(dayShortDate);
+                                                                           endDayBox.setBounds(100,225, 50,20); 
+                                                                           endDayBox.setVisible(true);
+                                                                           window.add(endDayBox);
+                                                                        
+                                                                           final JLabel endDayLabel = new JLabel("End Day:");
+                                                                           endDayLabel.setBounds(20,225,70,20);
+                                                                           endDayLabel.setVisible(true);
+                                                                           window.add(endDayLabel);
+                                                                        
+                                                                        
+                                                                        
+                                                                        
+                                                                           JButton submitEDayButton=new JButton("Submit Day");  
+                                                                           submitEDayButton.setBounds(200,225,150,30);  
+                                                                           submitEDayButton.addActionListener(
+                                                                              new ActionListener(){  
+                                                                                 public void actionPerformed(ActionEvent e){  
+                                                                                    Integer endDay = (Integer) endDayBox.getSelectedItem();
+                                                                                    final JLabel endDayEntry = new JLabel(Integer.toString(endDay));
+                                                                                    endDayEntry.setBounds(100,225,70,20);
+                                                                                    window.add(endDayEntry);
+                                                                                    window.remove(endDayBox);  
+                                                                                    submitEDayButton.setVisible(false);
+                                                                                 
+                                                                                 
+                                                                                    window.repaint();  
+                                                                                 
+                                                                                 
+                                                                                    JComboBox<Integer>  endHourBox = new JComboBox<>(hourTime);
+                                                                                    endHourBox.setBounds(100,250, 50,20); 
+                                                                                    endHourBox.setVisible(true);
+                                                                                    window.add(endHourBox);
+                                                                                 
+                                                                                    final JLabel endHourLabel = new JLabel("End Hour:");
+                                                                                    endHourLabel.setBounds(20,250,70,20);
+                                                                                    endHourLabel.setVisible(true);
+                                                                                    window.add(endHourLabel);
+                                                                                 
+                                                                                 
+                                                                                 
+                                                                                 
+                                                                                    JButton submitHourButton=new JButton("Submit Hour:");  
+                                                                                    submitHourButton.setBounds(200,250,150,30);  
+                                                                                    submitHourButton.addActionListener(
+                                                                                       new ActionListener(){  
+                                                                                          public void actionPerformed(ActionEvent e){  
+                                                                                             Integer endHour = (Integer) endHourBox.getSelectedItem();
+                                                                                             final JLabel endHourEntry = new JLabel(Integer.toString(endHour));
+                                                                                             endHourEntry.setBounds(100,250,70,20);
+                                                                                             window.add(endHourEntry);
+                                                                                             window.remove(endHourBox);  
+                                                                                             submitHourButton.setVisible(false);
+                                                                                          
+                                                                                          
+                                                                                             JComboBox<Integer>  endMinBox = new JComboBox<>(minuteTime);
+                                                                                             endMinBox.setBounds(100,275, 50,20); 
+                                                                                             endMinBox.setVisible(true);
+                                                                                             window.add(endMinBox);
+                                                                                          
+                                                                                             final JLabel endMinuteLabel = new JLabel("End Minute:");
+                                                                                             endMinuteLabel.setBounds(20,275,70,20);
+                                                                                             endMinuteLabel.setVisible(true);
+                                                                                             window.add(endMinuteLabel);
+                                                                                          
+                                                                                          
+                                                                                          
+                                                                                          
+                                                                                             JButton submitMinButton=new JButton("Submit Minute:");  
+                                                                                             submitMinButton.setBounds(200,275,150,30);  
+                                                                                             submitMinButton.addActionListener(
+                                                                                                new ActionListener(){  
+                                                                                                   public void actionPerformed(ActionEvent e){  
+                                                                                                      Integer endMinute = (Integer) endMinBox.getSelectedItem();
+                                                                                                      final JLabel endMinEntry = new JLabel(Integer.toString(endMinute));
+                                                                                                      endMinEntry.setBounds(100,275,70,20);
+                                                                                                      window.add(endMinEntry);
+                                                                                                      window.remove(endMinBox);  
+                                                                                                      submitMinButton.setVisible(false);
+                                                                                                   
+                                                                                                   
+                                                                                                      Leave[] leaveType = {Leave.maternity, Leave.paternity, Leave.pto, Leave.sick_leave };
+                                                                                                   
+                                                                                                      JComboBox<Leave> leaveTypeBox = new JComboBox<>(leaveType);
+                                                                                                      leaveTypeBox.setBounds(100,300, 100,20); 
+                                                                                                      leaveTypeBox.setVisible(true);
+                                                                                                      window.add(leaveTypeBox);
+                                                                                                   
+                                                                                                      final JLabel leaveTypeLabel = new JLabel("Leave Type:");
+                                                                                                      leaveTypeLabel.setBounds(20,300,70,20);
+                                                                                                      leaveTypeLabel.setVisible(true);
+                                                                                                      window.add(leaveTypeLabel);
+                                                                                                   
+                                                                                                   
+                                                                                                   
+                                                                                                   
+                                                                                                      JButton leaveTypeButton=new JButton("Submit Request");  
+                                                                                                      leaveTypeButton.setBounds(200,300,150,30);  
+                                                                                                      leaveTypeButton.addActionListener(
+                                                                                                         new ActionListener(){  
+                                                                                                            public void actionPerformed(ActionEvent e){  
+                                                                                                               Leave leaveTypeEntry =  (Leave) leaveTypeBox.getSelectedItem();
+                                                                                                               window.add(endDayEntry);
+                                                                                                            
+                                                                                                               leaveTypeButton.setVisible(true);
+                                                                                                               window.repaint();  
+                                                                                                            }  
+                                                                                                         }
+                                                                                                         ); 
+                                                                                                      window.add(leaveTypeButton);
+                                                                                                      window.repaint(); 
+                                                                                                   
+                                                                                                   }  
+                                                                                                }
+                                                                                                ); 
+                                                                                             window.add(submitMinButton);
+                                                                                             submitMinButton.setVisible(true);
+                                                                                             endMinBox.setVisible(true);
+                                                                                             window.repaint();  
+                                                                                          
+                                                                                          }  
+                                                                                       }
+                                                                                       ); 
+                                                                                    window.add(submitHourButton);
+                                                                                    submitHourButton.setVisible(true);
+                                                                                    endHourBox.setVisible(true);
+                                                                                    window.repaint();   
+                                                                                 
+                                                                                 
+                                                                                 }  
+                                                                              }
+                                                                              ); 
+                                                                           window.add(submitEDayButton);
+                                                                           submitEDayButton.setVisible(false);
+                                                                        
+                                                                        
+                                                                        
+                                                                           submitEDayButton.setVisible(true);
+                                                                        
+                                                                        
+                                                                           endDayBox.setVisible(true);
+                                                                           window.repaint();  
+                                                                        
+                                                                        
+                                                                        }
+                                                                        else if (endMonth == 2 && endYear == 2020)
+                                                                        {
+                                                                           JComboBox<Integer> endDayBox = new JComboBox<>(dayLeapDate);
+                                                                           endDayBox.setBounds(100,225, 50,20); 
+                                                                           endDayBox.setVisible(true);
+                                                                           window.add(endDayBox);
+                                                                        
+                                                                           final JLabel endDayLabel = new JLabel("End Day:");
+                                                                           endDayLabel.setBounds(20,225,70,20);
+                                                                           endDayLabel.setVisible(true);
+                                                                           window.add(endDayLabel);
+                                                                        
+                                                                        
+                                                                        
+                                                                        
+                                                                           JButton submitEDayButton=new JButton("Submit Day");  
+                                                                           submitEDayButton.setBounds(200,225,150,30);  
+                                                                           submitEDayButton.addActionListener(
+                                                                              new ActionListener(){  
+                                                                                 public void actionPerformed(ActionEvent e){  
+                                                                                    Integer endDay = (Integer) endDayBox.getSelectedItem();
+                                                                                    final JLabel endDayEntry = new JLabel(Integer.toString(endDay));
+                                                                                    endDayEntry.setBounds(100,225,70,20);
+                                                                                    window.add(endDayEntry);
+                                                                                    window.remove(endDayBox);  
+                                                                                    submitEDayButton.setVisible(false);
+                                                                                 
+                                                                                 
+                                                                                    window.repaint();  
+                                                                                 
+                                                                                 
+                                                                                    JComboBox<Integer>  endHourBox = new JComboBox<>(hourTime);
+                                                                                    endHourBox.setBounds(100,250, 50,20); 
+                                                                                    endHourBox.setVisible(true);
+                                                                                    window.add(endHourBox);
+                                                                                 
+                                                                                    final JLabel endHourLabel = new JLabel("End Hour:");
+                                                                                    endHourLabel.setBounds(20,250,70,20);
+                                                                                    endHourLabel.setVisible(true);
+                                                                                    window.add(endHourLabel);
+                                                                                 
+                                                                                 
+                                                                                 
+                                                                                 
+                                                                                    JButton submitHourButton=new JButton("Submit Hour:");  
+                                                                                    submitHourButton.setBounds(200,250,150,30);  
+                                                                                    submitHourButton.addActionListener(
+                                                                                       new ActionListener(){  
+                                                                                          public void actionPerformed(ActionEvent e){  
+                                                                                             Integer endHour = (Integer) endHourBox.getSelectedItem();
+                                                                                             final JLabel endHourEntry = new JLabel(Integer.toString(endHour));
+                                                                                             endHourEntry.setBounds(100,250,70,20);
+                                                                                             window.add(endHourEntry);
+                                                                                             window.remove(endHourBox);  
+                                                                                             submitHourButton.setVisible(false);
+                                                                                          
+                                                                                          
+                                                                                             JComboBox<Integer>  endMinBox = new JComboBox<>(minuteTime);
+                                                                                             endMinBox.setBounds(100,275, 50,20); 
+                                                                                             endMinBox.setVisible(true);
+                                                                                             window.add(endMinBox);
+                                                                                          
+                                                                                             final JLabel endMinuteLabel = new JLabel("End Minute:");
+                                                                                             endMinuteLabel.setBounds(20,275,70,20);
+                                                                                             endMinuteLabel.setVisible(true);
+                                                                                             window.add(endMinuteLabel);
+                                                                                          
+                                                                                          
+                                                                                          
+                                                                                          
+                                                                                             JButton submitMinButton=new JButton("Submit Minute:");  
+                                                                                             submitMinButton.setBounds(200,275,150,30);  
+                                                                                             submitMinButton.addActionListener(
+                                                                                                new ActionListener(){  
+                                                                                                   public void actionPerformed(ActionEvent e){  
+                                                                                                      Integer endMinute = (Integer) endMinBox.getSelectedItem();
+                                                                                                      final JLabel endMinEntry = new JLabel(Integer.toString(endMinute));
+                                                                                                      endMinEntry.setBounds(100,275,70,20);
+                                                                                                      window.add(endMinEntry);
+                                                                                                      window.remove(endMinBox);  
+                                                                                                      submitMinButton.setVisible(false);
+                                                                                                   
+                                                                                                   
+                                                                                                      Leave[] leaveType = {Leave.maternity, Leave.paternity, Leave.pto, Leave.sick_leave };
+                                                                                                   
+                                                                                                      JComboBox<Leave> leaveTypeBox = new JComboBox<>(leaveType);
+                                                                                                      leaveTypeBox.setBounds(100,300, 100,20); 
+                                                                                                      leaveTypeBox.setVisible(true);
+                                                                                                      window.add(leaveTypeBox);
+                                                                                                   
+                                                                                                      final JLabel leaveTypeLabel = new JLabel("Leave Type:");
+                                                                                                      leaveTypeLabel.setBounds(20,300,70,20);
+                                                                                                      leaveTypeLabel.setVisible(true);
+                                                                                                      window.add(leaveTypeLabel);
+                                                                                                   
+                                                                                                   
+                                                                                                   
+                                                                                                   
+                                                                                                      JButton leaveTypeButton=new JButton("Submit Request");  
+                                                                                                      leaveTypeButton.setBounds(200,300,150,30);  
+                                                                                                      leaveTypeButton.addActionListener(
+                                                                                                         new ActionListener(){  
+                                                                                                            public void actionPerformed(ActionEvent e){  
+                                                                                                               Leave leaveTypeEntry =  (Leave) leaveTypeBox.getSelectedItem();
+                                                                                                               window.add(endDayEntry);
+                                                                                                            
+                                                                                                               leaveTypeButton.setVisible(true);
+                                                                                                               window.repaint();  
+                                                                                                            }  
+                                                                                                         }
+                                                                                                         ); 
+                                                                                                      window.add(leaveTypeButton);
+                                                                                                      window.repaint(); 
+                                                                                                   
+                                                                                                   }  
+                                                                                                }
+                                                                                                ); 
+                                                                                             window.add(submitMinButton);
+                                                                                             submitMinButton.setVisible(true);
+                                                                                             endMinBox.setVisible(true);
+                                                                                             window.repaint();  
+                                                                                          
+                                                                                          }  
+                                                                                       }
+                                                                                       ); 
+                                                                                    window.add(submitHourButton);
+                                                                                    submitHourButton.setVisible(true);
+                                                                                    endHourBox.setVisible(true);
+                                                                                    window.repaint();   
+                                                                                 
+                                                                                 
+                                                                                 }  
+                                                                              }
+                                                                              ); 
+                                                                           window.add(submitEDayButton);
+                                                                           submitEDayButton.setVisible(false);
+                                                                        
+                                                                        
+                                                                        
+                                                                           submitEDayButton.setVisible(true);
+                                                                        
+                                                                        
+                                                                           endDayBox.setVisible(true);
+                                                                           window.repaint();  
+                                                                        
+                                                                        
+                                                                         
+                                                                        
+                                                                        }
+                                                                        else 
+                                                                        {
+                                                                           JComboBox<Integer>  endDayBox = new JComboBox<>(dayFebDate);
+                                                                           endDayBox.setBounds(100,225, 50,20); 
+                                                                           endDayBox.setVisible(true);
+                                                                           window.add(endDayBox);
+                                                                        
+                                                                           final JLabel endDayLabel = new JLabel("End Day:");
+                                                                           endDayLabel.setBounds(20,225,70,20);
+                                                                           endDayLabel.setVisible(true);
+                                                                           window.add(endDayLabel);
+                                                                        
+                                                                        
+                                                                        
+                                                                        
+                                                                           JButton submitEDayButton=new JButton("Submit Day");  
+                                                                           submitEDayButton.setBounds(200,225,150,30);  
+                                                                           submitEDayButton.addActionListener(
+                                                                              new ActionListener(){  
+                                                                                 public void actionPerformed(ActionEvent e){  
+                                                                                    Integer endDay = (Integer) endDayBox.getSelectedItem();
+                                                                                    final JLabel endDayEntry = new JLabel(Integer.toString(endDay));
+                                                                                    endDayEntry.setBounds(100,225,70,20);
+                                                                                    window.add(endDayEntry);
+                                                                                    window.remove(endDayBox);  
+                                                                                    submitEDayButton.setVisible(false);
+                                                                                 
+                                                                                 
+                                                                                    window.repaint();  
+                                                                                 
+                                                                                 
+                                                                                    JComboBox<Integer>  endHourBox = new JComboBox<>(hourTime);
+                                                                                    endHourBox.setBounds(100,250, 50,20); 
+                                                                                    endHourBox.setVisible(true);
+                                                                                    window.add(endHourBox);
+                                                                                 
+                                                                                    final JLabel endHourLabel = new JLabel("End Hour:");
+                                                                                    endHourLabel.setBounds(20,250,70,20);
+                                                                                    endHourLabel.setVisible(true);
+                                                                                    window.add(endHourLabel);
+                                                                                 
+                                                                                 
+                                                                                 
+                                                                                 
+                                                                                    JButton submitHourButton=new JButton("Submit Hour:");  
+                                                                                    submitHourButton.setBounds(200,250,150,30);  
+                                                                                    submitHourButton.addActionListener(
+                                                                                       new ActionListener(){  
+                                                                                          public void actionPerformed(ActionEvent e){  
+                                                                                             Integer endHour = (Integer) endHourBox.getSelectedItem();
+                                                                                             final JLabel endHourEntry = new JLabel(Integer.toString(endHour));
+                                                                                             endHourEntry.setBounds(100,250,70,20);
+                                                                                             window.add(endHourEntry);
+                                                                                             window.remove(endHourBox);  
+                                                                                             submitHourButton.setVisible(false);
+                                                                                          
+                                                                                          
+                                                                                             JComboBox<Integer>  endMinBox = new JComboBox<>(minuteTime);
+                                                                                             endMinBox.setBounds(100,275, 50,20); 
+                                                                                             endMinBox.setVisible(true);
+                                                                                             window.add(endMinBox);
+                                                                                          
+                                                                                             final JLabel endMinuteLabel = new JLabel("End Minute:");
+                                                                                             endMinuteLabel.setBounds(20,275,70,20);
+                                                                                             endMinuteLabel.setVisible(true);
+                                                                                             window.add(endMinuteLabel);
+                                                                                          
+                                                                                          
+                                                                                          
+                                                                                          
+                                                                                             JButton submitMinButton=new JButton("Submit Minute:");  
+                                                                                             submitMinButton.setBounds(200,275,150,30);  
+                                                                                             submitMinButton.addActionListener(
+                                                                                                new ActionListener(){  
+                                                                                                   public void actionPerformed(ActionEvent e){  
+                                                                                                      Integer endMinute = (Integer) endMinBox.getSelectedItem();
+                                                                                                      final JLabel endMinEntry = new JLabel(Integer.toString(endMinute));
+                                                                                                      endMinEntry.setBounds(100,275,70,20);
+                                                                                                      window.add(endMinEntry);
+                                                                                                      window.remove(endMinBox);  
+                                                                                                      submitMinButton.setVisible(false);
+                                                                                                   
+                                                                                                   
+                                                                                                      Leave[] leaveType = {Leave.maternity, Leave.paternity, Leave.pto, Leave.sick_leave };
+                                                                                                   
+                                                                                                      JComboBox<Leave> leaveTypeBox = new JComboBox<>(leaveType);
+                                                                                                      leaveTypeBox.setBounds(100,300, 100,20); 
+                                                                                                      leaveTypeBox.setVisible(true);
+                                                                                                      window.add(leaveTypeBox);
+                                                                                                   
+                                                                                                      final JLabel leaveTypeLabel = new JLabel("Leave Type:");
+                                                                                                      leaveTypeLabel.setBounds(20,300,70,20);
+                                                                                                      leaveTypeLabel.setVisible(true);
+                                                                                                      window.add(leaveTypeLabel);
+                                                                                                   
+                                                                                                   
+                                                                                                   
+                                                                                                   
+                                                                                                      JButton leaveTypeButton=new JButton("Submit Request");  
+                                                                                                      leaveTypeButton.setBounds(200,300,150,30);  
+                                                                                                      leaveTypeButton.addActionListener(
+                                                                                                         new ActionListener(){  
+                                                                                                            public void actionPerformed(ActionEvent e){  
+                                                                                                               Leave leaveTypeEntry =  (Leave) leaveTypeBox.getSelectedItem();
+                                                                                                               window.add(endDayEntry);
+                                                                                                            
+                                                                                                               leaveTypeButton.setVisible(true);
+                                                                                                               window.repaint();  
+                                                                                                            }  
+                                                                                                         }
+                                                                                                         ); 
+                                                                                                      window.add(leaveTypeButton);
+                                                                                                      window.repaint(); 
+                                                                                                   
+                                                                                                   }  
+                                                                                                }
+                                                                                                ); 
+                                                                                             window.add(submitMinButton);
+                                                                                             submitMinButton.setVisible(true);
+                                                                                             endMinBox.setVisible(true);
+                                                                                             window.repaint();  
+                                                                                          
+                                                                                          }  
+                                                                                       }
+                                                                                       ); 
+                                                                                    window.add(submitHourButton);
+                                                                                    submitHourButton.setVisible(true);
+                                                                                    endHourBox.setVisible(true);
+                                                                                    window.repaint();   
+                                                                                 
+                                                                                 
+                                                                                 }  
+                                                                              }
+                                                                              ); 
+                                                                           window.add(submitEDayButton);
+                                                                           submitEDayButton.setVisible(false);
+                                                                        
+                                                                        
+                                                                        
+                                                                           submitEDayButton.setVisible(true);
+                                                                        
+                                                                        
+                                                                           endDayBox.setVisible(true);
+                                                                           window.repaint();  
+                                                                        
+                                                                        
+                                                                        }
+                                                                     
+                                                                     
+                                                                     }  
+                                                                  }
+                                                                  ); 
+                                                               window.add(submitEMonthButton);
+                                                               submitEMonthButton.setVisible(true);
+                                                               window.repaint(); 
+                                                            
+                                                            
+                                                            }  
+                                                         }
+                                                         ); 
+                                                      window.add(submitEYearButton);
+                                                      submitEYearButton.setVisible(true);
+                                                      window.repaint();  
                                                    
                                                    }  
                                                 }
                                                 ); 
-                                             window.add(submitEMonthButton);
-                                             submitEMonthButton.setVisible(true);
-                                             window.repaint(); 
+                                          
+                                          
+                                             window.add(submitMinButton);
+                                             submitMinButton.setVisible(false);
+                                             submitMinButton.setVisible(true);
+                                             startMinBox.setVisible(true);
+                                             window.repaint();  
                                           
                                           
                                           }  
                                        }
                                        ); 
-                                    window.add(submitEYearButton);
-                                    submitEYearButton.setVisible(true);
+                                       
+                                      
+                                    window.add(submitHourButton);
+                                    submitHourButton.setVisible(false);
+                                    submitHourButton.setVisible(true);
+                                    startHourBox.setVisible(true);
                                     window.repaint();  
-                                 
                                  
                                  
                                  
@@ -1248,413 +1894,753 @@ public class SystemInterface {
                                     window.add(startDayEntry);
                                     window.remove(startDayBox);  
                                     submitDayButton.setVisible(false);
-                                 //submitYearButton.setVisible(true);
-                                 //endYearBox.setVisible(true);
-                                 //endYearLabel.setVisible(true);
-                                    //window.repaint();  
+                                 
+                                 
+                                    
+                                    window.repaint();  
                                  
                                  
                                  
                                  
-                                 //BREAKPOINT start time
                                  
                                  
-                                    final JLabel endYearLabel = new JLabel("End Year:");
-                                    endYearLabel.setBounds(20,125,70,20);
-                                    //endYearLabel.setVisible(false);
-                                    window.add(endYearLabel);
+                                    JComboBox<Integer>  startHourBox = new JComboBox<>(hourTime);
+                                    startHourBox.setBounds(100,125, 50,20); 
+                                    startHourBox.setVisible(true);
+                                    window.add(startHourBox);
                                  
-                                    JComboBox<Integer> endYearBox= new JComboBox<>(yearDate);  
-                                    endYearBox.setBounds(100,125, 80,20);
-                                    //endYearBox.setVisible(false);
+                                    final JLabel startHourLabel = new JLabel("Start Hour:");
+                                    startHourLabel.setBounds(20,125,70,20);
+                                    startHourLabel.setVisible(true);
+                                    window.add(startHourLabel);
                                  
-                                    window.add(endYearBox);
-                                    JButton submitEYearButton=new JButton("Submit Year");  
-                                    submitEYearButton.setBounds(200,125,150,30);  
-                                    submitEYearButton.addActionListener(
+                                 
+                                 
+                                 
+                                    JButton submitHourButton=new JButton("Submit Hour:");  
+                                    submitHourButton.setBounds(200,125,150,30);  
+                                    submitHourButton.addActionListener(
                                        new ActionListener(){  
                                           public void actionPerformed(ActionEvent e){  
-                                             Integer endYear = (Integer) endYearBox.getSelectedItem();
+                                             Integer startHour = (Integer) startHourBox.getSelectedItem();
+                                             final JLabel startHourEntry = new JLabel(Integer.toString(startHour));
+                                             startHourEntry.setBounds(100,125,70,20);
+                                             window.add(startHourEntry);
+                                             window.remove(startHourBox);  
+                                             submitHourButton.setVisible(false);
+                                                                                
+                                                                                
+                                             JComboBox<Integer>  startMinBox = new JComboBox<>(minuteTime);
+                                             startMinBox.setBounds(100,150, 50,20); 
+                                             startMinBox.setVisible(true);
+                                             window.add(startMinBox);
+                                          
+                                             final JLabel startMinuteLabel = new JLabel("Start Minute:");
+                                             startMinuteLabel.setBounds(20,150,70,20);
+                                             startMinuteLabel.setVisible(true);
+                                             window.add(startMinuteLabel);
                                           
                                           
-                                             final JLabel endYearEntry = new JLabel(Integer.toString(endYear));
-                                             endYearEntry.setBounds(100,125,80,20);
-                                             window.add(endYearEntry);
-                                             window.remove(endYearBox);  
-                                             submitEYearButton.setVisible(false);
-                                             //submitEMonthButton.setVisible(true);
-                                             //endMonthBox.setVisible(true);
-                                             //endMonthLabel.setVisible(true);
-                                            
                                           
                                           
-                                             final JLabel endMonthLabel = new JLabel("End Month:");
-                                             endMonthLabel.setBounds(20,150,70,20);
-                                             endMonthLabel.setVisible(true);
-                                             window.add(endMonthLabel);
-                                          
-                                             JComboBox<Integer> endMonthBox= new JComboBox<>(monthDate);  
-                                             endMonthBox.setBounds(100,150, 50,20); 
-                                             endMonthBox.setVisible(true);
-                                             window.add(endMonthBox);
-                                          
-                                             JButton submitEMonthButton=new JButton("Submit Month");  
-                                             submitEMonthButton.setBounds(200,150,150,30);  
-                                             submitEMonthButton.addActionListener(
+                                             JButton submitMinButton=new JButton("Submit Minute:");  
+                                             submitMinButton.setBounds(200,150,150,30);  
+                                             submitMinButton.addActionListener(
                                                 new ActionListener(){  
                                                    public void actionPerformed(ActionEvent e){  
-                                                      Integer endMonth = (Integer) endMonthBox.getSelectedItem();
+                                                      Integer startMinute = (Integer) startMinBox.getSelectedItem();
+                                                      final JLabel startMinEntry = new JLabel(Integer.toString(startMinute));
+                                                      startMinEntry.setBounds(100,150,70,20);
+                                                      window.add(startMinEntry);
+                                                      window.remove(startMinBox);  
+                                                      submitMinButton.setVisible(false);
                                                    
-                                                      final JLabel endMonthEntry = new JLabel(Integer.toString(endMonth));
-                                                      endMonthEntry.setBounds(100,150,70,20);
-                                                      window.add(endMonthEntry);
-                                                      window.remove(endMonthBox);  
-                                                      submitEMonthButton.setVisible(false);
+                                                   //BREAKPOINT END START TIME
+                                                      final JLabel endYearLabel = new JLabel("End Year:");
+                                                      endYearLabel.setBounds(20,175,70,20);
                                                    
-                                                      if (endMonth == 1 ||endMonth == 3 ||endMonth == 5 ||endMonth == 7 ||endMonth == 8 ||endMonth == 10 ||endMonth == 12 )
-                                                      {
-                                                         JComboBox<Integer> endDayBox = new JComboBox<>(dayLongDate);  
-                                                         endDayBox.setBounds(100,175, 50,20); 
-                                                         endDayBox.setVisible(true);
-                                                         window.add(endDayBox);
-                                                      
-                                                         final JLabel endDayLabel = new JLabel("End Day:");
-                                                         endDayLabel.setBounds(20,175,70,20);
-                                                         endDayLabel.setVisible(true);
-                                                         window.add(endDayLabel);
-                                                      
-                                                      
-                                                      
-                                                      
-                                                         JButton submitEDayButton=new JButton("Submit Day");  
-                                                         submitEDayButton.setBounds(200,175,150,30);  
-                                                         submitEDayButton.addActionListener(
-                                                            new ActionListener(){  
-                                                               public void actionPerformed(ActionEvent e){  
-                                                                  Integer endDay = (Integer) endDayBox.getSelectedItem();
-                                                                  final JLabel endDayEntry = new JLabel(Integer.toString(endDay));
-                                                                  endDayEntry.setBounds(100,175,70,20);
-                                                                  window.add(endDayEntry);
-                                                                  window.remove(endDayBox);  
-                                                                  submitEDayButton.setVisible(false);
-                                                               //submitEYearButton.setVisible(true);
-                                                               //startEYearBox.setVisible(true);
-                                                               //startEYearLabel.setVisible(true);
-                                                                  window.repaint();  
-                                                               
-                                                               
-                                                               
-                                                                  Leave[] leaveType = {Leave.maternity, Leave.paternity, Leave.pto, Leave.sick_leave, Leave.emergency};
-                                                               
-                                                                  JComboBox<Leave> leaveTypeBox = new JComboBox<>(leaveType);
-                                                                  leaveTypeBox.setBounds(100,200, 100,20); 
-                                                                  leaveTypeBox.setVisible(true);
-                                                                  window.add(leaveTypeBox);
-                                                               
-                                                                  final JLabel leaveTypeLabel = new JLabel("Leave Type:");
-                                                                  leaveTypeLabel.setBounds(20,200,70,20);
-                                                                  leaveTypeLabel.setVisible(true);
-                                                                  window.add(leaveTypeLabel);
-                                                               
-                                                               
-                                                               
-                                                               
-                                                                  JButton leaveTypeButton=new JButton("Submit Request");  
-                                                                  leaveTypeButton.setBounds(200,200,150,30);  
-                                                                  leaveTypeButton.addActionListener(
-                                                                     new ActionListener(){  
-                                                                        public void actionPerformed(ActionEvent e){  
-                                                                           Leave leaveTypeEntry =  (Leave) leaveTypeBox.getSelectedItem();
-                                                                           window.add(endDayEntry);
-                                                                            
-                                                                           leaveTypeButton.setVisible(true);
-                                                                           window.repaint();  
-                                                                        }  
-                                                                     }
-                                                                     ); 
-                                                                  window.add(leaveTypeButton);
-                                                               
-                                                               
-                                                               
-                                                               
-                                                               
-                                                               }  
-                                                            }
-                                                            ); 
-                                                         window.add(submitEDayButton);
-                                                         submitEDayButton.setVisible(false);
-                                                      
-                                                      
-                                                      
-                                                         submitEDayButton.setVisible(true);
-                                                      
-                                                      
-                                                         endDayBox.setVisible(true);
-                                                         window.repaint();  
-                                                      
-                                                      
-                                                      
-                                                      
-                                                      
-                                                      }
-                                                      else if (endMonth == 4 ||endMonth == 6 ||endMonth == 9 ||endMonth == 11)
-                                                      {
-                                                         JComboBox<Integer> endDayBox = new JComboBox<>(dayShortDate);
-                                                         endDayBox.setBounds(100,175, 50,20); 
-                                                         endDayBox.setVisible(true);
-                                                         window.add(endDayBox);
-                                                      
-                                                         final JLabel endDayLabel = new JLabel("End Day:");
-                                                         endDayLabel.setBounds(20,175,70,20);
-                                                         endDayLabel.setVisible(true);
-                                                         window.add(endDayLabel);
-                                                      
-                                                      
-                                                      
-                                                      
-                                                         JButton submitEDayButton=new JButton("Submit Day");  
-                                                         submitEDayButton.setBounds(200,175,150,30);  
-                                                         submitEDayButton.addActionListener(
-                                                            new ActionListener(){  
-                                                               public void actionPerformed(ActionEvent e){  
-                                                                  Integer endDay = (Integer) endDayBox.getSelectedItem();
-                                                                  final JLabel endDayEntry = new JLabel(Integer.toString(endDay));
-                                                                  endDayEntry.setBounds(100,175,70,20);
-                                                                  window.add(endDayEntry);
-                                                                  window.remove(endDayBox);  
-                                                                  submitEDayButton.setVisible(false);
-                                                               //submitEYearButton.setVisible(true);
-                                                               //startEYearBox.setVisible(true);
-                                                               //startEYearLabel.setVisible(true);
-                                                                  window.repaint();  
-                                                               
-                                                               
-                                                               
-                                                                  Leave[] leaveType = {Leave.maternity, Leave.paternity, Leave.pto, Leave.sick_leave, Leave.emergency};
-                                                               
-                                                                  JComboBox<Leave> leaveTypeBox = new JComboBox<>(leaveType);
-                                                                  leaveTypeBox.setBounds(100,200, 100,20); 
-                                                                  leaveTypeBox.setVisible(true);
-                                                                  window.add(leaveTypeBox);
-                                                               
-                                                                  final JLabel leaveTypeLabel = new JLabel("Leave Type:");
-                                                                  leaveTypeLabel.setBounds(20,200,70,20);
-                                                                  leaveTypeLabel.setVisible(true);
-                                                                  window.add(leaveTypeLabel);
-                                                               
-                                                               
-                                                               
-                                                               
-                                                                  JButton leaveTypeButton=new JButton("Submit Request");  
-                                                                  leaveTypeButton.setBounds(200,200,150,30);  
-                                                                  leaveTypeButton.addActionListener(
-                                                                     new ActionListener(){  
-                                                                        public void actionPerformed(ActionEvent e){  
-                                                                           Leave leaveTypeEntry =  (Leave) leaveTypeBox.getSelectedItem();
-                                                                           window.add(endDayEntry);
-                                                                            
-                                                                           leaveTypeButton.setVisible(true);
-                                                                           window.repaint();  
-                                                                        }  
-                                                                     }
-                                                                     ); 
-                                                                  window.add(leaveTypeButton);
-                                                               
-                                                               
-                                                               
-                                                               
-                                                               
-                                                               }  
-                                                            }
-                                                            ); 
-                                                         window.add(submitEDayButton);
-                                                         submitEDayButton.setVisible(false);
-                                                      
-                                                      
-                                                      
-                                                         submitEDayButton.setVisible(true);
-                                                      
-                                                      
-                                                         endDayBox.setVisible(true);
-                                                         window.repaint();  
-                                                      
-                                                      
-                                                      }
-                                                      else if (endMonth == 2 && endYear == 2020)
-                                                      {
-                                                         JComboBox<Integer> endDayBox = new JComboBox<>(dayLeapDate);
-                                                         endDayBox.setBounds(100,175, 50,20); 
-                                                         endDayBox.setVisible(true);
-                                                         window.add(endDayBox);
-                                                      
-                                                         final JLabel endDayLabel = new JLabel("End Day:");
-                                                         endDayLabel.setBounds(20,175,70,20);
-                                                         endDayLabel.setVisible(true);
-                                                         window.add(endDayLabel);
-                                                      
-                                                      
-                                                      
-                                                      
-                                                         JButton submitEDayButton=new JButton("Submit Day");  
-                                                         submitEDayButton.setBounds(200,175,150,30);  
-                                                         submitEDayButton.addActionListener(
-                                                            new ActionListener(){  
-                                                               public void actionPerformed(ActionEvent e){  
-                                                                  Integer endDay = (Integer) endDayBox.getSelectedItem();
-                                                                  final JLabel endDayEntry = new JLabel(Integer.toString(endDay));
-                                                                  endDayEntry.setBounds(100,175,70,20);
-                                                                  window.add(endDayEntry);
-                                                                  window.remove(endDayBox);  
-                                                                  submitEDayButton.setVisible(false);
-                                                                  window.repaint();  
-                                                                  
-                                                                  
-                                                                  Leave[] leaveType = {Leave.maternity, Leave.paternity, Leave.pto, Leave.sick_leave, Leave.emergency};
-                                                               
-                                                                  JComboBox<Leave> leaveTypeBox = new JComboBox<>(leaveType);
-                                                                  leaveTypeBox.setBounds(100,200, 100,20); 
-                                                                  leaveTypeBox.setVisible(true);
-                                                                  window.add(leaveTypeBox);
-                                                               
-                                                                  final JLabel leaveTypeLabel = new JLabel("Leave Type:");
-                                                                  leaveTypeLabel.setBounds(20,200,70,20);
-                                                                  leaveTypeLabel.setVisible(true);
-                                                                  window.add(leaveTypeLabel);
-                                                               
-                                                               
-                                                               
-                                                               
-                                                                  JButton leaveTypeButton=new JButton("Submit Request");  
-                                                                  leaveTypeButton.setBounds(200,200,150,30);  
-                                                                  leaveTypeButton.addActionListener(
-                                                                     new ActionListener(){  
-                                                                        public void actionPerformed(ActionEvent e){  
-                                                                           Leave leaveTypeEntry =  (Leave) leaveTypeBox.getSelectedItem();
-                                                                           window.add(endDayEntry);
-                                                                            
-                                                                           leaveTypeButton.setVisible(true);
-                                                                           window.repaint();  
-                                                                        }  
-                                                                     }
-                                                                     ); 
-                                                                  window.add(leaveTypeButton);
-                                                               
-                                                               
-                                                               
-                                                               }  
-                                                            }
-                                                            ); 
-                                                         window.add(submitEDayButton);
-                                                         submitEDayButton.setVisible(false);
-                                                      
-                                                      
-                                                      
-                                                         submitEDayButton.setVisible(true);
-                                                      
-                                                      
-                                                         endDayBox.setVisible(true);
-                                                         window.repaint();  
-                                                      
-                                                      }
-                                                      else 
-                                                      {
-                                                         JComboBox<Integer>  endDayBox = new JComboBox<>(dayFebDate);
-                                                         endDayBox.setBounds(100,175, 50,20); 
-                                                         endDayBox.setVisible(true);
-                                                         window.add(endDayBox);
-                                                      
-                                                         final JLabel endDayLabel = new JLabel("End Day:");
-                                                         endDayLabel.setBounds(20,175,70,20);
-                                                         endDayLabel.setVisible(true);
-                                                         window.add(endDayLabel);
-                                                      
-                                                      
-                                                      
-                                                      
-                                                         JButton submitEDayButton=new JButton("Submit Day");  
-                                                         submitEDayButton.setBounds(200,175,150,30);  
-                                                         submitEDayButton.addActionListener(
-                                                            new ActionListener(){  
-                                                               public void actionPerformed(ActionEvent e){  
-                                                                  Integer endDay = (Integer) endDayBox.getSelectedItem();
-                                                                  final JLabel endDayEntry = new JLabel(Integer.toString(endDay));
-                                                                  endDayEntry.setBounds(100,175,70,20);
-                                                                  window.add(endDayEntry);
-                                                                  window.remove(endDayBox);  
-                                                                  submitEDayButton.setVisible(false);
-                                                               //submitEYearButton.setVisible(true);
-                                                               //startEYearBox.setVisible(true);
-                                                               //startEYearLabel.setVisible(true);
-                                                                  window.repaint();  
-                                                               
-                                                               
-                                                               
-                                                               
-                                                                  Leave[] leaveType = {Leave.maternity, Leave.paternity, Leave.pto, Leave.sick_leave, Leave.emergency};
-                                                               
-                                                                  JComboBox<Leave> leaveTypeBox = new JComboBox<>(leaveType);
-                                                                  leaveTypeBox.setBounds(100,200, 100,20); 
-                                                                  leaveTypeBox.setVisible(true);
-                                                                  window.add(leaveTypeBox);
-                                                               
-                                                                  final JLabel leaveTypeLabel = new JLabel("Leave Type:");
-                                                                  leaveTypeLabel.setBounds(20,200,70,20);
-                                                                  leaveTypeLabel.setVisible(true);
-                                                                  window.add(leaveTypeLabel);
-                                                               
-                                                               
-                                                               
-                                                               
-                                                                  JButton leaveTypeButton=new JButton("Submit Request");  
-                                                                  leaveTypeButton.setBounds(200,200,150,30);  
-                                                                  leaveTypeButton.addActionListener(
-                                                                     new ActionListener(){  
-                                                                        public void actionPerformed(ActionEvent e){  
-                                                                           Leave leaveTypeEntry =  (Leave) leaveTypeBox.getSelectedItem();
-                                                                           window.add(endDayEntry);
-                                                                            
-                                                                           leaveTypeButton.setVisible(true);
-                                                                           window.repaint();  
-                                                                        }  
-                                                                     }
-                                                                     ); 
-                                                                  window.add(leaveTypeButton);
-                                                               
-                                                               
-                                                               
-                                                               
-                                                               }  
-                                                            }
-                                                            ); 
-                                                         window.add(submitEDayButton);
-                                                         submitEDayButton.setVisible(false);
-                                                      
-                                                      
-                                                      
-                                                         submitEDayButton.setVisible(true);
-                                                      
-                                                      
-                                                         endDayBox.setVisible(true);
-                                                         window.repaint();  
-                                                      
-                                                      
-                                                      
-                                                      }
                                                    
+                                                      window.add(endYearLabel);
+                                                   
+                                                      JComboBox<Integer> endYearBox= new JComboBox<>(yearDate);  
+                                                      endYearBox.setBounds(100,175, 80,20);
+                                                   
+                                                   
+                                                   
+                                                      window.add(endYearBox);
+                                                      JButton submitEYearButton=new JButton("Submit Year");  
+                                                      submitEYearButton.setBounds(200,175,150,30);  
+                                                      submitEYearButton.addActionListener(
+                                                         new ActionListener(){  
+                                                            public void actionPerformed(ActionEvent e){  
+                                                               Integer endYear = (Integer) endYearBox.getSelectedItem();
+                                                            
+                                                            
+                                                               final JLabel endYearEntry = new JLabel(Integer.toString(endYear));
+                                                               endYearEntry.setBounds(100,175,80,20);
+                                                               window.add(endYearEntry);
+                                                               window.remove(endYearBox);  
+                                                               submitEYearButton.setVisible(false);
+                                                            
+                                                            
+                                                            
+                                                            
+                                                            
+                                                               final JLabel endMonthLabel = new JLabel("End Month:");
+                                                               endMonthLabel.setBounds(20,200,70,20);
+                                                               endMonthLabel.setVisible(true);
+                                                               window.add(endMonthLabel);
+                                                            
+                                                               JComboBox<Integer> endMonthBox= new JComboBox<>(monthDate);  
+                                                               endMonthBox.setBounds(100,200, 50,20); 
+                                                               endMonthBox.setVisible(true);
+                                                               window.add(endMonthBox);
+                                                            
+                                                               JButton submitEMonthButton=new JButton("Submit Month");  
+                                                               submitEMonthButton.setBounds(200,200,150,30);  
+                                                               submitEMonthButton.addActionListener(
+                                                                  new ActionListener(){  
+                                                                     public void actionPerformed(ActionEvent e){  
+                                                                        Integer endMonth = (Integer) endMonthBox.getSelectedItem();
+                                                                     
+                                                                        final JLabel endMonthEntry = new JLabel(Integer.toString(endMonth));
+                                                                        endMonthEntry.setBounds(100,200,70,20);
+                                                                        window.add(endMonthEntry);
+                                                                        window.remove(endMonthBox);  
+                                                                        submitEMonthButton.setVisible(false);
+                                                                     
+                                                                        if (endMonth == 1 ||endMonth == 3 ||endMonth == 5 ||endMonth == 7 ||endMonth == 8 ||endMonth == 10 ||endMonth == 12 )
+                                                                        {
+                                                                           JComboBox<Integer> endDayBox = new JComboBox<>(dayLongDate);  
+                                                                           endDayBox.setBounds(100,225, 50,20); 
+                                                                           endDayBox.setVisible(true);
+                                                                           window.add(endDayBox);
+                                                                        
+                                                                           final JLabel endDayLabel = new JLabel("End Day:");
+                                                                           endDayLabel.setBounds(20,225,70,20);
+                                                                           endDayLabel.setVisible(true);
+                                                                           window.add(endDayLabel);
+                                                                        
+                                                                        
+                                                                        
+                                                                        
+                                                                           JButton submitEDayButton=new JButton("Submit Day");  
+                                                                           submitEDayButton.setBounds(200,225,150,30);  
+                                                                           submitEDayButton.addActionListener(
+                                                                              new ActionListener(){  
+                                                                                 public void actionPerformed(ActionEvent e){  
+                                                                                    Integer endDay = (Integer) endDayBox.getSelectedItem();
+                                                                                    final JLabel endDayEntry = new JLabel(Integer.toString(endDay));
+                                                                                    endDayEntry.setBounds(100,225,70,20);
+                                                                                    window.add(endDayEntry);
+                                                                                    window.remove(endDayBox);  
+                                                                                    submitEDayButton.setVisible(false);
+                                                                                 
+                                                                                 
+                                                                                    window.repaint();  
+                                                                                 
+                                                                                 
+                                                                                    JComboBox<Integer>  endHourBox = new JComboBox<>(hourTime);
+                                                                                    endHourBox.setBounds(100,250, 50,20); 
+                                                                                    endHourBox.setVisible(true);
+                                                                                    window.add(endHourBox);
+                                                                                 
+                                                                                    final JLabel endHourLabel = new JLabel("End Hour:");
+                                                                                    endHourLabel.setBounds(20,250,70,20);
+                                                                                    endHourLabel.setVisible(true);
+                                                                                    window.add(endHourLabel);
+                                                                                 
+                                                                                 
+                                                                                 
+                                                                                 
+                                                                                    JButton submitHourButton=new JButton("Submit Hour:");  
+                                                                                    submitHourButton.setBounds(200,250,150,30);  
+                                                                                    submitHourButton.addActionListener(
+                                                                                       new ActionListener(){  
+                                                                                          public void actionPerformed(ActionEvent e){  
+                                                                                             Integer endHour = (Integer) endHourBox.getSelectedItem();
+                                                                                             final JLabel endHourEntry = new JLabel(Integer.toString(endHour));
+                                                                                             endHourEntry.setBounds(100,250,70,20);
+                                                                                             window.add(endHourEntry);
+                                                                                             window.remove(endHourBox);  
+                                                                                             submitHourButton.setVisible(false);
+                                                                                          
+                                                                                          
+                                                                                             JComboBox<Integer>  endMinBox = new JComboBox<>(minuteTime);
+                                                                                             endMinBox.setBounds(100,275, 50,20); 
+                                                                                             endMinBox.setVisible(true);
+                                                                                             window.add(endMinBox);
+                                                                                          
+                                                                                             final JLabel endMinuteLabel = new JLabel("End Minute:");
+                                                                                             endMinuteLabel.setBounds(20,275,70,20);
+                                                                                             endMinuteLabel.setVisible(true);
+                                                                                             window.add(endMinuteLabel);
+                                                                                          
+                                                                                          
+                                                                                          
+                                                                                          
+                                                                                             JButton submitMinButton=new JButton("Submit Minute:");  
+                                                                                             submitMinButton.setBounds(200,275,150,30);  
+                                                                                             submitMinButton.addActionListener(
+                                                                                                new ActionListener(){  
+                                                                                                   public void actionPerformed(ActionEvent e){  
+                                                                                                      Integer endMinute = (Integer) endMinBox.getSelectedItem();
+                                                                                                      final JLabel endMinEntry = new JLabel(Integer.toString(endMinute));
+                                                                                                      endMinEntry.setBounds(100,275,70,20);
+                                                                                                      window.add(endMinEntry);
+                                                                                                      window.remove(endMinBox);  
+                                                                                                      submitMinButton.setVisible(false);
+                                                                                                   
+                                                                                                   
+                                                                                                      Leave[] leaveType = {Leave.maternity, Leave.paternity, Leave.pto, Leave.sick_leave };
+                                                                                                   
+                                                                                                      JComboBox<Leave> leaveTypeBox = new JComboBox<>(leaveType);
+                                                                                                      leaveTypeBox.setBounds(100,300, 100,20); 
+                                                                                                      leaveTypeBox.setVisible(true);
+                                                                                                      window.add(leaveTypeBox);
+                                                                                                   
+                                                                                                      final JLabel leaveTypeLabel = new JLabel("Leave Type:");
+                                                                                                      leaveTypeLabel.setBounds(20,300,70,20);
+                                                                                                      leaveTypeLabel.setVisible(true);
+                                                                                                      window.add(leaveTypeLabel);
+                                                                                                   
+                                                                                                   
+                                                                                                   
+                                                                                                   
+                                                                                                      JButton leaveTypeButton=new JButton("Submit Request");  
+                                                                                                      leaveTypeButton.setBounds(200,300,150,30);  
+                                                                                                      leaveTypeButton.addActionListener(
+                                                                                                         new ActionListener(){  
+                                                                                                            public void actionPerformed(ActionEvent e){  
+                                                                                                               Leave leaveTypeEntry =  (Leave) leaveTypeBox.getSelectedItem();
+                                                                                                               window.add(endDayEntry);
+                                                                                                            
+                                                                                                               leaveTypeButton.setVisible(true);
+                                                                                                               window.repaint();  
+                                                                                                            }  
+                                                                                                         }
+                                                                                                         ); 
+                                                                                                      window.add(leaveTypeButton);
+                                                                                                      window.repaint(); 
+                                                                                                   
+                                                                                                   }  
+                                                                                                }
+                                                                                                ); 
+                                                                                             window.add(submitMinButton);
+                                                                                             submitMinButton.setVisible(true);
+                                                                                             endMinBox.setVisible(true);
+                                                                                             window.repaint();  
+                                                                                          
+                                                                                          }  
+                                                                                       }
+                                                                                       ); 
+                                                                                    window.add(submitHourButton);
+                                                                                    submitHourButton.setVisible(true);
+                                                                                    endHourBox.setVisible(true);
+                                                                                    window.repaint();   
+                                                                                 
+                                                                                 
+                                                                                 }  
+                                                                              }
+                                                                              ); 
+                                                                           window.add(submitEDayButton);
+                                                                           submitEDayButton.setVisible(false);
+                                                                        
+                                                                        
+                                                                        
+                                                                           submitEDayButton.setVisible(true);
+                                                                        
+                                                                        
+                                                                           endDayBox.setVisible(true);
+                                                                           window.repaint();  
+                                                                        
+                                                                        
+                                                                        
+                                                                        
+                                                                        
+                                                                        }
+                                                                        else if (endMonth == 4 ||endMonth == 6 ||endMonth == 9 ||endMonth == 11)
+                                                                        {
+                                                                           JComboBox<Integer> endDayBox = new JComboBox<>(dayShortDate);
+                                                                           endDayBox.setBounds(100,225, 50,20); 
+                                                                           endDayBox.setVisible(true);
+                                                                           window.add(endDayBox);
+                                                                        
+                                                                           final JLabel endDayLabel = new JLabel("End Day:");
+                                                                           endDayLabel.setBounds(20,225,70,20);
+                                                                           endDayLabel.setVisible(true);
+                                                                           window.add(endDayLabel);
+                                                                        
+                                                                        
+                                                                        
+                                                                        
+                                                                           JButton submitEDayButton=new JButton("Submit Day");  
+                                                                           submitEDayButton.setBounds(200,225,150,30);  
+                                                                           submitEDayButton.addActionListener(
+                                                                              new ActionListener(){  
+                                                                                 public void actionPerformed(ActionEvent e){  
+                                                                                    Integer endDay = (Integer) endDayBox.getSelectedItem();
+                                                                                    final JLabel endDayEntry = new JLabel(Integer.toString(endDay));
+                                                                                    endDayEntry.setBounds(100,225,70,20);
+                                                                                    window.add(endDayEntry);
+                                                                                    window.remove(endDayBox);  
+                                                                                    submitEDayButton.setVisible(false);
+                                                                                 
+                                                                                 
+                                                                                    window.repaint();  
+                                                                                 
+                                                                                 
+                                                                                    JComboBox<Integer>  endHourBox = new JComboBox<>(hourTime);
+                                                                                    endHourBox.setBounds(100,250, 50,20); 
+                                                                                    endHourBox.setVisible(true);
+                                                                                    window.add(endHourBox);
+                                                                                 
+                                                                                    final JLabel endHourLabel = new JLabel("End Hour:");
+                                                                                    endHourLabel.setBounds(20,250,70,20);
+                                                                                    endHourLabel.setVisible(true);
+                                                                                    window.add(endHourLabel);
+                                                                                 
+                                                                                 
+                                                                                 
+                                                                                 
+                                                                                    JButton submitHourButton=new JButton("Submit Hour:");  
+                                                                                    submitHourButton.setBounds(200,250,150,30);  
+                                                                                    submitHourButton.addActionListener(
+                                                                                       new ActionListener(){  
+                                                                                          public void actionPerformed(ActionEvent e){  
+                                                                                             Integer endHour = (Integer) endHourBox.getSelectedItem();
+                                                                                             final JLabel endHourEntry = new JLabel(Integer.toString(endHour));
+                                                                                             endHourEntry.setBounds(100,250,70,20);
+                                                                                             window.add(endHourEntry);
+                                                                                             window.remove(endHourBox);  
+                                                                                             submitHourButton.setVisible(false);
+                                                                                          
+                                                                                          
+                                                                                             JComboBox<Integer>  endMinBox = new JComboBox<>(minuteTime);
+                                                                                             endMinBox.setBounds(100,275, 50,20); 
+                                                                                             endMinBox.setVisible(true);
+                                                                                             window.add(endMinBox);
+                                                                                          
+                                                                                             final JLabel endMinuteLabel = new JLabel("End Minute:");
+                                                                                             endMinuteLabel.setBounds(20,275,70,20);
+                                                                                             endMinuteLabel.setVisible(true);
+                                                                                             window.add(endMinuteLabel);
+                                                                                          
+                                                                                          
+                                                                                          
+                                                                                          
+                                                                                             JButton submitMinButton=new JButton("Submit Minute:");  
+                                                                                             submitMinButton.setBounds(200,275,150,30);  
+                                                                                             submitMinButton.addActionListener(
+                                                                                                new ActionListener(){  
+                                                                                                   public void actionPerformed(ActionEvent e){  
+                                                                                                      Integer endMinute = (Integer) endMinBox.getSelectedItem();
+                                                                                                      final JLabel endMinEntry = new JLabel(Integer.toString(endMinute));
+                                                                                                      endMinEntry.setBounds(100,275,70,20);
+                                                                                                      window.add(endMinEntry);
+                                                                                                      window.remove(endMinBox);  
+                                                                                                      submitMinButton.setVisible(false);
+                                                                                                   
+                                                                                                   
+                                                                                                      Leave[] leaveType = {Leave.maternity, Leave.paternity, Leave.pto, Leave.sick_leave };
+                                                                                                   
+                                                                                                      JComboBox<Leave> leaveTypeBox = new JComboBox<>(leaveType);
+                                                                                                      leaveTypeBox.setBounds(100,300, 100,20); 
+                                                                                                      leaveTypeBox.setVisible(true);
+                                                                                                      window.add(leaveTypeBox);
+                                                                                                   
+                                                                                                      final JLabel leaveTypeLabel = new JLabel("Leave Type:");
+                                                                                                      leaveTypeLabel.setBounds(20,300,70,20);
+                                                                                                      leaveTypeLabel.setVisible(true);
+                                                                                                      window.add(leaveTypeLabel);
+                                                                                                   
+                                                                                                   
+                                                                                                   
+                                                                                                   
+                                                                                                      JButton leaveTypeButton=new JButton("Submit Request");  
+                                                                                                      leaveTypeButton.setBounds(200,300,150,30);  
+                                                                                                      leaveTypeButton.addActionListener(
+                                                                                                         new ActionListener(){  
+                                                                                                            public void actionPerformed(ActionEvent e){  
+                                                                                                               Leave leaveTypeEntry =  (Leave) leaveTypeBox.getSelectedItem();
+                                                                                                               window.add(endDayEntry);
+                                                                                                            
+                                                                                                               leaveTypeButton.setVisible(true);
+                                                                                                               window.repaint();  
+                                                                                                            }  
+                                                                                                         }
+                                                                                                         ); 
+                                                                                                      window.add(leaveTypeButton);
+                                                                                                      window.repaint(); 
+                                                                                                   
+                                                                                                   }  
+                                                                                                }
+                                                                                                ); 
+                                                                                             window.add(submitMinButton);
+                                                                                             submitMinButton.setVisible(true);
+                                                                                             endMinBox.setVisible(true);
+                                                                                             window.repaint();  
+                                                                                          
+                                                                                          }  
+                                                                                       }
+                                                                                       ); 
+                                                                                    window.add(submitHourButton);
+                                                                                    submitHourButton.setVisible(true);
+                                                                                    endHourBox.setVisible(true);
+                                                                                    window.repaint();   
+                                                                                 
+                                                                                 
+                                                                                 }  
+                                                                              }
+                                                                              ); 
+                                                                           window.add(submitEDayButton);
+                                                                           submitEDayButton.setVisible(false);
+                                                                        
+                                                                        
+                                                                        
+                                                                           submitEDayButton.setVisible(true);
+                                                                        
+                                                                        
+                                                                           endDayBox.setVisible(true);
+                                                                           window.repaint();  
+                                                                        
+                                                                        
+                                                                        }
+                                                                        else if (endMonth == 2 && endYear == 2020)
+                                                                        {
+                                                                           JComboBox<Integer> endDayBox = new JComboBox<>(dayLeapDate);
+                                                                           endDayBox.setBounds(100,225, 50,20); 
+                                                                           endDayBox.setVisible(true);
+                                                                           window.add(endDayBox);
+                                                                        
+                                                                           final JLabel endDayLabel = new JLabel("End Day:");
+                                                                           endDayLabel.setBounds(20,225,70,20);
+                                                                           endDayLabel.setVisible(true);
+                                                                           window.add(endDayLabel);
+                                                                        
+                                                                        
+                                                                        
+                                                                        
+                                                                           JButton submitEDayButton=new JButton("Submit Day");  
+                                                                           submitEDayButton.setBounds(200,225,150,30);  
+                                                                           submitEDayButton.addActionListener(
+                                                                              new ActionListener(){  
+                                                                                 public void actionPerformed(ActionEvent e){  
+                                                                                    Integer endDay = (Integer) endDayBox.getSelectedItem();
+                                                                                    final JLabel endDayEntry = new JLabel(Integer.toString(endDay));
+                                                                                    endDayEntry.setBounds(100,225,70,20);
+                                                                                    window.add(endDayEntry);
+                                                                                    window.remove(endDayBox);  
+                                                                                    submitEDayButton.setVisible(false);
+                                                                                 
+                                                                                 
+                                                                                    window.repaint();  
+                                                                                 
+                                                                                 
+                                                                                    JComboBox<Integer>  endHourBox = new JComboBox<>(hourTime);
+                                                                                    endHourBox.setBounds(100,250, 50,20); 
+                                                                                    endHourBox.setVisible(true);
+                                                                                    window.add(endHourBox);
+                                                                                 
+                                                                                    final JLabel endHourLabel = new JLabel("End Hour:");
+                                                                                    endHourLabel.setBounds(20,250,70,20);
+                                                                                    endHourLabel.setVisible(true);
+                                                                                    window.add(endHourLabel);
+                                                                                 
+                                                                                 
+                                                                                 
+                                                                                 
+                                                                                    JButton submitHourButton=new JButton("Submit Hour:");  
+                                                                                    submitHourButton.setBounds(200,250,150,30);  
+                                                                                    submitHourButton.addActionListener(
+                                                                                       new ActionListener(){  
+                                                                                          public void actionPerformed(ActionEvent e){  
+                                                                                             Integer endHour = (Integer) endHourBox.getSelectedItem();
+                                                                                             final JLabel endHourEntry = new JLabel(Integer.toString(endHour));
+                                                                                             endHourEntry.setBounds(100,250,70,20);
+                                                                                             window.add(endHourEntry);
+                                                                                             window.remove(endHourBox);  
+                                                                                             submitHourButton.setVisible(false);
+                                                                                          
+                                                                                          
+                                                                                             JComboBox<Integer>  endMinBox = new JComboBox<>(minuteTime);
+                                                                                             endMinBox.setBounds(100,275, 50,20); 
+                                                                                             endMinBox.setVisible(true);
+                                                                                             window.add(endMinBox);
+                                                                                          
+                                                                                             final JLabel endMinuteLabel = new JLabel("End Minute:");
+                                                                                             endMinuteLabel.setBounds(20,275,70,20);
+                                                                                             endMinuteLabel.setVisible(true);
+                                                                                             window.add(endMinuteLabel);
+                                                                                          
+                                                                                          
+                                                                                          
+                                                                                          
+                                                                                             JButton submitMinButton=new JButton("Submit Minute:");  
+                                                                                             submitMinButton.setBounds(200,275,150,30);  
+                                                                                             submitMinButton.addActionListener(
+                                                                                                new ActionListener(){  
+                                                                                                   public void actionPerformed(ActionEvent e){  
+                                                                                                      Integer endMinute = (Integer) endMinBox.getSelectedItem();
+                                                                                                      final JLabel endMinEntry = new JLabel(Integer.toString(endMinute));
+                                                                                                      endMinEntry.setBounds(100,275,70,20);
+                                                                                                      window.add(endMinEntry);
+                                                                                                      window.remove(endMinBox);  
+                                                                                                      submitMinButton.setVisible(false);
+                                                                                                   
+                                                                                                   
+                                                                                                      Leave[] leaveType = {Leave.maternity, Leave.paternity, Leave.pto, Leave.sick_leave };
+                                                                                                   
+                                                                                                      JComboBox<Leave> leaveTypeBox = new JComboBox<>(leaveType);
+                                                                                                      leaveTypeBox.setBounds(100,300, 100,20); 
+                                                                                                      leaveTypeBox.setVisible(true);
+                                                                                                      window.add(leaveTypeBox);
+                                                                                                   
+                                                                                                      final JLabel leaveTypeLabel = new JLabel("Leave Type:");
+                                                                                                      leaveTypeLabel.setBounds(20,300,70,20);
+                                                                                                      leaveTypeLabel.setVisible(true);
+                                                                                                      window.add(leaveTypeLabel);
+                                                                                                   
+                                                                                                   
+                                                                                                   
+                                                                                                   
+                                                                                                      JButton leaveTypeButton=new JButton("Submit Request");  
+                                                                                                      leaveTypeButton.setBounds(200,300,150,30);  
+                                                                                                      leaveTypeButton.addActionListener(
+                                                                                                         new ActionListener(){  
+                                                                                                            public void actionPerformed(ActionEvent e){  
+                                                                                                               Leave leaveTypeEntry =  (Leave) leaveTypeBox.getSelectedItem();
+                                                                                                               window.add(endDayEntry);
+                                                                                                            
+                                                                                                               leaveTypeButton.setVisible(true);
+                                                                                                               window.repaint();  
+                                                                                                            }  
+                                                                                                         }
+                                                                                                         ); 
+                                                                                                      window.add(leaveTypeButton);
+                                                                                                      window.repaint(); 
+                                                                                                   
+                                                                                                   }  
+                                                                                                }
+                                                                                                ); 
+                                                                                             window.add(submitMinButton);
+                                                                                             submitMinButton.setVisible(true);
+                                                                                             endMinBox.setVisible(true);
+                                                                                             window.repaint();  
+                                                                                          
+                                                                                          }  
+                                                                                       }
+                                                                                       ); 
+                                                                                    window.add(submitHourButton);
+                                                                                    submitHourButton.setVisible(true);
+                                                                                    endHourBox.setVisible(true);
+                                                                                    window.repaint();   
+                                                                                 
+                                                                                 
+                                                                                 }  
+                                                                              }
+                                                                              ); 
+                                                                           window.add(submitEDayButton);
+                                                                           submitEDayButton.setVisible(false);
+                                                                        
+                                                                        
+                                                                        
+                                                                           submitEDayButton.setVisible(true);
+                                                                        
+                                                                        
+                                                                           endDayBox.setVisible(true);
+                                                                           window.repaint();  
+                                                                        
+                                                                        
+                                                                          
+                                                                           
+                                                                        
+                                                                        }
+                                                                        else 
+                                                                        {
+                                                                           JComboBox<Integer>  endDayBox = new JComboBox<>(dayFebDate);
+                                                                           endDayBox.setBounds(100,225, 50,20); 
+                                                                           endDayBox.setVisible(true);
+                                                                           window.add(endDayBox);
+                                                                        
+                                                                           final JLabel endDayLabel = new JLabel("End Day:");
+                                                                           endDayLabel.setBounds(20,225,70,20);
+                                                                           endDayLabel.setVisible(true);
+                                                                           window.add(endDayLabel);
+                                                                        
+                                                                        
+                                                                        
+                                                                        
+                                                                           JButton submitEDayButton=new JButton("Submit Day");  
+                                                                           submitEDayButton.setBounds(200,225,150,30);  
+                                                                           submitEDayButton.addActionListener(
+                                                                              new ActionListener(){  
+                                                                                 public void actionPerformed(ActionEvent e){  
+                                                                                    Integer endDay = (Integer) endDayBox.getSelectedItem();
+                                                                                    final JLabel endDayEntry = new JLabel(Integer.toString(endDay));
+                                                                                    endDayEntry.setBounds(100,225,70,20);
+                                                                                    window.add(endDayEntry);
+                                                                                    window.remove(endDayBox);  
+                                                                                    submitEDayButton.setVisible(false);
+                                                                                 
+                                                                                 
+                                                                                    window.repaint();  
+                                                                                 
+                                                                                 
+                                                                                    JComboBox<Integer>  endHourBox = new JComboBox<>(hourTime);
+                                                                                    endHourBox.setBounds(100,250, 50,20); 
+                                                                                    endHourBox.setVisible(true);
+                                                                                    window.add(endHourBox);
+                                                                                 
+                                                                                    final JLabel endHourLabel = new JLabel("End Hour:");
+                                                                                    endHourLabel.setBounds(20,250,70,20);
+                                                                                    endHourLabel.setVisible(true);
+                                                                                    window.add(endHourLabel);
+                                                                                 
+                                                                                 
+                                                                                 
+                                                                                 
+                                                                                    JButton submitHourButton=new JButton("Submit Hour:");  
+                                                                                    submitHourButton.setBounds(200,250,150,30);  
+                                                                                    submitHourButton.addActionListener(
+                                                                                       new ActionListener(){  
+                                                                                          public void actionPerformed(ActionEvent e){  
+                                                                                             Integer endHour = (Integer) endHourBox.getSelectedItem();
+                                                                                             final JLabel endHourEntry = new JLabel(Integer.toString(endHour));
+                                                                                             endHourEntry.setBounds(100,250,70,20);
+                                                                                             window.add(endHourEntry);
+                                                                                             window.remove(endHourBox);  
+                                                                                             submitHourButton.setVisible(false);
+                                                                                          
+                                                                                          
+                                                                                             JComboBox<Integer>  endMinBox = new JComboBox<>(minuteTime);
+                                                                                             endMinBox.setBounds(100,275, 50,20); 
+                                                                                             endMinBox.setVisible(true);
+                                                                                             window.add(endMinBox);
+                                                                                          
+                                                                                             final JLabel endMinuteLabel = new JLabel("End Minute:");
+                                                                                             endMinuteLabel.setBounds(20,275,70,20);
+                                                                                             endMinuteLabel.setVisible(true);
+                                                                                             window.add(endMinuteLabel);
+                                                                                          
+                                                                                          
+                                                                                          
+                                                                                          
+                                                                                             JButton submitMinButton=new JButton("Submit Minute:");  
+                                                                                             submitMinButton.setBounds(200,275,150,30);  
+                                                                                             submitMinButton.addActionListener(
+                                                                                                new ActionListener(){  
+                                                                                                   public void actionPerformed(ActionEvent e){  
+                                                                                                      Integer endMinute = (Integer) endMinBox.getSelectedItem();
+                                                                                                      final JLabel endMinEntry = new JLabel(Integer.toString(endMinute));
+                                                                                                      endMinEntry.setBounds(100,275,70,20);
+                                                                                                      window.add(endMinEntry);
+                                                                                                      window.remove(endMinBox);  
+                                                                                                      submitMinButton.setVisible(false);
+                                                                                                   
+                                                                                                   
+                                                                                                      Leave[] leaveType = {Leave.maternity, Leave.paternity, Leave.pto, Leave.sick_leave };
+                                                                                                   
+                                                                                                      JComboBox<Leave> leaveTypeBox = new JComboBox<>(leaveType);
+                                                                                                      leaveTypeBox.setBounds(100,300, 100,20); 
+                                                                                                      leaveTypeBox.setVisible(true);
+                                                                                                      window.add(leaveTypeBox);
+                                                                                                   
+                                                                                                      final JLabel leaveTypeLabel = new JLabel("Leave Type:");
+                                                                                                      leaveTypeLabel.setBounds(20,300,70,20);
+                                                                                                      leaveTypeLabel.setVisible(true);
+                                                                                                      window.add(leaveTypeLabel);
+                                                                                                   
+                                                                                                   
+                                                                                                   
+                                                                                                   
+                                                                                                      JButton leaveTypeButton=new JButton("Submit Request");  
+                                                                                                      leaveTypeButton.setBounds(200,300,150,30);  
+                                                                                                      leaveTypeButton.addActionListener(
+                                                                                                         new ActionListener(){  
+                                                                                                            public void actionPerformed(ActionEvent e){  
+                                                                                                               Leave leaveTypeEntry =  (Leave) leaveTypeBox.getSelectedItem();
+                                                                                                               window.add(endDayEntry);
+                                                                                                            
+                                                                                                               leaveTypeButton.setVisible(true);
+                                                                                                               window.repaint();  
+                                                                                                            }  
+                                                                                                         }
+                                                                                                         ); 
+                                                                                                      window.add(leaveTypeButton);
+                                                                                                      window.repaint(); 
+                                                                                                   
+                                                                                                   }  
+                                                                                                }
+                                                                                                ); 
+                                                                                             window.add(submitMinButton);
+                                                                                             submitMinButton.setVisible(true);
+                                                                                             endMinBox.setVisible(true);
+                                                                                             window.repaint();  
+                                                                                          
+                                                                                          }  
+                                                                                       }
+                                                                                       ); 
+                                                                                    window.add(submitHourButton);
+                                                                                    submitHourButton.setVisible(true);
+                                                                                    endHourBox.setVisible(true);
+                                                                                    window.repaint();   
+                                                                                 
+                                                                                 
+                                                                                 }  
+                                                                              }
+                                                                              ); 
+                                                                           window.add(submitEDayButton);
+                                                                           submitEDayButton.setVisible(false);
+                                                                        
+                                                                        
+                                                                        
+                                                                           submitEDayButton.setVisible(true);
+                                                                        
+                                                                        
+                                                                           endDayBox.setVisible(true);
+                                                                           window.repaint();  
+                                                                        
+                                                                        
+                                                                        }
+                                                                     
+                                                                     
+                                                                     }  
+                                                                  }
+                                                                  ); 
+                                                               window.add(submitEMonthButton);
+                                                               submitEMonthButton.setVisible(true);
+                                                               window.repaint(); 
+                                                            
+                                                            
+                                                            }  
+                                                         }
+                                                         ); 
+                                                      window.add(submitEYearButton);
+                                                      submitEYearButton.setVisible(true);
+                                                      window.repaint();  
                                                    
                                                    }  
                                                 }
                                                 ); 
-                                             window.add(submitEMonthButton);
-                                             submitEMonthButton.setVisible(true);
-                                             window.repaint(); 
+                                          
+                                          
+                                             window.add(submitMinButton);
+                                             submitMinButton.setVisible(false);
+                                             submitMinButton.setVisible(true);
+                                             startMinBox.setVisible(true);
+                                             window.repaint();  
                                           
                                           
                                           }  
                                        }
                                        ); 
-                                    window.add(submitEYearButton);
-                                    submitEYearButton.setVisible(true);
+                                       
+                                      
+                                    window.add(submitHourButton);
+                                    submitHourButton.setVisible(false);
+                                    submitHourButton.setVisible(true);
+                                    startHourBox.setVisible(true);
                                     window.repaint();  
                                  
                                  
@@ -1707,20 +2693,21 @@ public class SystemInterface {
                                     window.add(startDayEntry);
                                     window.remove(startDayBox);  
                                     submitDayButton.setVisible(false);
-                                 //submitYearButton.setVisible(true);
-                                 //endYearBox.setVisible(true);
-                                 //endYearLabel.setVisible(true);
-                                    //window.repaint();  
                                  
                                  
-                                 //BREAKPOINT start time
+                                    
+                                    window.repaint();  
+                                 
+                                 
+                                 
+                                 
                                     JComboBox<Integer>  startHourBox = new JComboBox<>(hourTime);
-                                    startHourBox.setBounds(100,220, 50,20); 
+                                    startHourBox.setBounds(100,125, 50,20); 
                                     startHourBox.setVisible(true);
                                     window.add(startHourBox);
                                  
                                     final JLabel startHourLabel = new JLabel("Start Hour:");
-                                    startHourLabel.setBounds(20,220,70,20);
+                                    startHourLabel.setBounds(20,125,70,20);
                                     startHourLabel.setVisible(true);
                                     window.add(startHourLabel);
                                  
@@ -1728,433 +2715,729 @@ public class SystemInterface {
                                  
                                  
                                     JButton submitHourButton=new JButton("Submit Hour:");  
-                                    submitHourButton.setBounds(200,220,150,30);  
+                                    submitHourButton.setBounds(200,125,150,30);  
                                     submitHourButton.addActionListener(
                                        new ActionListener(){  
                                           public void actionPerformed(ActionEvent e){  
                                              Integer startHour = (Integer) startHourBox.getSelectedItem();
                                              final JLabel startHourEntry = new JLabel(Integer.toString(startHour));
-                                             startHourEntry.setBounds(100,220,70,20);
+                                             startHourEntry.setBounds(100,125,70,20);
                                              window.add(startHourEntry);
                                              window.remove(startHourBox);  
                                              submitHourButton.setVisible(false);
+                                                                                
+                                                                                
+                                             JComboBox<Integer>  startMinBox = new JComboBox<>(minuteTime);
+                                             startMinBox.setBounds(100,150, 50,20); 
+                                             startMinBox.setVisible(true);
+                                             window.add(startMinBox);
+                                          
+                                             final JLabel startMinuteLabel = new JLabel("Start Minute:");
+                                             startMinuteLabel.setBounds(20,150,70,20);
+                                             startMinuteLabel.setVisible(true);
+                                             window.add(startMinuteLabel);
                                           
                                           
-                                          //BREAKPOINT END START TIME
-                                             final JLabel endYearLabel = new JLabel("End Year:");
-                                             endYearLabel.setBounds(20,125,70,20);
-                                          //endYearLabel.setVisible(false);
-                                             window.add(endYearLabel);
                                           
-                                             JComboBox<Integer> endYearBox= new JComboBox<>(yearDate);  
-                                             endYearBox.setBounds(100,125, 80,20);
-                                          //endYearBox.setVisible(false);
                                           
-                                             window.add(endYearBox);
-                                             JButton submitEYearButton=new JButton("Submit Year");  
-                                             submitEYearButton.setBounds(200,125,150,30);  
-                                             submitEYearButton.addActionListener(
+                                             JButton submitMinButton=new JButton("Submit Minute:");  
+                                             submitMinButton.setBounds(200,150,150,30);  
+                                             submitMinButton.addActionListener(
                                                 new ActionListener(){  
                                                    public void actionPerformed(ActionEvent e){  
-                                                      Integer endYear = (Integer) endYearBox.getSelectedItem();
-                                                   
-                                                   
-                                                      final JLabel endYearEntry = new JLabel(Integer.toString(endYear));
-                                                      endYearEntry.setBounds(100,125,80,20);
-                                                      window.add(endYearEntry);
-                                                      window.remove(endYearBox);  
-                                                      submitEYearButton.setVisible(false);
-                                                   //submitEMonthButton.setVisible(true);
-                                                   //endMonthBox.setVisible(true);
-                                                   //endMonthLabel.setVisible(true);
+                                                      Integer startMinute = (Integer) startMinBox.getSelectedItem();
+                                                      final JLabel startMinEntry = new JLabel(Integer.toString(startMinute));
+                                                      startMinEntry.setBounds(100,150,70,20);
+                                                      window.add(startMinEntry);
+                                                      window.remove(startMinBox);  
+                                                      submitMinButton.setVisible(false);
                                                    
                                                    
                                                    
-                                                      final JLabel endMonthLabel = new JLabel("End Month:");
-                                                      endMonthLabel.setBounds(20,150,70,20);
-                                                      endMonthLabel.setVisible(true);
-                                                      window.add(endMonthLabel);
+                                                      final JLabel endYearLabel = new JLabel("End Year:");
+                                                      endYearLabel.setBounds(20,175,70,20);
                                                    
-                                                      JComboBox<Integer> endMonthBox= new JComboBox<>(monthDate);  
-                                                      endMonthBox.setBounds(100,150, 50,20); 
-                                                      endMonthBox.setVisible(true);
-                                                      window.add(endMonthBox);
                                                    
-                                                      JButton submitEMonthButton=new JButton("Submit Month");  
-                                                      submitEMonthButton.setBounds(200,150,150,30);  
-                                                      submitEMonthButton.addActionListener(
+                                                      window.add(endYearLabel);
+                                                   
+                                                      JComboBox<Integer> endYearBox= new JComboBox<>(yearDate);  
+                                                      endYearBox.setBounds(100,175, 80,20);
+                                                   
+                                                   
+                                                   
+                                                      window.add(endYearBox);
+                                                      JButton submitEYearButton=new JButton("Submit Year");  
+                                                      submitEYearButton.setBounds(200,175,150,30);  
+                                                      submitEYearButton.addActionListener(
                                                          new ActionListener(){  
                                                             public void actionPerformed(ActionEvent e){  
-                                                               Integer endMonth = (Integer) endMonthBox.getSelectedItem();
+                                                               Integer endYear = (Integer) endYearBox.getSelectedItem();
                                                             
-                                                               final JLabel endMonthEntry = new JLabel(Integer.toString(endMonth));
-                                                               endMonthEntry.setBounds(100,150,70,20);
-                                                               window.add(endMonthEntry);
-                                                               window.remove(endMonthBox);  
-                                                               submitEMonthButton.setVisible(false);
                                                             
-                                                               if (endMonth == 1 ||endMonth == 3 ||endMonth == 5 ||endMonth == 7 ||endMonth == 8 ||endMonth == 10 ||endMonth == 12 )
-                                                               {
-                                                                  JComboBox<Integer> endDayBox = new JComboBox<>(dayLongDate);  
-                                                                  endDayBox.setBounds(100,175, 50,20); 
-                                                                  endDayBox.setVisible(true);
-                                                                  window.add(endDayBox);
-                                                               
-                                                                  final JLabel endDayLabel = new JLabel("End Day:");
-                                                                  endDayLabel.setBounds(20,175,70,20);
-                                                                  endDayLabel.setVisible(true);
-                                                                  window.add(endDayLabel);
-                                                               
-                                                               
-                                                               
-                                                               
-                                                                  JButton submitEDayButton=new JButton("Submit Day");  
-                                                                  submitEDayButton.setBounds(200,175,150,30);  
-                                                                  submitEDayButton.addActionListener(
-                                                                     new ActionListener(){  
-                                                                        public void actionPerformed(ActionEvent e){  
-                                                                           Integer endDay = (Integer) endDayBox.getSelectedItem();
-                                                                           final JLabel endDayEntry = new JLabel(Integer.toString(endDay));
-                                                                           endDayEntry.setBounds(100,175,70,20);
-                                                                           window.add(endDayEntry);
-                                                                           window.remove(endDayBox);  
+                                                               final JLabel endYearEntry = new JLabel(Integer.toString(endYear));
+                                                               endYearEntry.setBounds(100,175,80,20);
+                                                               window.add(endYearEntry);
+                                                               window.remove(endYearBox);  
+                                                               submitEYearButton.setVisible(false);
+                                                            
+                                                            
+                                                            
+                                                            
+                                                            
+                                                               final JLabel endMonthLabel = new JLabel("End Month:");
+                                                               endMonthLabel.setBounds(20,200,70,20);
+                                                               endMonthLabel.setVisible(true);
+                                                               window.add(endMonthLabel);
+                                                            
+                                                               JComboBox<Integer> endMonthBox= new JComboBox<>(monthDate);  
+                                                               endMonthBox.setBounds(100,200, 50,20); 
+                                                               endMonthBox.setVisible(true);
+                                                               window.add(endMonthBox);
+                                                            
+                                                               JButton submitEMonthButton=new JButton("Submit Month");  
+                                                               submitEMonthButton.setBounds(200,200,150,30);  
+                                                               submitEMonthButton.addActionListener(
+                                                                  new ActionListener(){  
+                                                                     public void actionPerformed(ActionEvent e){  
+                                                                        Integer endMonth = (Integer) endMonthBox.getSelectedItem();
+                                                                     
+                                                                        final JLabel endMonthEntry = new JLabel(Integer.toString(endMonth));
+                                                                        endMonthEntry.setBounds(100,200,70,20);
+                                                                        window.add(endMonthEntry);
+                                                                        window.remove(endMonthBox);  
+                                                                        submitEMonthButton.setVisible(false);
+                                                                     
+                                                                        if (endMonth == 1 ||endMonth == 3 ||endMonth == 5 ||endMonth == 7 ||endMonth == 8 ||endMonth == 10 ||endMonth == 12 )
+                                                                        {
+                                                                           JComboBox<Integer> endDayBox = new JComboBox<>(dayLongDate);  
+                                                                           endDayBox.setBounds(100,225, 50,20); 
+                                                                           endDayBox.setVisible(true);
+                                                                           window.add(endDayBox);
+                                                                        
+                                                                           final JLabel endDayLabel = new JLabel("End Day:");
+                                                                           endDayLabel.setBounds(20,225,70,20);
+                                                                           endDayLabel.setVisible(true);
+                                                                           window.add(endDayLabel);
+                                                                        
+                                                                        
+                                                                        
+                                                                        
+                                                                           JButton submitEDayButton=new JButton("Submit Day");  
+                                                                           submitEDayButton.setBounds(200,225,150,30);  
+                                                                           submitEDayButton.addActionListener(
+                                                                              new ActionListener(){  
+                                                                                 public void actionPerformed(ActionEvent e){  
+                                                                                    Integer endDay = (Integer) endDayBox.getSelectedItem();
+                                                                                    final JLabel endDayEntry = new JLabel(Integer.toString(endDay));
+                                                                                    endDayEntry.setBounds(100,225,70,20);
+                                                                                    window.add(endDayEntry);
+                                                                                    window.remove(endDayBox);  
+                                                                                    submitEDayButton.setVisible(false);
+                                                                                 
+                                                                                 
+                                                                                    window.repaint();  
+                                                                                 
+                                                                                 
+                                                                                    JComboBox<Integer>  endHourBox = new JComboBox<>(hourTime);
+                                                                                    endHourBox.setBounds(100,250, 50,20); 
+                                                                                    endHourBox.setVisible(true);
+                                                                                    window.add(endHourBox);
+                                                                                 
+                                                                                    final JLabel endHourLabel = new JLabel("End Hour:");
+                                                                                    endHourLabel.setBounds(20,250,70,20);
+                                                                                    endHourLabel.setVisible(true);
+                                                                                    window.add(endHourLabel);
+                                                                                 
+                                                                                 
+                                                                                 
+                                                                                 
+                                                                                    JButton submitHourButton=new JButton("Submit Hour:");  
+                                                                                    submitHourButton.setBounds(200,250,150,30);  
+                                                                                    submitHourButton.addActionListener(
+                                                                                       new ActionListener(){  
+                                                                                          public void actionPerformed(ActionEvent e){  
+                                                                                             Integer endHour = (Integer) endHourBox.getSelectedItem();
+                                                                                             final JLabel endHourEntry = new JLabel(Integer.toString(endHour));
+                                                                                             endHourEntry.setBounds(100,250,70,20);
+                                                                                             window.add(endHourEntry);
+                                                                                             window.remove(endHourBox);  
+                                                                                             submitHourButton.setVisible(false);
+                                                                                          
+                                                                                          
+                                                                                             JComboBox<Integer>  endMinBox = new JComboBox<>(minuteTime);
+                                                                                             endMinBox.setBounds(100,275, 50,20); 
+                                                                                             endMinBox.setVisible(true);
+                                                                                             window.add(endMinBox);
+                                                                                          
+                                                                                             final JLabel endMinuteLabel = new JLabel("End Minute:");
+                                                                                             endMinuteLabel.setBounds(20,275,70,20);
+                                                                                             endMinuteLabel.setVisible(true);
+                                                                                             window.add(endMinuteLabel);
+                                                                                          
+                                                                                          
+                                                                                          
+                                                                                          
+                                                                                             JButton submitMinButton=new JButton("Submit Minute:");  
+                                                                                             submitMinButton.setBounds(200,275,150,30);  
+                                                                                             submitMinButton.addActionListener(
+                                                                                                new ActionListener(){  
+                                                                                                   public void actionPerformed(ActionEvent e){  
+                                                                                                      Integer endMinute = (Integer) endMinBox.getSelectedItem();
+                                                                                                      final JLabel endMinEntry = new JLabel(Integer.toString(endMinute));
+                                                                                                      endMinEntry.setBounds(100,275,70,20);
+                                                                                                      window.add(endMinEntry);
+                                                                                                      window.remove(endMinBox);  
+                                                                                                      submitMinButton.setVisible(false);
+                                                                                                   
+                                                                                                   
+                                                                                                      Leave[] leaveType = {Leave.maternity, Leave.paternity, Leave.pto, Leave.sick_leave };
+                                                                                                   
+                                                                                                      JComboBox<Leave> leaveTypeBox = new JComboBox<>(leaveType);
+                                                                                                      leaveTypeBox.setBounds(100,300, 100,20); 
+                                                                                                      leaveTypeBox.setVisible(true);
+                                                                                                      window.add(leaveTypeBox);
+                                                                                                   
+                                                                                                      final JLabel leaveTypeLabel = new JLabel("Leave Type:");
+                                                                                                      leaveTypeLabel.setBounds(20,300,70,20);
+                                                                                                      leaveTypeLabel.setVisible(true);
+                                                                                                      window.add(leaveTypeLabel);
+                                                                                                   
+                                                                                                   
+                                                                                                   
+                                                                                                   
+                                                                                                      JButton leaveTypeButton=new JButton("Submit Request");  
+                                                                                                      leaveTypeButton.setBounds(200,300,150,30);  
+                                                                                                      leaveTypeButton.addActionListener(
+                                                                                                         new ActionListener(){  
+                                                                                                            public void actionPerformed(ActionEvent e){  
+                                                                                                               Leave leaveTypeEntry =  (Leave) leaveTypeBox.getSelectedItem();
+                                                                                                               window.add(endDayEntry);
+                                                                                                            
+                                                                                                               leaveTypeButton.setVisible(true);
+                                                                                                               window.repaint();  
+                                                                                                            }  
+                                                                                                         }
+                                                                                                         ); 
+                                                                                                      window.add(leaveTypeButton);
+                                                                                                      window.repaint(); 
+                                                                                                   
+                                                                                                   }  
+                                                                                                }
+                                                                                                ); 
+                                                                                             window.add(submitMinButton);
+                                                                                             submitMinButton.setVisible(true);
+                                                                                             endMinBox.setVisible(true);
+                                                                                             window.repaint();  
+                                                                                          
+                                                                                          }  
+                                                                                       }
+                                                                                       ); 
+                                                                                    window.add(submitHourButton);
+                                                                                    submitHourButton.setVisible(true);
+                                                                                    endHourBox.setVisible(true);
+                                                                                    window.repaint();   
+                                                                                 
+                                                                                 
+                                                                                 }  
+                                                                              }
+                                                                              ); 
+                                                                           window.add(submitEDayButton);
                                                                            submitEDayButton.setVisible(false);
-                                                                        //submitEYearButton.setVisible(true);
-                                                                        //startEYearBox.setVisible(true);
-                                                                        //startEYearLabel.setVisible(true);
+                                                                        
+                                                                        
+                                                                        
+                                                                           submitEDayButton.setVisible(true);
+                                                                        
+                                                                        
+                                                                           endDayBox.setVisible(true);
                                                                            window.repaint();  
                                                                         
                                                                         
                                                                         
                                                                         
-                                                                           Leave[] leaveType = {Leave.maternity, Leave.paternity, Leave.pto, Leave.sick_leave, Leave.emergency};
                                                                         
-                                                                           JComboBox<Leave> leaveTypeBox = new JComboBox<>(leaveType);
-                                                                           leaveTypeBox.setBounds(100,200, 100,20); 
-                                                                           leaveTypeBox.setVisible(true);
-                                                                           window.add(leaveTypeBox);
+                                                                        }
+                                                                        else if (endMonth == 4 ||endMonth == 6 ||endMonth == 9 ||endMonth == 11)
+                                                                        {
+                                                                           JComboBox<Integer> endDayBox = new JComboBox<>(dayShortDate);
+                                                                           endDayBox.setBounds(100,225, 50,20); 
+                                                                           endDayBox.setVisible(true);
+                                                                           window.add(endDayBox);
                                                                         
-                                                                           final JLabel leaveTypeLabel = new JLabel("Leave Type:");
-                                                                           leaveTypeLabel.setBounds(20,200,70,20);
-                                                                           leaveTypeLabel.setVisible(true);
-                                                                           window.add(leaveTypeLabel);
+                                                                           final JLabel endDayLabel = new JLabel("End Day:");
+                                                                           endDayLabel.setBounds(20,225,70,20);
+                                                                           endDayLabel.setVisible(true);
+                                                                           window.add(endDayLabel);
                                                                         
                                                                         
                                                                         
                                                                         
-                                                                           JButton leaveTypeButton=new JButton("Submit Request");  
-                                                                           leaveTypeButton.setBounds(200,200,150,30);  
-                                                                           leaveTypeButton.addActionListener(
+                                                                           JButton submitEDayButton=new JButton("Submit Day");  
+                                                                           submitEDayButton.setBounds(200,225,150,30);  
+                                                                           submitEDayButton.addActionListener(
                                                                               new ActionListener(){  
                                                                                  public void actionPerformed(ActionEvent e){  
-                                                                                    Leave leaveTypeEntry =  (Leave) leaveTypeBox.getSelectedItem();
+                                                                                    Integer endDay = (Integer) endDayBox.getSelectedItem();
+                                                                                    final JLabel endDayEntry = new JLabel(Integer.toString(endDay));
+                                                                                    endDayEntry.setBounds(100,225,70,20);
                                                                                     window.add(endDayEntry);
+                                                                                    window.remove(endDayBox);  
+                                                                                    submitEDayButton.setVisible(false);
                                                                                  
-                                                                                    leaveTypeButton.setVisible(true);
+                                                                                 
                                                                                     window.repaint();  
+                                                                                 
+                                                                                 
+                                                                                    JComboBox<Integer>  endHourBox = new JComboBox<>(hourTime);
+                                                                                    endHourBox.setBounds(100,250, 50,20); 
+                                                                                    endHourBox.setVisible(true);
+                                                                                    window.add(endHourBox);
+                                                                                 
+                                                                                    final JLabel endHourLabel = new JLabel("End Hour:");
+                                                                                    endHourLabel.setBounds(20,250,70,20);
+                                                                                    endHourLabel.setVisible(true);
+                                                                                    window.add(endHourLabel);
+                                                                                 
+                                                                                 
+                                                                                 
+                                                                                 
+                                                                                    JButton submitHourButton=new JButton("Submit Hour:");  
+                                                                                    submitHourButton.setBounds(200,250,150,30);  
+                                                                                    submitHourButton.addActionListener(
+                                                                                       new ActionListener(){  
+                                                                                          public void actionPerformed(ActionEvent e){  
+                                                                                             Integer endHour = (Integer) endHourBox.getSelectedItem();
+                                                                                             final JLabel endHourEntry = new JLabel(Integer.toString(endHour));
+                                                                                             endHourEntry.setBounds(100,250,70,20);
+                                                                                             window.add(endHourEntry);
+                                                                                             window.remove(endHourBox);  
+                                                                                             submitHourButton.setVisible(false);
+                                                                                          
+                                                                                          
+                                                                                             JComboBox<Integer>  endMinBox = new JComboBox<>(minuteTime);
+                                                                                             endMinBox.setBounds(100,275, 50,20); 
+                                                                                             endMinBox.setVisible(true);
+                                                                                             window.add(endMinBox);
+                                                                                          
+                                                                                             final JLabel endMinuteLabel = new JLabel("End Minute:");
+                                                                                             endMinuteLabel.setBounds(20,275,70,20);
+                                                                                             endMinuteLabel.setVisible(true);
+                                                                                             window.add(endMinuteLabel);
+                                                                                          
+                                                                                          
+                                                                                          
+                                                                                          
+                                                                                             JButton submitMinButton=new JButton("Submit Minute:");  
+                                                                                             submitMinButton.setBounds(200,275,150,30);  
+                                                                                             submitMinButton.addActionListener(
+                                                                                                new ActionListener(){  
+                                                                                                   public void actionPerformed(ActionEvent e){  
+                                                                                                      Integer endMinute = (Integer) endMinBox.getSelectedItem();
+                                                                                                      final JLabel endMinEntry = new JLabel(Integer.toString(endMinute));
+                                                                                                      endMinEntry.setBounds(100,275,70,20);
+                                                                                                      window.add(endMinEntry);
+                                                                                                      window.remove(endMinBox);  
+                                                                                                      submitMinButton.setVisible(false);
+                                                                                                   
+                                                                                                   
+                                                                                                      Leave[] leaveType = {Leave.maternity, Leave.paternity, Leave.pto, Leave.sick_leave };
+                                                                                                   
+                                                                                                      JComboBox<Leave> leaveTypeBox = new JComboBox<>(leaveType);
+                                                                                                      leaveTypeBox.setBounds(100,300, 100,20); 
+                                                                                                      leaveTypeBox.setVisible(true);
+                                                                                                      window.add(leaveTypeBox);
+                                                                                                   
+                                                                                                      final JLabel leaveTypeLabel = new JLabel("Leave Type:");
+                                                                                                      leaveTypeLabel.setBounds(20,300,70,20);
+                                                                                                      leaveTypeLabel.setVisible(true);
+                                                                                                      window.add(leaveTypeLabel);
+                                                                                                   
+                                                                                                   
+                                                                                                   
+                                                                                                   
+                                                                                                      JButton leaveTypeButton=new JButton("Submit Request");  
+                                                                                                      leaveTypeButton.setBounds(200,300,150,30);  
+                                                                                                      leaveTypeButton.addActionListener(
+                                                                                                         new ActionListener(){  
+                                                                                                            public void actionPerformed(ActionEvent e){  
+                                                                                                               Leave leaveTypeEntry =  (Leave) leaveTypeBox.getSelectedItem();
+                                                                                                               window.add(endDayEntry);
+                                                                                                            
+                                                                                                               leaveTypeButton.setVisible(true);
+                                                                                                               window.repaint();  
+                                                                                                            }  
+                                                                                                         }
+                                                                                                         ); 
+                                                                                                      window.add(leaveTypeButton);
+                                                                                                      window.repaint(); 
+                                                                                                   
+                                                                                                   }  
+                                                                                                }
+                                                                                                ); 
+                                                                                             window.add(submitMinButton);
+                                                                                             submitMinButton.setVisible(true);
+                                                                                             endMinBox.setVisible(true);
+                                                                                             window.repaint();  
+                                                                                          
+                                                                                          }  
+                                                                                       }
+                                                                                       ); 
+                                                                                    window.add(submitHourButton);
+                                                                                    submitHourButton.setVisible(true);
+                                                                                    endHourBox.setVisible(true);
+                                                                                    window.repaint();   
+                                                                                 
+                                                                                 
                                                                                  }  
                                                                               }
                                                                               ); 
-                                                                           window.add(leaveTypeButton);
-                                                                        
-                                                                        
-                                                                        
-                                                                        
-                                                                        }  
-                                                                     }
-                                                                     ); 
-                                                                  window.add(submitEDayButton);
-                                                                  submitEDayButton.setVisible(false);
-                                                               
-                                                               
-                                                               
-                                                                  submitEDayButton.setVisible(true);
-                                                               
-                                                               
-                                                                  endDayBox.setVisible(true);
-                                                                  window.repaint();  
-                                                               
-                                                               
-                                                               
-                                                               
-                                                               
-                                                               }
-                                                               else if (endMonth == 4 ||endMonth == 6 ||endMonth == 9 ||endMonth == 11)
-                                                               {
-                                                                  JComboBox<Integer> endDayBox = new JComboBox<>(dayShortDate);
-                                                                  endDayBox.setBounds(100,175, 50,20); 
-                                                                  endDayBox.setVisible(true);
-                                                                  window.add(endDayBox);
-                                                               
-                                                                  final JLabel endDayLabel = new JLabel("End Day:");
-                                                                  endDayLabel.setBounds(20,175,70,20);
-                                                                  endDayLabel.setVisible(true);
-                                                                  window.add(endDayLabel);
-                                                               
-                                                               
-                                                               
-                                                               
-                                                                  JButton submitEDayButton=new JButton("Submit Day");  
-                                                                  submitEDayButton.setBounds(200,175,150,30);  
-                                                                  submitEDayButton.addActionListener(
-                                                                     new ActionListener(){  
-                                                                        public void actionPerformed(ActionEvent e){  
-                                                                           Integer endDay = (Integer) endDayBox.getSelectedItem();
-                                                                           final JLabel endDayEntry = new JLabel(Integer.toString(endDay));
-                                                                           endDayEntry.setBounds(100,175,70,20);
-                                                                           window.add(endDayEntry);
-                                                                           window.remove(endDayBox);  
+                                                                           window.add(submitEDayButton);
                                                                            submitEDayButton.setVisible(false);
-                                                                        //submitEYearButton.setVisible(true);
-                                                                        //startEYearBox.setVisible(true);
-                                                                        //startEYearLabel.setVisible(true);
+                                                                        
+                                                                        
+                                                                        
+                                                                           submitEDayButton.setVisible(true);
+                                                                        
+                                                                        
+                                                                           endDayBox.setVisible(true);
                                                                            window.repaint();  
                                                                         
                                                                         
+                                                                        }
+                                                                        else if (endMonth == 2 && endYear == 2020)
+                                                                        {
+                                                                           JComboBox<Integer> endDayBox = new JComboBox<>(dayLeapDate);
+                                                                           endDayBox.setBounds(100,225, 50,20); 
+                                                                           endDayBox.setVisible(true);
+                                                                           window.add(endDayBox);
                                                                         
-                                                                           Leave[] leaveType = {Leave.maternity, Leave.paternity, Leave.pto, Leave.sick_leave, Leave.emergency};
-                                                                        
-                                                                           JComboBox<Leave> leaveTypeBox = new JComboBox<>(leaveType);
-                                                                           leaveTypeBox.setBounds(100,200, 100,20); 
-                                                                           leaveTypeBox.setVisible(true);
-                                                                           window.add(leaveTypeBox);
-                                                                        
-                                                                           final JLabel leaveTypeLabel = new JLabel("Leave Type:");
-                                                                           leaveTypeLabel.setBounds(20,200,70,20);
-                                                                           leaveTypeLabel.setVisible(true);
-                                                                           window.add(leaveTypeLabel);
-                                                                        
-                                                                        
+                                                                           final JLabel endDayLabel = new JLabel("End Day:");
+                                                                           endDayLabel.setBounds(20,225,70,20);
+                                                                           endDayLabel.setVisible(true);
+                                                                           window.add(endDayLabel);
                                                                         
                                                                         
-                                                                           JButton leaveTypeButton=new JButton("Submit Request");  
-                                                                           leaveTypeButton.setBounds(200,200,150,30);  
-                                                                           leaveTypeButton.addActionListener(
+                                                                        
+                                                                        
+                                                                           JButton submitEDayButton=new JButton("Submit Day");  
+                                                                           submitEDayButton.setBounds(200,225,150,30);  
+                                                                           submitEDayButton.addActionListener(
                                                                               new ActionListener(){  
                                                                                  public void actionPerformed(ActionEvent e){  
-                                                                                    Leave leaveTypeEntry =  (Leave) leaveTypeBox.getSelectedItem();
+                                                                                    Integer endDay = (Integer) endDayBox.getSelectedItem();
+                                                                                    final JLabel endDayEntry = new JLabel(Integer.toString(endDay));
+                                                                                    endDayEntry.setBounds(100,225,70,20);
                                                                                     window.add(endDayEntry);
+                                                                                    window.remove(endDayBox);  
+                                                                                    submitEDayButton.setVisible(false);
                                                                                  
-                                                                                    leaveTypeButton.setVisible(true);
+                                                                                 
                                                                                     window.repaint();  
+                                                                                 
+                                                                                 
+                                                                                    JComboBox<Integer>  endHourBox = new JComboBox<>(hourTime);
+                                                                                    endHourBox.setBounds(100,250, 50,20); 
+                                                                                    endHourBox.setVisible(true);
+                                                                                    window.add(endHourBox);
+                                                                                 
+                                                                                    final JLabel endHourLabel = new JLabel("End Hour:");
+                                                                                    endHourLabel.setBounds(20,250,70,20);
+                                                                                    endHourLabel.setVisible(true);
+                                                                                    window.add(endHourLabel);
+                                                                                 
+                                                                                 
+                                                                                 
+                                                                                 
+                                                                                    JButton submitHourButton=new JButton("Submit Hour:");  
+                                                                                    submitHourButton.setBounds(200,250,150,30);  
+                                                                                    submitHourButton.addActionListener(
+                                                                                       new ActionListener(){  
+                                                                                          public void actionPerformed(ActionEvent e){  
+                                                                                             Integer endHour = (Integer) endHourBox.getSelectedItem();
+                                                                                             final JLabel endHourEntry = new JLabel(Integer.toString(endHour));
+                                                                                             endHourEntry.setBounds(100,250,70,20);
+                                                                                             window.add(endHourEntry);
+                                                                                             window.remove(endHourBox);  
+                                                                                             submitHourButton.setVisible(false);
+                                                                                          
+                                                                                          
+                                                                                             JComboBox<Integer>  endMinBox = new JComboBox<>(minuteTime);
+                                                                                             endMinBox.setBounds(100,275, 50,20); 
+                                                                                             endMinBox.setVisible(true);
+                                                                                             window.add(endMinBox);
+                                                                                          
+                                                                                             final JLabel endMinuteLabel = new JLabel("End Minute:");
+                                                                                             endMinuteLabel.setBounds(20,275,70,20);
+                                                                                             endMinuteLabel.setVisible(true);
+                                                                                             window.add(endMinuteLabel);
+                                                                                          
+                                                                                          
+                                                                                          
+                                                                                          
+                                                                                             JButton submitMinButton=new JButton("Submit Minute:");  
+                                                                                             submitMinButton.setBounds(200,275,150,30);  
+                                                                                             submitMinButton.addActionListener(
+                                                                                                new ActionListener(){  
+                                                                                                   public void actionPerformed(ActionEvent e){  
+                                                                                                      Integer endMinute = (Integer) endMinBox.getSelectedItem();
+                                                                                                      final JLabel endMinEntry = new JLabel(Integer.toString(endMinute));
+                                                                                                      endMinEntry.setBounds(100,275,70,20);
+                                                                                                      window.add(endMinEntry);
+                                                                                                      window.remove(endMinBox);  
+                                                                                                      submitMinButton.setVisible(false);
+                                                                                                   
+                                                                                                   
+                                                                                                      Leave[] leaveType = {Leave.maternity, Leave.paternity, Leave.pto, Leave.sick_leave };
+                                                                                                   
+                                                                                                      JComboBox<Leave> leaveTypeBox = new JComboBox<>(leaveType);
+                                                                                                      leaveTypeBox.setBounds(100,300, 100,20); 
+                                                                                                      leaveTypeBox.setVisible(true);
+                                                                                                      window.add(leaveTypeBox);
+                                                                                                   
+                                                                                                      final JLabel leaveTypeLabel = new JLabel("Leave Type:");
+                                                                                                      leaveTypeLabel.setBounds(20,300,70,20);
+                                                                                                      leaveTypeLabel.setVisible(true);
+                                                                                                      window.add(leaveTypeLabel);
+                                                                                                   
+                                                                                                   
+                                                                                                   
+                                                                                                   
+                                                                                                      JButton leaveTypeButton=new JButton("Submit Request");  
+                                                                                                      leaveTypeButton.setBounds(200,300,150,30);  
+                                                                                                      leaveTypeButton.addActionListener(
+                                                                                                         new ActionListener(){  
+                                                                                                            public void actionPerformed(ActionEvent e){  
+                                                                                                               Leave leaveTypeEntry =  (Leave) leaveTypeBox.getSelectedItem();
+                                                                                                               window.add(endDayEntry);
+                                                                                                            
+                                                                                                               leaveTypeButton.setVisible(true);
+                                                                                                               window.repaint();  
+                                                                                                            }  
+                                                                                                         }
+                                                                                                         ); 
+                                                                                                      window.add(leaveTypeButton);
+                                                                                                      window.repaint(); 
+                                                                                                   
+                                                                                                   }  
+                                                                                                }
+                                                                                                ); 
+                                                                                             window.add(submitMinButton);
+                                                                                             submitMinButton.setVisible(true);
+                                                                                             endMinBox.setVisible(true);
+                                                                                             window.repaint();  
+                                                                                          
+                                                                                          }  
+                                                                                       }
+                                                                                       ); 
+                                                                                    window.add(submitHourButton);
+                                                                                    submitHourButton.setVisible(true);
+                                                                                    endHourBox.setVisible(true);
+                                                                                    window.repaint();   
+                                                                                 
+                                                                                 
                                                                                  }  
                                                                               }
                                                                               ); 
-                                                                           window.add(leaveTypeButton);
-                                                                        
-                                                                        
-                                                                        
-                                                                        
-                                                                        
-                                                                        }  
-                                                                     }
-                                                                     ); 
-                                                                  window.add(submitEDayButton);
-                                                                  submitEDayButton.setVisible(false);
-                                                               
-                                                               
-                                                               
-                                                                  submitEDayButton.setVisible(true);
-                                                               
-                                                               
-                                                                  endDayBox.setVisible(true);
-                                                                  window.repaint();  
-                                                               
-                                                               
-                                                               }
-                                                               else if (endMonth == 2 && endYear == 2020)
-                                                               {
-                                                                  JComboBox<Integer> endDayBox = new JComboBox<>(dayLeapDate);
-                                                                  endDayBox.setBounds(100,175, 50,20); 
-                                                                  endDayBox.setVisible(true);
-                                                                  window.add(endDayBox);
-                                                               
-                                                                  final JLabel endDayLabel = new JLabel("End Day:");
-                                                                  endDayLabel.setBounds(20,175,70,20);
-                                                                  endDayLabel.setVisible(true);
-                                                                  window.add(endDayLabel);
-                                                               
-                                                               
-                                                               
-                                                               
-                                                                  JButton submitEDayButton=new JButton("Submit Day");  
-                                                                  submitEDayButton.setBounds(200,175,150,30);  
-                                                                  submitEDayButton.addActionListener(
-                                                                     new ActionListener(){  
-                                                                        public void actionPerformed(ActionEvent e){  
-                                                                           Integer endDay = (Integer) endDayBox.getSelectedItem();
-                                                                           final JLabel endDayEntry = new JLabel(Integer.toString(endDay));
-                                                                           endDayEntry.setBounds(100,175,70,20);
-                                                                           window.add(endDayEntry);
-                                                                           window.remove(endDayBox);  
+                                                                           window.add(submitEDayButton);
                                                                            submitEDayButton.setVisible(false);
+                                                                        
+                                                                        
+                                                                        
+                                                                           submitEDayButton.setVisible(true);
+                                                                        
+                                                                        
+                                                                           endDayBox.setVisible(true);
                                                                            window.repaint();  
                                                                         
                                                                         
-                                                                           Leave[] leaveType = {Leave.maternity, Leave.paternity, Leave.pto, Leave.sick_leave, Leave.emergency};
+                                                                           
+                                                                             
                                                                         
-                                                                           JComboBox<Leave> leaveTypeBox = new JComboBox<>(leaveType);
-                                                                           leaveTypeBox.setBounds(100,200, 100,20); 
-                                                                           leaveTypeBox.setVisible(true);
-                                                                           window.add(leaveTypeBox);
+                                                                        }
+                                                                        else 
+                                                                        {
+                                                                           JComboBox<Integer>  endDayBox = new JComboBox<>(dayFebDate);
+                                                                           endDayBox.setBounds(100,225, 50,20); 
+                                                                           endDayBox.setVisible(true);
+                                                                           window.add(endDayBox);
                                                                         
-                                                                           final JLabel leaveTypeLabel = new JLabel("Leave Type:");
-                                                                           leaveTypeLabel.setBounds(20,200,70,20);
-                                                                           leaveTypeLabel.setVisible(true);
-                                                                           window.add(leaveTypeLabel);
+                                                                           final JLabel endDayLabel = new JLabel("End Day:");
+                                                                           endDayLabel.setBounds(20,225,70,20);
+                                                                           endDayLabel.setVisible(true);
+                                                                           window.add(endDayLabel);
                                                                         
                                                                         
                                                                         
                                                                         
-                                                                           JButton leaveTypeButton=new JButton("Submit Request");  
-                                                                           leaveTypeButton.setBounds(200,200,150,30);  
-                                                                           leaveTypeButton.addActionListener(
+                                                                           JButton submitEDayButton=new JButton("Submit Day");  
+                                                                           submitEDayButton.setBounds(200,225,150,30);  
+                                                                           submitEDayButton.addActionListener(
                                                                               new ActionListener(){  
                                                                                  public void actionPerformed(ActionEvent e){  
-                                                                                    Leave leaveTypeEntry =  (Leave) leaveTypeBox.getSelectedItem();
+                                                                                    Integer endDay = (Integer) endDayBox.getSelectedItem();
+                                                                                    final JLabel endDayEntry = new JLabel(Integer.toString(endDay));
+                                                                                    endDayEntry.setBounds(100,225,70,20);
                                                                                     window.add(endDayEntry);
+                                                                                    window.remove(endDayBox);  
+                                                                                    submitEDayButton.setVisible(false);
                                                                                  
-                                                                                    leaveTypeButton.setVisible(true);
+                                                                                 
                                                                                     window.repaint();  
+                                                                                 
+                                                                                 
+                                                                                    JComboBox<Integer>  endHourBox = new JComboBox<>(hourTime);
+                                                                                    endHourBox.setBounds(100,250, 50,20); 
+                                                                                    endHourBox.setVisible(true);
+                                                                                    window.add(endHourBox);
+                                                                                 
+                                                                                    final JLabel endHourLabel = new JLabel("End Hour:");
+                                                                                    endHourLabel.setBounds(20,250,70,20);
+                                                                                    endHourLabel.setVisible(true);
+                                                                                    window.add(endHourLabel);
+                                                                                 
+                                                                                 
+                                                                                 
+                                                                                 
+                                                                                    JButton submitHourButton=new JButton("Submit Hour:");  
+                                                                                    submitHourButton.setBounds(200,250,150,30);  
+                                                                                    submitHourButton.addActionListener(
+                                                                                       new ActionListener(){  
+                                                                                          public void actionPerformed(ActionEvent e){  
+                                                                                             Integer endHour = (Integer) endHourBox.getSelectedItem();
+                                                                                             final JLabel endHourEntry = new JLabel(Integer.toString(endHour));
+                                                                                             endHourEntry.setBounds(100,250,70,20);
+                                                                                             window.add(endHourEntry);
+                                                                                             window.remove(endHourBox);  
+                                                                                             submitHourButton.setVisible(false);
+                                                                                          
+                                                                                          
+                                                                                             JComboBox<Integer>  endMinBox = new JComboBox<>(minuteTime);
+                                                                                             endMinBox.setBounds(100,275, 50,20); 
+                                                                                             endMinBox.setVisible(true);
+                                                                                             window.add(endMinBox);
+                                                                                          
+                                                                                             final JLabel endMinuteLabel = new JLabel("End Minute:");
+                                                                                             endMinuteLabel.setBounds(20,275,70,20);
+                                                                                             endMinuteLabel.setVisible(true);
+                                                                                             window.add(endMinuteLabel);
+                                                                                          
+                                                                                          
+                                                                                          
+                                                                                          
+                                                                                             JButton submitMinButton=new JButton("Submit Minute:");  
+                                                                                             submitMinButton.setBounds(200,275,150,30);  
+                                                                                             submitMinButton.addActionListener(
+                                                                                                new ActionListener(){  
+                                                                                                   public void actionPerformed(ActionEvent e){  
+                                                                                                      Integer endMinute = (Integer) endMinBox.getSelectedItem();
+                                                                                                      final JLabel endMinEntry = new JLabel(Integer.toString(endMinute));
+                                                                                                      endMinEntry.setBounds(100,275,70,20);
+                                                                                                      window.add(endMinEntry);
+                                                                                                      window.remove(endMinBox);  
+                                                                                                      submitMinButton.setVisible(false);
+                                                                                                   
+                                                                                                   
+                                                                                                      Leave[] leaveType = {Leave.maternity, Leave.paternity, Leave.pto, Leave.sick_leave };
+                                                                                                   
+                                                                                                      JComboBox<Leave> leaveTypeBox = new JComboBox<>(leaveType);
+                                                                                                      leaveTypeBox.setBounds(100,300, 100,20); 
+                                                                                                      leaveTypeBox.setVisible(true);
+                                                                                                      window.add(leaveTypeBox);
+                                                                                                   
+                                                                                                      final JLabel leaveTypeLabel = new JLabel("Leave Type:");
+                                                                                                      leaveTypeLabel.setBounds(20,300,70,20);
+                                                                                                      leaveTypeLabel.setVisible(true);
+                                                                                                      window.add(leaveTypeLabel);
+                                                                                                   
+                                                                                                   
+                                                                                                   
+                                                                                                   
+                                                                                                      JButton leaveTypeButton=new JButton("Submit Request");  
+                                                                                                      leaveTypeButton.setBounds(200,300,150,30);  
+                                                                                                      leaveTypeButton.addActionListener(
+                                                                                                         new ActionListener(){  
+                                                                                                            public void actionPerformed(ActionEvent e){  
+                                                                                                               Leave leaveTypeEntry =  (Leave) leaveTypeBox.getSelectedItem();
+                                                                                                               window.add(endDayEntry);
+                                                                                                            
+                                                                                                               leaveTypeButton.setVisible(true);
+                                                                                                               window.repaint();  
+                                                                                                            }  
+                                                                                                         }
+                                                                                                         ); 
+                                                                                                      window.add(leaveTypeButton);
+                                                                                                      window.repaint(); 
+                                                                                                   
+                                                                                                   }  
+                                                                                                }
+                                                                                                ); 
+                                                                                             window.add(submitMinButton);
+                                                                                             submitMinButton.setVisible(true);
+                                                                                             endMinBox.setVisible(true);
+                                                                                             window.repaint();  
+                                                                                          
+                                                                                          }  
+                                                                                       }
+                                                                                       ); 
+                                                                                    window.add(submitHourButton);
+                                                                                    submitHourButton.setVisible(true);
+                                                                                    endHourBox.setVisible(true);
+                                                                                    window.repaint();   
+                                                                                 
+                                                                                 
                                                                                  }  
                                                                               }
                                                                               ); 
-                                                                           window.add(leaveTypeButton);
-                                                                        
-                                                                        
-                                                                        
-                                                                        }  
-                                                                     }
-                                                                     ); 
-                                                                  window.add(submitEDayButton);
-                                                                  submitEDayButton.setVisible(false);
-                                                               
-                                                               
-                                                               
-                                                                  submitEDayButton.setVisible(true);
-                                                               
-                                                               
-                                                                  endDayBox.setVisible(true);
-                                                                  window.repaint();  
-                                                               
-                                                               }
-                                                               else 
-                                                               {
-                                                                  JComboBox<Integer>  endDayBox = new JComboBox<>(dayFebDate);
-                                                                  endDayBox.setBounds(100,175, 50,20); 
-                                                                  endDayBox.setVisible(true);
-                                                                  window.add(endDayBox);
-                                                               
-                                                                  final JLabel endDayLabel = new JLabel("End Day:");
-                                                                  endDayLabel.setBounds(20,175,70,20);
-                                                                  endDayLabel.setVisible(true);
-                                                                  window.add(endDayLabel);
-                                                               
-                                                               
-                                                               
-                                                               
-                                                                  JButton submitEDayButton=new JButton("Submit Day");  
-                                                                  submitEDayButton.setBounds(200,175,150,30);  
-                                                                  submitEDayButton.addActionListener(
-                                                                     new ActionListener(){  
-                                                                        public void actionPerformed(ActionEvent e){  
-                                                                           Integer endDay = (Integer) endDayBox.getSelectedItem();
-                                                                           final JLabel endDayEntry = new JLabel(Integer.toString(endDay));
-                                                                           endDayEntry.setBounds(100,175,70,20);
-                                                                           window.add(endDayEntry);
-                                                                           window.remove(endDayBox);  
+                                                                           window.add(submitEDayButton);
                                                                            submitEDayButton.setVisible(false);
-                                                                        //submitEYearButton.setVisible(true);
-                                                                        //startEYearBox.setVisible(true);
-                                                                        //startEYearLabel.setVisible(true);
+                                                                        
+                                                                        
+                                                                        
+                                                                           submitEDayButton.setVisible(true);
+                                                                        
+                                                                        
+                                                                           endDayBox.setVisible(true);
                                                                            window.repaint();  
                                                                         
                                                                         
-                                                                        
-                                                                           Leave[] leaveType = {Leave.maternity, Leave.paternity, Leave.pto, Leave.sick_leave, Leave.emergency};
-                                                                        
-                                                                           JComboBox<Leave> leaveTypeBox = new JComboBox<>(leaveType);
-                                                                           leaveTypeBox.setBounds(100,200, 100,20); 
-                                                                           leaveTypeBox.setVisible(true);
-                                                                           window.add(leaveTypeBox);
-                                                                        
-                                                                           final JLabel leaveTypeLabel = new JLabel("Leave Type:");
-                                                                           leaveTypeLabel.setBounds(20,200,70,20);
-                                                                           leaveTypeLabel.setVisible(true);
-                                                                           window.add(leaveTypeLabel);
-                                                                        
-                                                                        
-                                                                        
-                                                                        
-                                                                           JButton leaveTypeButton=new JButton("Submit Request");  
-                                                                           leaveTypeButton.setBounds(200,200,150,30);  
-                                                                           leaveTypeButton.addActionListener(
-                                                                              new ActionListener(){  
-                                                                                 public void actionPerformed(ActionEvent e){  
-                                                                                    Leave leaveTypeEntry =  (Leave) leaveTypeBox.getSelectedItem();
-                                                                                    window.add(endDayEntry);
-                                                                                 
-                                                                                    leaveTypeButton.setVisible(true);
-                                                                                    window.repaint();  
-                                                                                 }  
-                                                                              }
-                                                                              ); 
-                                                                           window.add(leaveTypeButton);
-                                                                        
-                                                                        
-                                                                        
-                                                                        
-                                                                        
-                                                                        }  
-                                                                     }
-                                                                     ); 
-                                                                  window.add(submitEDayButton);
-                                                                  submitEDayButton.setVisible(false);
-                                                               
-                                                               
-                                                               
-                                                                  submitEDayButton.setVisible(true);
-                                                               
-                                                               
-                                                                  endDayBox.setVisible(true);
-                                                                  window.repaint();  
-                                                               
-                                                               
-                                                               
-                                                               }
+                                                                        }
+                                                                     
+                                                                     
+                                                                     }  
+                                                                  }
+                                                                  ); 
+                                                               window.add(submitEMonthButton);
+                                                               submitEMonthButton.setVisible(true);
+                                                               window.repaint(); 
                                                             
                                                             
                                                             }  
                                                          }
                                                          ); 
-                                                      window.add(submitEMonthButton);
-                                                      submitEMonthButton.setVisible(true);
-                                                      window.repaint(); 
-                                                   
+                                                      window.add(submitEYearButton);
+                                                      submitEYearButton.setVisible(true);
+                                                      window.repaint();  
                                                    
                                                    }  
                                                 }
                                                 ); 
-                                             window.add(submitEYearButton);
-                                             submitEYearButton.setVisible(true);
+                                          
+                                          
+                                             window.add(submitMinButton);
+                                             submitMinButton.setVisible(false);
+                                             submitMinButton.setVisible(true);
+                                             startMinBox.setVisible(true);
                                              window.repaint();  
-                                          
-                                          
                                           
                                           
                                           }  
                                        }
                                        ); 
                                        
-                                       //FIX THIS 
+                                      
                                     window.add(submitHourButton);
                                     submitHourButton.setVisible(false);
-                                 
-                                 
-                                 
                                     submitHourButton.setVisible(true);
-                                 
-                                 
                                     startHourBox.setVisible(true);
                                     window.repaint();  
                                  
@@ -2342,6 +3625,3 @@ public class SystemInterface {
         
 }
 
-enum Leave {
-   maternity, paternity, pto, sick_leave, emergency;
-}
