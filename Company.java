@@ -1,30 +1,22 @@
 public class Company {
 
-   //This is the name of the Company
    final String companyName = "drShaikInc";
    
-   //Sets today as a day data type
-   Day today;
-      
-   
-   //Seeing if we need a calendar??
-  // Calendar obj = new Calendar();
-  // obj.create_calendar();
+   DayWithTime today;
    
    //We set the date here
-   public void setDate(int newmonth, int newday, int newyear) {
-   
-     // if (obj.findDate(newmonth, newday, newyear) != null){
-         today.day = newday;
-         today.month = newmonth;
-         today.year = newyear;
-     // }
+   public void setDate(int newMonth, int newDay, int newYear, int newHour, int newMinute) {
+         today.day.day = newDay;
+         today.day.month = newMonth;
+         today.day.year = newYear;
+         today.hour = newHour;
+         today.minute = newMinute;
    }
    
    
    
    //GETTER!!
-   public Day getDate() {
+   public DayWithTime getDate() {
          
       return today;
       
