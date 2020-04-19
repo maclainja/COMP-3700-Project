@@ -2,14 +2,14 @@
 public class RequestController
 {
 
-   public Request createRequest(int newStartDay, int newStartMonth, int newStartYear, int newStartTime, int newEndDay, int newEndMonth, int newEndYear, int newEndTime, Leave newLeaveType, int currentEmployeeID, int currentSupervisorID)
+   public Request createRequest(int newStartDay, int newStartMonth, int newStartYear, int newStartHour, int newStartMinute, int newEndDay, int newEndMonth, int newEndYear, int newEndHour, int newEndMinute, Leave newLeaveType, int currentEmployeeID, int currentSupervisorID)
    {
    
-      Request newRequest = new Request( newStartDay, newStartMonth,  newStartYear,  newStartTime,  newEndDay,  newEndMonth,  newEndYear,  newEndTime,  newLeaveType,  currentEmployeeID,  currentSupervisorID);
+      Request newRequest = new Request(newStartDay, newStartMonth,  newStartYear,  newStartHour, newStartMinute,  newEndDay,  newEndMonth,  newEndYear,  newEndHour, newEndMinute,  newLeaveType,  currentEmployeeID,  currentSupervisorID);
       return newRequest;
    }
 
-   public Request setStatus(Request newRequest, Gender fm, Title jobTitle)
+   public void setStatus(Request newRequest, Gender fm, Title jobTitle)
    {
       
       if(jobTitle != Title.part_time && jobTitle != Title.contractor)
@@ -47,7 +47,6 @@ public class RequestController
       {
          newRequest.setStatus(Status.rejected);
       }
-      return newRequest;
    }
 
 }

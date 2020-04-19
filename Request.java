@@ -5,29 +5,33 @@ public class Request
    int startDay;
    int startMonth;
    int startYear;
-   int startTime;
+   int startHour;
+   int startMinute;
    int endDay;
    int endMonth;
    int endYear;   
-   int endTime;   
+   int endHour;
+   int endMinute;   
    Leave leaveType;   
    Status currentStatus;   
    int employeeID;   
    int supervisorID;   
    int requestID;   
-   int totalTime;
+   double totalTime;
    
-   public Request  (int newStartDay, int newStartMonth, int newStartYear, int newStartTime, int newEndDay, int newEndMonth, int newEndYear, int newEndTime, Leave newLeaveType, int currentEmployeeID, int currentSupervisorID)
+   public Request  (int newStartDay, int newStartMonth, int newStartYear, int newStartHour, int newStartMinute, int newEndDay, int newEndMonth, int newEndYear, int newEndHour, int newEndMinute, Leave newLeaveType, int currentEmployeeID, int currentSupervisorID)
    {
    
       startDay = newStartDay;
       startMonth = newStartMonth;
       startYear = newStartYear;
-      startTime = newStartTime;
+      startHour = newStartHour;
+      startMinute = newStartMinute;
       endDay = newEndDay;
       endMonth = newEndMonth;
       endYear = newEndYear;
-      endTime = newEndTime;
+      endHour = newEndHour;
+      endMinute = newEndMinute;
       leaveType = newLeaveType;
       employeeID = currentEmployeeID;
       supervisorID = currentSupervisorID;
@@ -43,10 +47,23 @@ public class Request
    
    
    
-   public void setTotal(int newTotalTime)
+   public void setTotalTime(double newTotalTime)
    {
       this.totalTime = newTotalTime;
    }
-     
-     
+   
+   public void setRequestID(int requestID)
+   {
+      this.requestID = requestID;
+   }
+
+   public int getEmployeeID() 
+   {
+      return employeeID;
+   }
+   
+   public double getTotalTime() 
+   {
+      return totalTime;
+   }
 }

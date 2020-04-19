@@ -1,3 +1,3 @@
 enum Status {
-   approved, rejected, pending;
+   approved, rejected, pending, withdrawn;
 }
