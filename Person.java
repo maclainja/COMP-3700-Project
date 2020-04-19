@@ -3,13 +3,14 @@ public class Person{
    String name;
    Title title;
    int employeeID;
+   String password;
 
    Gender gender;
    Person supervisor;
    Person[] supervisees;
    
 
-   public Person(String newName, int ID, Title  jobTitle, Gender fm, Person newSupervisor, Person[] newSupervisee)
+   public Person(String newName, int ID, Title  jobTitle, Gender fm, Person newSupervisor, Person[] newSupervisee, String newPassword)
    
    
    {
@@ -19,6 +20,7 @@ public class Person{
       gender = fm;
       supervisor = newSupervisor;
       supervisees = newSupervisee;
+      password = newPassword;
    }
 
    public int getID()
@@ -105,6 +107,12 @@ public class Person{
    {
       return this.supervisees;
    }
+   
+      public String getPassword()
+   {
+      return this.password;
+   }
+   
    public void promoteDemoteEmployee(Title newTitle, Person newSupervisor, Person[] newSupervisees)
    {
       this.title = newTitle;
