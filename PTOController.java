@@ -8,8 +8,8 @@ public class PTOController {
       PTODatabase = new PTODatabase();
    }
 
-   public int getNewID(String type) {
-      return PTODatabase.getNewID(type);
+   public int getNewID(Title title) {
+      return PTODatabase.getNewID(title);
    }
 
    public boolean verifyPTO(double amount, int employeeID) {

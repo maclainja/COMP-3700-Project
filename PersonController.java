@@ -9,14 +9,13 @@ import java.util.List;
 
 public class PersonController{
 
-   int newID = 1;
-
    Map<Integer, Person> employeeIndex;
+   
+   PTOController ptoc;
 
    public PersonController()
    {
       employeeIndex = new HashMap<Integer, Person>();
-     
    }
 
    public Gender getGender(int ID)
@@ -33,8 +32,7 @@ public String getPassword(int ID)
    public void hireEmployee(Title newTitle, Gender fm, String newName, int newSupervisorID, int[] newSuperviseeIDs, String newPassword)
    {
    
-      int ptoID = newID;
-   //int ptoID = PTOCONTROLLER.getNewID();
+      int ptoID = ptoc.getNewID(newTitle);
       Person[] newSupervisees = new Person[newSuperviseeIDs.length];
       if (newSuperviseeIDs.length > 0)
       {
@@ -71,7 +69,6 @@ public String getPassword(int ID)
          }
       }
       employeeIndex.put((Integer)ptoID, newEmployee);
-      newID++;
    
    }
 
@@ -117,50 +114,6 @@ public String getPassword(int ID)
       currentPerson.supervisees = newSupervisees;
    
    }
-   /*
-      Person currentPerson = employeeIndex.get(ID);
-      Person oldSupervisor = currentPerson.getSupervisor();
-      Person[] oldSupervisees = currentPerson.getSupervisees();
-      Person[] supervisorSupervisees = oldSupervisor.getSupervisees();
-            
-     
-            
-      for ( int i = 0; i < oldSupervisees.length; i++)
-      {
-         oldSupervisor.addSupervisee(oldSupervisees[i]);
-         oldSupervisees[i].supervisor = oldSupervisor;
-         
-      }
-   
-      currentPerson.newSupervisor(employeeIndex.get(newSupervisorID));
-      
-      Person[] newSupervisees = new Person[newSuperviseeIDs.length];
-      if (newSuperviseeIDs.length > 0)
-      {
-         
-        
-         for (int i = 0; i < newSuperviseeIDs.length; i++)
-         {
-            newSupervisees[i] = employeeIndex.get(newSuperviseeIDs[i]);
-         }
-      }
-      currentPerson.newSupervisee(newSupervisees);
-      
-      
-      if (newSupervisees.length > 0)
-      {
-         for (Person temp: newSupervisees)
-         {
-            if (temp != null)
-            {
-               temp.newSupervisor(currentPerson);
-            }
-         }
-      }
-   
-   
-   }
-   */
 
    public Person[] getSupervisees(int ID)
    {

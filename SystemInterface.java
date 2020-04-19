@@ -4,10 +4,21 @@ public class SystemInterface {
 
    static int employeeID =33;
    static int supervisorID =44; 
-
+   static Company c;
+   static EmployeeRequestController erc;
+   static ManagerRequestController mrc;
+   static PersonController pc;
+   static PTOController ptoc;
+   //static CalendarController cc;
 
    public static void main(String[] args) {
    
+      Company c = new Company();
+      erc = c.erc;
+      mrc = c.mrc;
+      pc = c.pc;
+      ptoc = c.ptoc;
+      //cc = c.cc;
       JFrame window =new JFrame("Leave System"); 
       window.setExtendedState(JFrame.MAXIMIZED_BOTH); 
       window.setVisible(true);
