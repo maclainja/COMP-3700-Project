@@ -39,10 +39,16 @@ public class RequestController
          
          }
          else 
+         {
+            newRequest.setStatus(Status.rejected);
+         }
+      }
+      else if (newRequest.leaveType == Leave.sick_leave)
       {
-         newRequest.setStatus(Status.rejected);
+         newRequest.setStatus(Status.approved);
+         
       }
-      }
+      
       else 
       {
          newRequest.setStatus(Status.rejected);

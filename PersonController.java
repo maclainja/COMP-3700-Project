@@ -18,6 +18,7 @@ public class PersonController{
       ptoc = newptoc;
       employeeIndex = new HashMap<Integer, Person>();
       hireEmployee(Title.hr_executive, Gender.male, "admin", 0 , new int[0], "password");
+      employeeIndex.get(0).supervisor = employeeIndex.get(0);
    }
 
    public Gender getGender(int ID)
