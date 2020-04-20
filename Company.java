@@ -15,8 +15,9 @@ public class Company {
    public Company() {
       erc = new EmployeeRequestController();
       mrc = new ManagerRequestController();
-      pc = new PersonController();
       ptoc = new PTOController();
+      pc = new PersonController(ptoc);
+   
       rc = new RequestController();
       rdc = new RequestDatabaseController();
       cc = new CalendarController();
@@ -27,21 +28,24 @@ public class Company {
       
       mrc.rdc = rdc;
       
-      pc.ptoc = ptoc;
+      
       
       rdc.cc = cc;
       rdc.ptoc = ptoc;
       rdc.c = this;
+
+      today = new DayWithTime(1,1,2020,9,0);
+
    }
 
    public void setDate(int newMonth, int newDay, int newYear, int newHour, int newMinute) {
-         today.day.day = newDay;
-         today.day.month = newMonth;
-         today.day.year = newYear;
-         today.hour = newHour;
-         today.minute = newMinute;
+      today.day.day = newDay;
+      today.day.month = newMonth;
+      today.day.year = newYear;
+      today.hour = newHour;
+      today.minute = newMinute;
    }
-   
+  
    public DayWithTime getDate() {
       return today;
    }      

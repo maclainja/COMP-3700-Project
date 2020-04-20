@@ -13,9 +13,11 @@ public class PersonController{
    
    PTOController ptoc;
 
-   public PersonController()
+   public PersonController(PTOController newptoc)
    {
+      ptoc = newptoc;
       employeeIndex = new HashMap<Integer, Person>();
+      hireEmployee(Title.hr_executive, Gender.male, "admin", 0 , new int[0], "password");
    }
 
    public Gender getGender(int ID)
@@ -23,7 +25,7 @@ public class PersonController{
       return employeeIndex.get(ID).getGender();
    }
 
-public String getPassword(int ID)
+   public String getPassword(int ID)
    {
       return employeeIndex.get(ID).getPassword();
    }
@@ -76,9 +78,9 @@ public String getPassword(int ID)
 
    public void fireEmployee(int ID)
    {
-      
-      employeeIndex.get(employeeIndex.get(ID).supervisor.employeeID).removeSupervisee(employeeIndex.get(ID));
-   
+     // employeeIndex.get(employeeIndex.get(ID).supervisor.employeeID).removeSupervisee(employeeIndex.get(ID));
+      promoteDemoteEmployee( ID,  Title.hr, 0, new int[0] );
+      employeeIndex.get(0).removeSupervisee(employeeIndex.get(ID));
       employeeIndex.remove(ID);
    }
 
@@ -93,7 +95,10 @@ public String getPassword(int ID)
       }
    
       currentPerson.title = newTitle;
+      currentPerson.supervisor.removeSupervisee(currentPerson);
       currentPerson.supervisor = employeeIndex.get(newSupervisorID);
+      currentPerson.supervisor.addSupervisee(currentPerson);
+      
    
       Person[] newSupervisees = new Person[newSuperviseeIDs.length];
       if (newSuperviseeIDs.length > 0)

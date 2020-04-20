@@ -1,9 +1,10 @@
+import java.util.ArrayList;
 import java.awt.event.*;  
 import javax.swing.*;    
 public class SystemInterface { 
 
-   static int employeeID =33;
-   static int supervisorID =44; 
+   static int employeeID = 0;
+   static int supervisorID = 0; 
    static Company c;
    static EmployeeRequestController erc;
    static ManagerRequestController mrc;
@@ -50,13 +51,13 @@ public class SystemInterface {
       window.add(passwordLabel);
    
       
-      final JTextField passwordBox=new JTextField();  
+      final JTextField passwordBox = new JTextField();  
       passwordBox.setBounds(110,100, 150,20); 
       window.add(passwordBox);
       
       
       
-      JButton logInButton=new JButton("Login");  
+      JButton logInButton= new JButton("Login");  
       logInButton.setBounds(110,150,95,30);  
       logInButton.addActionListener(
          new ActionListener(){  
@@ -228,7 +229,7 @@ public class SystemInterface {
       Integer[] dayLeapDate = new Integer[] {1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29};
       Integer[] dayShortDate = new Integer[] {1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30};
       Integer[] dayLongDate = new Integer[] {1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31};
-      Integer[] hourTime = new Integer[] {8,9,10,11,12,13,14,15,16,17};
+      Integer[] hourTime = new Integer[] {9,10,11,12,13,14,15,16,17};
       Integer[] minuteTime= new Integer[]{ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25,26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59};
       Integer[] yearDate = new Integer[] {2020};
       
@@ -537,7 +538,11 @@ public class SystemInterface {
                                                                                                                Leave leaveTypeEntry =  (Leave) leaveTypeBox.getSelectedItem();
                                                                                                                window.add(endDayEntry);
                                                                                                             
+                                                                                                            
+                                                                                                            
                                                                                                                leaveTypeButton.setVisible(true);
+                                                                                                               erc.makeRequest(startDay, startMonth, startYear, startHour, startMinute, endDay, endMonth, endYear, endHour, endMinute, leaveTypeEntry, employeeID, supervisorID);
+                                                                                                               
                                                                                                                window.repaint(); 
                                                                                                                
                                                                                                             }  
@@ -686,7 +691,8 @@ public class SystemInterface {
                                                                                                             public void actionPerformed(ActionEvent e){  
                                                                                                                Leave leaveTypeEntry =  (Leave) leaveTypeBox.getSelectedItem();
                                                                                                                window.add(endDayEntry);
-                                                                                                            
+                                                                                                               erc.makeRequest(startDay, startMonth, startYear, startHour, startMinute, endDay, endMonth, endYear, endHour, endMinute, leaveTypeEntry, employeeID, supervisorID);
+                                                                                                               
                                                                                                                leaveTypeButton.setVisible(true);
                                                                                                                window.repaint();  
                                                                                                             }  
@@ -833,7 +839,8 @@ public class SystemInterface {
                                                                                                             public void actionPerformed(ActionEvent e){  
                                                                                                                Leave leaveTypeEntry =  (Leave) leaveTypeBox.getSelectedItem();
                                                                                                                window.add(endDayEntry);
-                                                                                                            
+                                                                                                               erc.makeRequest(startDay, startMonth, startYear, startHour, startMinute, endDay, endMonth, endYear, endHour, endMinute, leaveTypeEntry, employeeID, supervisorID);
+                                                                                                               
                                                                                                                leaveTypeButton.setVisible(true);
                                                                                                                window.repaint();  
                                                                                                             }  
@@ -982,7 +989,8 @@ public class SystemInterface {
                                                                                                             public void actionPerformed(ActionEvent e){  
                                                                                                                Leave leaveTypeEntry =  (Leave) leaveTypeBox.getSelectedItem();
                                                                                                                window.add(endDayEntry);
-                                                                                                            
+                                                                                                               erc.makeRequest(startDay, startMonth, startYear, startHour, startMinute, endDay, endMonth, endYear, endHour, endMinute, leaveTypeEntry, employeeID, supervisorID);
+                                                                                                               
                                                                                                                leaveTypeButton.setVisible(true);
                                                                                                                window.repaint();  
                                                                                                             }  
@@ -1331,7 +1339,8 @@ public class SystemInterface {
                                                                                                             public void actionPerformed(ActionEvent e){  
                                                                                                                Leave leaveTypeEntry =  (Leave) leaveTypeBox.getSelectedItem();
                                                                                                                window.add(endDayEntry);
-                                                                                                            
+                                                                                                               erc.makeRequest(startDay, startMonth, startYear, startHour, startMinute, endDay, endMonth, endYear, endHour, endMinute, leaveTypeEntry, employeeID, supervisorID);
+                                                                                                               
                                                                                                                leaveTypeButton.setVisible(true);
                                                                                                                window.repaint();  
                                                                                                             }  
@@ -1481,7 +1490,8 @@ public class SystemInterface {
                                                                                                             public void actionPerformed(ActionEvent e){  
                                                                                                                Leave leaveTypeEntry =  (Leave) leaveTypeBox.getSelectedItem();
                                                                                                                window.add(endDayEntry);
-                                                                                                            
+                                                                                                               erc.makeRequest(startDay, startMonth, startYear, startHour, startMinute, endDay, endMonth, endYear, endHour, endMinute, leaveTypeEntry, employeeID, supervisorID);
+                                                                                                               
                                                                                                                leaveTypeButton.setVisible(true);
                                                                                                                window.repaint();  
                                                                                                             }  
@@ -1628,7 +1638,8 @@ public class SystemInterface {
                                                                                                             public void actionPerformed(ActionEvent e){  
                                                                                                                Leave leaveTypeEntry =  (Leave) leaveTypeBox.getSelectedItem();
                                                                                                                window.add(endDayEntry);
-                                                                                                            
+                                                                                                               erc.makeRequest(startDay, startMonth, startYear, startHour, startMinute, endDay, endMonth, endYear, endHour, endMinute, leaveTypeEntry, employeeID, supervisorID);
+                                                                                                               
                                                                                                                leaveTypeButton.setVisible(true);
                                                                                                                window.repaint();  
                                                                                                             }  
@@ -1777,7 +1788,8 @@ public class SystemInterface {
                                                                                                             public void actionPerformed(ActionEvent e){  
                                                                                                                Leave leaveTypeEntry =  (Leave) leaveTypeBox.getSelectedItem();
                                                                                                                window.add(endDayEntry);
-                                                                                                            
+                                                                                                               erc.makeRequest(startDay, startMonth, startYear, startHour, startMinute, endDay, endMonth, endYear, endHour, endMinute, leaveTypeEntry, employeeID, supervisorID);
+                                                                                                               
                                                                                                                leaveTypeButton.setVisible(true);
                                                                                                                window.repaint();  
                                                                                                             }  
@@ -2127,7 +2139,8 @@ public class SystemInterface {
                                                                                                             public void actionPerformed(ActionEvent e){  
                                                                                                                Leave leaveTypeEntry =  (Leave) leaveTypeBox.getSelectedItem();
                                                                                                                window.add(endDayEntry);
-                                                                                                            
+                                                                                                               erc.makeRequest(startDay, startMonth, startYear, startHour, startMinute, endDay, endMonth, endYear, endHour, endMinute, leaveTypeEntry, employeeID, supervisorID);
+                                                                                                               
                                                                                                                leaveTypeButton.setVisible(true);
                                                                                                                window.repaint();  
                                                                                                             }  
@@ -2277,7 +2290,8 @@ public class SystemInterface {
                                                                                                             public void actionPerformed(ActionEvent e){  
                                                                                                                Leave leaveTypeEntry =  (Leave) leaveTypeBox.getSelectedItem();
                                                                                                                window.add(endDayEntry);
-                                                                                                            
+                                                                                                               erc.makeRequest(startDay, startMonth, startYear, startHour, startMinute, endDay, endMonth, endYear, endHour, endMinute, leaveTypeEntry, employeeID, supervisorID);
+                                                                                                               
                                                                                                                leaveTypeButton.setVisible(true);
                                                                                                                window.repaint();  
                                                                                                             }  
@@ -2424,7 +2438,8 @@ public class SystemInterface {
                                                                                                             public void actionPerformed(ActionEvent e){  
                                                                                                                Leave leaveTypeEntry =  (Leave) leaveTypeBox.getSelectedItem();
                                                                                                                window.add(endDayEntry);
-                                                                                                            
+                                                                                                               erc.makeRequest(startDay, startMonth, startYear, startHour, startMinute, endDay, endMonth, endYear, endHour, endMinute, leaveTypeEntry, employeeID, supervisorID);
+                                                                                                               
                                                                                                                leaveTypeButton.setVisible(true);
                                                                                                                window.repaint();  
                                                                                                             }  
@@ -2574,7 +2589,8 @@ public class SystemInterface {
                                                                                                             public void actionPerformed(ActionEvent e){  
                                                                                                                Leave leaveTypeEntry =  (Leave) leaveTypeBox.getSelectedItem();
                                                                                                                window.add(endDayEntry);
-                                                                                                            
+                                                                                                               erc.makeRequest(startDay, startMonth, startYear, startHour, startMinute, endDay, endMonth, endYear, endHour, endMinute, leaveTypeEntry, employeeID, supervisorID);
+                                                                                                               
                                                                                                                leaveTypeButton.setVisible(true);
                                                                                                                window.repaint();  
                                                                                                             }  
@@ -2925,7 +2941,8 @@ public class SystemInterface {
                                                                                                             public void actionPerformed(ActionEvent e){  
                                                                                                                Leave leaveTypeEntry =  (Leave) leaveTypeBox.getSelectedItem();
                                                                                                                window.add(endDayEntry);
-                                                                                                            
+                                                                                                               erc.makeRequest(startDay, startMonth, startYear, startHour, startMinute, endDay, endMonth, endYear, endHour, endMinute, leaveTypeEntry, employeeID, supervisorID);
+                                                                                                               
                                                                                                                leaveTypeButton.setVisible(true);
                                                                                                                window.repaint();  
                                                                                                             }  
@@ -3075,7 +3092,8 @@ public class SystemInterface {
                                                                                                             public void actionPerformed(ActionEvent e){  
                                                                                                                Leave leaveTypeEntry =  (Leave) leaveTypeBox.getSelectedItem();
                                                                                                                window.add(endDayEntry);
-                                                                                                            
+                                                                                                               erc.makeRequest(startDay, startMonth, startYear, startHour, startMinute, endDay, endMonth, endYear, endHour, endMinute, leaveTypeEntry, employeeID, supervisorID);
+                                                                                                               
                                                                                                                leaveTypeButton.setVisible(true);
                                                                                                                window.repaint();  
                                                                                                             }  
@@ -3222,7 +3240,8 @@ public class SystemInterface {
                                                                                                             public void actionPerformed(ActionEvent e){  
                                                                                                                Leave leaveTypeEntry =  (Leave) leaveTypeBox.getSelectedItem();
                                                                                                                window.add(endDayEntry);
-                                                                                                            
+                                                                                                               erc.makeRequest(startDay, startMonth, startYear, startHour, startMinute, endDay, endMonth, endYear, endHour, endMinute, leaveTypeEntry, employeeID, supervisorID);
+                                                                                                               
                                                                                                                leaveTypeButton.setVisible(true);
                                                                                                                window.repaint();  
                                                                                                             }  
@@ -3372,7 +3391,8 @@ public class SystemInterface {
                                                                                                             public void actionPerformed(ActionEvent e){  
                                                                                                                Leave leaveTypeEntry =  (Leave) leaveTypeBox.getSelectedItem();
                                                                                                                window.add(endDayEntry);
-                                                                                                            
+                                                                                                               erc.makeRequest(startDay, startMonth, startYear, startHour, startMinute, endDay, endMonth, endYear, endHour, endMinute, leaveTypeEntry, employeeID, supervisorID);
+                                                                                                               
                                                                                                                leaveTypeButton.setVisible(true);
                                                                                                                window.repaint();  
                                                                                                             }  
@@ -3506,6 +3526,32 @@ public class SystemInterface {
          }
          ); 
       window.add(backButton);
+      
+      ArrayList<Request> currentRequestArray =  erc.getEmployeeRequests(employeeID);
+      String stringToPrint = "<html>";
+     
+      for( Request currentRequest: currentRequestArray)
+      {
+         stringToPrint = stringToPrint + Integer.toString(currentRequest.requestID) + "  ";
+         stringToPrint = stringToPrint + Integer.toString(currentRequest.employeeID) + "  ";
+         stringToPrint = stringToPrint + Integer.toString(currentRequest.startMonth) + "  ";
+         stringToPrint = stringToPrint + Integer.toString(currentRequest.startDay) + "  ";
+         stringToPrint = stringToPrint + Integer.toString(currentRequest.startYear) + "  ";
+         stringToPrint = stringToPrint + Integer.toString(currentRequest.startHour) + "  ";
+         stringToPrint = stringToPrint + Integer.toString(currentRequest.startMinute) + "  ";
+         stringToPrint = stringToPrint + Integer.toString(currentRequest.endMonth) + "  ";
+         stringToPrint = stringToPrint + Integer.toString(currentRequest.endDay) + "  ";
+         stringToPrint = stringToPrint + Integer.toString(currentRequest.endYear) + "  ";
+         stringToPrint = stringToPrint + Integer.toString(currentRequest.endHour) + "  ";
+         stringToPrint = stringToPrint + Integer.toString(currentRequest.endMinute) + "  ";
+         
+         stringToPrint = stringToPrint + "<br/>";
+      }
+      stringToPrint = stringToPrint + "<html>";
+      final JLabel requestLabel = new JLabel(stringToPrint);
+      requestLabel.setBounds(20,50,380,280);
+      window.add(requestLabel);
+      
       window.repaint();
    }
 
@@ -3621,7 +3667,7 @@ public class SystemInterface {
       Integer[] dayLeapDate = new Integer[] {1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29};
       Integer[] dayShortDate = new Integer[] {1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30};
       Integer[] dayLongDate = new Integer[] {1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31};
-      Integer[] hourTime = new Integer[] {8,9,10,11,12,13,14,15,16,17};
+      Integer[] hourTime = new Integer[] {9,10,11,12,13,14,15,16,17};
       Integer[] minuteTime= new Integer[]{ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25,26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59};
       Integer[] yearDate = new Integer[] {2020};
       
@@ -3929,7 +3975,8 @@ public class SystemInterface {
                                                                                                             public void actionPerformed(ActionEvent e){  
                                                                                                                Leave leaveTypeEntry =  (Leave) leaveTypeBox.getSelectedItem();
                                                                                                                window.add(endDayEntry);
-                                                                                                            
+                                                                                                               erc.makeRequest(startDay, startMonth, startYear, startHour, startMinute, endDay, endMonth, endYear, endHour, endMinute, leaveTypeEntry, employeeID, supervisorID);
+                                                                                                               
                                                                                                                leaveTypeButton.setVisible(true);
                                                                                                                window.repaint(); 
                                                                                                                
@@ -4079,7 +4126,8 @@ public class SystemInterface {
                                                                                                             public void actionPerformed(ActionEvent e){  
                                                                                                                Leave leaveTypeEntry =  (Leave) leaveTypeBox.getSelectedItem();
                                                                                                                window.add(endDayEntry);
-                                                                                                            
+                                                                                                               erc.makeRequest(startDay, startMonth, startYear, startHour, startMinute, endDay, endMonth, endYear, endHour, endMinute, leaveTypeEntry, employeeID, supervisorID);
+                                                                                                               
                                                                                                                leaveTypeButton.setVisible(true);
                                                                                                                window.repaint();  
                                                                                                             }  
@@ -4226,7 +4274,8 @@ public class SystemInterface {
                                                                                                             public void actionPerformed(ActionEvent e){  
                                                                                                                Leave leaveTypeEntry =  (Leave) leaveTypeBox.getSelectedItem();
                                                                                                                window.add(endDayEntry);
-                                                                                                            
+                                                                                                               erc.makeRequest(startDay, startMonth, startYear, startHour, startMinute, endDay, endMonth, endYear, endHour, endMinute, leaveTypeEntry, employeeID, supervisorID);
+                                                                                                               
                                                                                                                leaveTypeButton.setVisible(true);
                                                                                                                window.repaint();  
                                                                                                             }  
@@ -4375,7 +4424,8 @@ public class SystemInterface {
                                                                                                             public void actionPerformed(ActionEvent e){  
                                                                                                                Leave leaveTypeEntry =  (Leave) leaveTypeBox.getSelectedItem();
                                                                                                                window.add(endDayEntry);
-                                                                                                            
+                                                                                                               erc.makeRequest(startDay, startMonth, startYear, startHour, startMinute, endDay, endMonth, endYear, endHour, endMinute, leaveTypeEntry, employeeID, supervisorID);
+                                                                                                               
                                                                                                                leaveTypeButton.setVisible(true);
                                                                                                                window.repaint();  
                                                                                                             }  
@@ -4724,7 +4774,8 @@ public class SystemInterface {
                                                                                                             public void actionPerformed(ActionEvent e){  
                                                                                                                Leave leaveTypeEntry =  (Leave) leaveTypeBox.getSelectedItem();
                                                                                                                window.add(endDayEntry);
-                                                                                                            
+                                                                                                               erc.makeRequest(startDay, startMonth, startYear, startHour, startMinute, endDay, endMonth, endYear, endHour, endMinute, leaveTypeEntry, employeeID, supervisorID);
+                                                                                                               
                                                                                                                leaveTypeButton.setVisible(true);
                                                                                                                window.repaint();  
                                                                                                             }  
@@ -4874,7 +4925,8 @@ public class SystemInterface {
                                                                                                             public void actionPerformed(ActionEvent e){  
                                                                                                                Leave leaveTypeEntry =  (Leave) leaveTypeBox.getSelectedItem();
                                                                                                                window.add(endDayEntry);
-                                                                                                            
+                                                                                                               erc.makeRequest(startDay, startMonth, startYear, startHour, startMinute, endDay, endMonth, endYear, endHour, endMinute, leaveTypeEntry, employeeID, supervisorID);
+                                                                                                               
                                                                                                                leaveTypeButton.setVisible(true);
                                                                                                                window.repaint();  
                                                                                                             }  
@@ -5021,7 +5073,8 @@ public class SystemInterface {
                                                                                                             public void actionPerformed(ActionEvent e){  
                                                                                                                Leave leaveTypeEntry =  (Leave) leaveTypeBox.getSelectedItem();
                                                                                                                window.add(endDayEntry);
-                                                                                                            
+                                                                                                               erc.makeRequest(startDay, startMonth, startYear, startHour, startMinute, endDay, endMonth, endYear, endHour, endMinute, leaveTypeEntry, employeeID, supervisorID);
+                                                                                                               
                                                                                                                leaveTypeButton.setVisible(true);
                                                                                                                window.repaint();  
                                                                                                             }  
@@ -5170,7 +5223,8 @@ public class SystemInterface {
                                                                                                             public void actionPerformed(ActionEvent e){  
                                                                                                                Leave leaveTypeEntry =  (Leave) leaveTypeBox.getSelectedItem();
                                                                                                                window.add(endDayEntry);
-                                                                                                            
+                                                                                                               erc.makeRequest(startDay, startMonth, startYear, startHour, startMinute, endDay, endMonth, endYear, endHour, endMinute, leaveTypeEntry, employeeID, supervisorID);
+                                                                                                               
                                                                                                                leaveTypeButton.setVisible(true);
                                                                                                                window.repaint();  
                                                                                                             }  
@@ -5520,7 +5574,8 @@ public class SystemInterface {
                                                                                                             public void actionPerformed(ActionEvent e){  
                                                                                                                Leave leaveTypeEntry =  (Leave) leaveTypeBox.getSelectedItem();
                                                                                                                window.add(endDayEntry);
-                                                                                                            
+                                                                                                               erc.makeRequest(startDay, startMonth, startYear, startHour, startMinute, endDay, endMonth, endYear, endHour, endMinute, leaveTypeEntry, employeeID, supervisorID);
+                                                                                                               
                                                                                                                leaveTypeButton.setVisible(true);
                                                                                                                window.repaint();  
                                                                                                             }  
@@ -5817,7 +5872,8 @@ public class SystemInterface {
                                                                                                             public void actionPerformed(ActionEvent e){  
                                                                                                                Leave leaveTypeEntry =  (Leave) leaveTypeBox.getSelectedItem();
                                                                                                                window.add(endDayEntry);
-                                                                                                            
+                                                                                                               erc.makeRequest(startDay, startMonth, startYear, startHour, startMinute, endDay, endMonth, endYear, endHour, endMinute, leaveTypeEntry, employeeID, supervisorID);
+                                                                                                               
                                                                                                                leaveTypeButton.setVisible(true);
                                                                                                                window.repaint();  
                                                                                                             }  
@@ -5967,7 +6023,8 @@ public class SystemInterface {
                                                                                                             public void actionPerformed(ActionEvent e){  
                                                                                                                Leave leaveTypeEntry =  (Leave) leaveTypeBox.getSelectedItem();
                                                                                                                window.add(endDayEntry);
-                                                                                                            
+                                                                                                               erc.makeRequest(startDay, startMonth, startYear, startHour, startMinute, endDay, endMonth, endYear, endHour, endMinute, leaveTypeEntry, employeeID, supervisorID);
+                                                                                                               
                                                                                                                leaveTypeButton.setVisible(true);
                                                                                                                window.repaint();  
                                                                                                             }  
@@ -6318,7 +6375,8 @@ public class SystemInterface {
                                                                                                             public void actionPerformed(ActionEvent e){  
                                                                                                                Leave leaveTypeEntry =  (Leave) leaveTypeBox.getSelectedItem();
                                                                                                                window.add(endDayEntry);
-                                                                                                            
+                                                                                                               erc.makeRequest(startDay, startMonth, startYear, startHour, startMinute, endDay, endMonth, endYear, endHour, endMinute, leaveTypeEntry, employeeID, supervisorID);
+                                                                                                               
                                                                                                                leaveTypeButton.setVisible(true);
                                                                                                                window.repaint();  
                                                                                                             }  
@@ -6468,7 +6526,8 @@ public class SystemInterface {
                                                                                                             public void actionPerformed(ActionEvent e){  
                                                                                                                Leave leaveTypeEntry =  (Leave) leaveTypeBox.getSelectedItem();
                                                                                                                window.add(endDayEntry);
-                                                                                                            
+                                                                                                               erc.makeRequest(startDay, startMonth, startYear, startHour, startMinute, endDay, endMonth, endYear, endHour, endMinute, leaveTypeEntry, employeeID, supervisorID);
+                                                                                                               
                                                                                                                leaveTypeButton.setVisible(true);
                                                                                                                window.repaint();  
                                                                                                             }  
@@ -6615,7 +6674,8 @@ public class SystemInterface {
                                                                                                             public void actionPerformed(ActionEvent e){  
                                                                                                                Leave leaveTypeEntry =  (Leave) leaveTypeBox.getSelectedItem();
                                                                                                                window.add(endDayEntry);
-                                                                                                            
+                                                                                                               erc.makeRequest(startDay, startMonth, startYear, startHour, startMinute, endDay, endMonth, endYear, endHour, endMinute, leaveTypeEntry, employeeID, supervisorID);
+                                                                                                               
                                                                                                                leaveTypeButton.setVisible(true);
                                                                                                                window.repaint();  
                                                                                                             }  
@@ -7037,12 +7097,22 @@ public class SystemInterface {
                Gender fm = (Gender) genderTypeBox.getSelectedItem();
                Title title = (Title) employeeTypeBox.getSelectedItem();
                int supervisorID = Integer.parseInt(supervisorBox.getText());
+              
                String[] superviseeString = superviseeBox.getText().split(",");
-               int[] superviseeIDs = new int[superviseeString.length];
-               for (int i = 0; i < superviseeString.length; i++)
+               int[] superviseeIDs;
+               if (superviseeString.length > 0 && superviseeString[0].compareTo("") != 0 )
                {
-                  superviseeIDs[i] = Integer.parseInt(superviseeString[i]);
+                  superviseeIDs = new int[superviseeString.length];
+                  for (int i = 0; i < superviseeString.length; i++)
+                  {
+                     superviseeIDs[i] = Integer.parseInt(superviseeString[i]);
+                  }
                }
+               else 
+               {
+                  superviseeIDs = new int[0];
+               }
+               pc.hireEmployee(title,  fm,  name, supervisorID, superviseeIDs, password);
                
                tf.setText("New employee added");
                hrMenu(window, tf); 
@@ -7094,7 +7164,7 @@ public class SystemInterface {
                
                   int fireID = Integer.parseInt(fireIDBox.getText());
                
-                                
+                  pc.fireEmployee(fireID);
                   tf.setText("Employee Fired");
                   hrMenu(window, tf); 
                

@@ -14,7 +14,7 @@ public class PTODatabase {
          PTO.add(null);
       }
       else if ((title == Title.full_time) || (title == Title.hr) || (title == Title.hr_executive) || (title == Title.executive)) {
-         PTO.add(0.0);
+         PTO.add(10.0);
       }
       else {
          throw new IllegalArgumentException("Invalid employee type");
@@ -27,7 +27,7 @@ public class PTODatabase {
       if (PTO.get(employeeID) == null) {
          throw new IllegalArgumentException("Employee is not full-time and does not have PTO");
       }
-      return (PTO.get(employeeID) > amount) ? true : false;
+      return (PTO.get(employeeID) >= amount) ? true : false;
    }
 
    public void addPTO(double amount, int employeeID) {
