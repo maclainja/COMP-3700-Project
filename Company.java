@@ -45,7 +45,7 @@ public class Company {
       today.hour = newHour;
       today.minute = newMinute;
    }
-   
+  
    public DayWithTime getDate() {
          
       return today;

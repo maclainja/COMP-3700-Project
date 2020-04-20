@@ -26,8 +26,8 @@ public class Calendar {
         int end = obj.findDate(04, 20, 2020);
 
         //12 hours
-        double total = obj.getWorkingTime(9, 30, 11, 30, start, end);
-        System.out.println("total is " + total);
+       // double total = obj.getWorkingTime(9, 30, 11, 30, start, end);
+        //System.out.println("total is " + total);
 /*
         int sb_start = obj.findDate(04, 7, 2020);
         int sb_end = obj.findDate(04, 9, 2020);
@@ -132,7 +132,14 @@ public class Calendar {
     }
 
 
-    public double getWorkingTime(int startHour, int startMin, int endHour, int endMin, int startDay_index, int endDate_index){
+    public double getWorkingTime(Request request){
+        //int startHour, int startMin, int endHour, int endMin, int startDay_index, int endDate_index
+        int startDay_index = findDate(request.startMonth, request.startDay, request.startYear);
+        int endDate_index = findDate(request.endMonth, request.endDay, request.endYear);
+        int startHour = request.startHour;
+        int endHour = request.endHour;
+        int startMin = request.startMinute;
+        int endMin = request.endMinute;
 
         int total_work_days = 0;
         double total_work_min = 0;
