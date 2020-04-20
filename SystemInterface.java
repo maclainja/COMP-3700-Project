@@ -9,7 +9,7 @@ public class SystemInterface {
    static ManagerRequestController mrc;
    static PersonController pc;
    static PTOController ptoc;
-   //static CalendarController cc;
+   static CalendarController cc;
 
    public static void main(String[] args) {
    
@@ -18,7 +18,7 @@ public class SystemInterface {
       mrc = c.mrc;
       pc = c.pc;
       ptoc = c.ptoc;
-      //cc = c.cc;
+      cc = c.cc;
       JFrame window =new JFrame("Leave System"); 
       window.setExtendedState(JFrame.MAXIMIZED_BOTH); 
       window.setVisible(true);
