@@ -3,7 +3,7 @@ import java.util.ArrayList;
 public class RequestDatabaseController {
 
    RequestDatabase rd;
-   //CalendarController cc;
+   CalendarController cc;
    PTOController ptoc;
    Company c;
    
@@ -14,7 +14,7 @@ public class RequestDatabaseController {
    public void addRequest(Request newRequest) {
       int ID = rd.addRequest(newRequest);
       double workingTime = 0;
-      //workingTime = cc.getWorkingTime(newRequest);
+      workingTime = cc.getWorkingTime(newRequest);
       if (ptoc.verifyPTO(workingTime, newRequest.getEmployeeID())) {
          ptoc.deductPTO(workingTime, newRequest.getEmployeeID());
       }
@@ -53,7 +53,7 @@ public class RequestDatabaseController {
          request.endHour = currentDWT.hour;
          request.endMinute = currentDWT.minute;
          double newTotalTime = 0;
-         //newTotalTime = cc.getWorkingTime(request);
+         newTotalTime = cc.getWorkingTime(request);
          double removedTime = oldTotalTime - newTotalTime;
          rd.setTotalTime(ID, newTotalTime);
          ptoc.addPTO(removedTime, request.getEmployeeID());

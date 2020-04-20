@@ -10,7 +10,7 @@ public class SystemInterface {
    static ManagerRequestController mrc;
    static PersonController pc;
    static PTOController ptoc;
-   //static CalendarController cc;
+   static CalendarController cc;
 
    public static void main(String[] args) {
    
@@ -19,11 +19,11 @@ public class SystemInterface {
       mrc = c.mrc;
       pc = c.pc;
       ptoc = c.ptoc;
-      //cc = c.cc;
+      cc = c.cc;
       JFrame window =new JFrame("Leave System"); 
       window.setExtendedState(JFrame.MAXIMIZED_BOTH); 
       window.setVisible(true);
-      window.setSize(400,400);  
+      window.setSize(600,600);  
       window.setLayout(null);  
       final JTextField tf=new JTextField();  
       tf.setBounds(50,50, 150,20); 
@@ -3528,28 +3528,30 @@ public class SystemInterface {
       window.add(backButton);
       
       ArrayList<Request> currentRequestArray =  erc.getEmployeeRequests(employeeID);
-      String stringToPrint = "<html>";
+      String stringToPrint = "<html><pre>";
+     
+     
      
       for( Request currentRequest: currentRequestArray)
       {
-         stringToPrint = stringToPrint + Integer.toString(currentRequest.requestID) + "  ";
-         stringToPrint = stringToPrint + Integer.toString(currentRequest.employeeID) + "  ";
-         stringToPrint = stringToPrint + Integer.toString(currentRequest.startMonth) + "  ";
-         stringToPrint = stringToPrint + Integer.toString(currentRequest.startDay) + "  ";
-         stringToPrint = stringToPrint + Integer.toString(currentRequest.startYear) + "  ";
-         stringToPrint = stringToPrint + Integer.toString(currentRequest.startHour) + "  ";
-         stringToPrint = stringToPrint + Integer.toString(currentRequest.startMinute) + "  ";
-         stringToPrint = stringToPrint + Integer.toString(currentRequest.endMonth) + "  ";
-         stringToPrint = stringToPrint + Integer.toString(currentRequest.endDay) + "  ";
-         stringToPrint = stringToPrint + Integer.toString(currentRequest.endYear) + "  ";
+         stringToPrint = stringToPrint + Integer.toString(currentRequest.requestID) + "   ";
+         stringToPrint = stringToPrint + Integer.toString(currentRequest.employeeID) + "      ";
+         stringToPrint = stringToPrint + Integer.toString(currentRequest.startMonth) + "/";
+         stringToPrint = stringToPrint + Integer.toString(currentRequest.startDay) + "/";
+         stringToPrint = stringToPrint + Integer.toString(currentRequest.startYear) + "    ";
+         stringToPrint = stringToPrint + Integer.toString(currentRequest.startHour) + "     ";
+         stringToPrint = stringToPrint + Integer.toString(currentRequest.startMinute) + "    ";
+         stringToPrint = stringToPrint + Integer.toString(currentRequest.endMonth) + "/";
+         stringToPrint = stringToPrint + Integer.toString(currentRequest.endDay) + "/";
+         stringToPrint = stringToPrint + Integer.toString(currentRequest.endYear) + "    ";
          stringToPrint = stringToPrint + Integer.toString(currentRequest.endHour) + "  ";
          stringToPrint = stringToPrint + Integer.toString(currentRequest.endMinute) + "  ";
-         
+            stringToPrint = stringToPrint + Double.toString(currentRequest.totalTime) + "  ";
          stringToPrint = stringToPrint + "<br/>";
       }
-      stringToPrint = stringToPrint + "<html>";
+      stringToPrint = stringToPrint + "</pre><html>";
       final JLabel requestLabel = new JLabel(stringToPrint);
-      requestLabel.setBounds(20,50,380,280);
+      requestLabel.setBounds(20,50,560,280);
       window.add(requestLabel);
       
       window.repaint();
