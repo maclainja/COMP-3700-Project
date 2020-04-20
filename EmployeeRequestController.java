@@ -5,14 +5,9 @@ public class EmployeeRequestController
 {
    PersonController pc;
    RequestController rc;
-   RequestDatabaseController rdb;
+   RequestDatabaseController rdc;
 
-   public EmployeeRequestController()
-   {
-      pc = new PersonController();
-      rc = new RequestController();
-      rdb = new RequestDatabaseController();
-   }
+   public EmployeeRequestController() {}
 
    public void makeRequest(int newStartDay, int newStartMonth, int newStartYear, int newStartHour, int newStartMinute, int newEndDay, int newEndMonth, int newEndYear, int newEndHour, int newEndMinute, Leave newLeaveType, int currentEmployeeID, int currentSupervisorID)
    {
@@ -23,16 +18,16 @@ public class EmployeeRequestController
       Title jobTitle = pc.getTitle(newRequest.employeeID);
       
       rc.setStatus(newRequest, fm, jobTitle);
-      rdb.addRequest(newRequest);
+      rdc.addRequest(newRequest);
    }
 
    public void withdrawRequest(int requestID)
    {
-      rdb.withdrawRequest(requestID);
+      rdc.withdrawRequest(requestID);
    }
    
    public ArrayList<Request> getEmployeeRequests(int employeeID) {
-      return rdb.getEmployeeRequests(employeeID);
+      return rdc.getEmployeeRequests(employeeID);
    }
 
 }

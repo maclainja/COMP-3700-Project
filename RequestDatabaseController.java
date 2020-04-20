@@ -9,8 +9,6 @@ public class RequestDatabaseController {
    
    public RequestDatabaseController() {
       rd = new RequestDatabase();
-      ptoc = new PTOController();
-      c = new Company();
    }
 
    public void addRequest(Request newRequest) {
@@ -66,7 +64,7 @@ public class RequestDatabaseController {
    public ArrayList<Request> getEmployeeRequests(int employeeID) {
       ArrayList<Request> employeeRequests = new ArrayList<Request>();
       for (Request r : rd.getRequestDatabase()) {
-         if ((r.employeeID == employeeID) && (c.getDate().compareTo(new DayWithTime(r.endMonth, r.endDay, r.endYear, r.endHour, r.endMinute)) == -1)) {
+         if ((r.employeeID == employeeID) && (c.getDate().compareTo(new DayWithTime(r.endMonth, r.endDay, r.endYear, r.endHour, r.endMinute)) < 1)) {
             employeeRequests.add(r);
          }
       }
