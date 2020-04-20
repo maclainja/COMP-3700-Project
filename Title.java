@@ -37,7 +37,7 @@ enum Title {
       executive{
          @Override
          public String toString() {
-            return "hr_executive";
+            return "executive";
          }
       };
 

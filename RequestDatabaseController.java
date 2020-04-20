@@ -15,7 +15,7 @@ public class RequestDatabaseController {
       int ID = rd.addRequest(newRequest);
       double workingTime = 0;
       workingTime = cc.getWorkingTime(newRequest);
-      if (ptoc.verifyPTO(workingTime, newRequest.getEmployeeID())) {
+      if (newRequest.leaveType == Leave.pto && ptoc.verifyPTO(workingTime, newRequest.getEmployeeID())) {
          ptoc.deductPTO(workingTime, newRequest.getEmployeeID());
       }
       else {
