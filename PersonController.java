@@ -19,6 +19,7 @@ public class PersonController{
       employeeIndex = new HashMap<Integer, Person>();
       hireEmployee(Title.hr_executive, Gender.male, "admin", 0 , new int[0], "password");
       employeeIndex.get(0).supervisor = employeeIndex.get(0);
+      employeeIndex.get(0).supervisees = new Person[] {employeeIndex.get(0)};
    }
 
    public Gender getGender(int ID)

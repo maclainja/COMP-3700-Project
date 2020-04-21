@@ -25,7 +25,7 @@ public class SystemInterface {
       JFrame window =new JFrame("Leave System"); 
       window.setExtendedState(JFrame.MAXIMIZED_BOTH); 
       window.setVisible(true);
-      window.setSize(700,700);  
+      window.setSize(800,800);  
       window.setLayout(null);  
       final JTextField tf=new JTextField();  
       tf.setBounds(50,50, 250,20); 
@@ -3823,10 +3823,10 @@ public class SystemInterface {
       
      
       
-      String temp = "<html><pre>Request   Employee   Start       Start       End        End        Total      Leave         Status<br>  ID       ID   Date       Time        Date       Time       Time       Type   </pre><html>";
+      String temp = "<html><pre>Request   Employee   Start       Start       End        End        Total      Leave         Status<br>  ID       ID         Date       Time        Date       Time       Time       Type   </pre><html>";
      
       final JLabel headerLabel = new JLabel(temp);
-      headerLabel.setBounds(20,30,650,50);
+      headerLabel.setBounds(20,30,750,50);
       window.add(headerLabel);
                              
       ArrayList<Request> currentRequestArray =  mrc.getCurrentRequests(employeeID);
@@ -3851,7 +3851,7 @@ public class SystemInterface {
             stringToPrint = stringToPrint + Integer.toString(currentRequest.endHour) + "  M: ";
             stringToPrint = stringToPrint + Integer.toString(currentRequest.endMinute) + "    ";
             stringToPrint = stringToPrint + Double.toString(currentRequest.totalTime) + "     ";
-            stringToPrint = stringToPrint + currentRequest.leaveType.toString() + "     ";
+            stringToPrint = stringToPrint + currentRequest.leaveType.toString() + "         ";
             stringToPrint = stringToPrint + currentRequest.currentStatus.toString()  + "  ";
             stringToPrint = stringToPrint + "<br/>";
          }
@@ -3863,7 +3863,7 @@ public class SystemInterface {
       }
       stringToPrint = stringToPrint + "</pre><html>";
       final JLabel requestLabel = new JLabel(stringToPrint);
-      requestLabel.setBounds(20,50,650,280);
+      requestLabel.setBounds(20,50,750,280);
       window.add(requestLabel);
       
       
