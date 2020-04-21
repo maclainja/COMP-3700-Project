@@ -1,5 +1,6 @@
 import java.util.*;
 import java.util.ArrayList;
+import java.math.*;
 
 public class Calendar {
 
@@ -144,8 +145,14 @@ public class Calendar {
         int total_work_days = 0;
         double total_work_min = 0;
         int total_work_hours = 0;
-        double totalWorkTIme;
-
+        double totalWorkTime;
+        
+        DayWithTime startDWT = new DayWithTime(request.startMonth, request.startDay, request.startYear, request.startHour, request.startMinute);
+        DayWithTime endDWT = new DayWithTime(request.endMonth, request.endDay, request.endYear, request.endHour, request.endMinute);
+        if (startDWT.compareTo(endDWT) == 1) {
+           return 0;
+        }
+        
         if (startDay_index == endDate_index)    {
 
             total_work_hours += endHour - (startHour + 1);
@@ -187,10 +194,13 @@ public class Calendar {
             total_work_hours++;
         }
 
-        total_work_min = total_work_min * 0.01;
-        totalWorkTIme = total_work_hours + total_work_min;
+        total_work_min = total_work_min / 60;
+        totalWorkTime = total_work_hours + total_work_min;
+        BigDecimal bd = new BigDecimal(Double.toString(totalWorkTime));
+        bd = bd.setScale(2, RoundingMode.HALF_UP);
+        totalWorkTime = bd.doubleValue();
 
-        return totalWorkTIme;
+        return totalWorkTime;
 
     }
 

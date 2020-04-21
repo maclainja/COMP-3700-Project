@@ -11,8 +11,8 @@ public class RequestController
 
    public void setStatus(Request newRequest, Gender fm, Title jobTitle)
    {
-      
-      if(jobTitle != Title.part_time && jobTitle != Title.contractor)
+      //if it's full time
+      if((jobTitle != Title.part_time) && (jobTitle != Title.contractor))
       {
          if(newRequest.leaveType == Leave.paternity && fm == Gender.male)
          {
