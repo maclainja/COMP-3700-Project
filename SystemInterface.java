@@ -30,8 +30,8 @@ public class SystemInterface {
       final JTextField tf=new JTextField();  
       tf.setBounds(50,50, 250,20); 
       window.add(tf);
-     // logInScreen(window);
-      makeRequestForm( window,  tf);
+      logInScreen(window);
+      //makeRequestForm( window,  tf);
       //hrMenu( window,  tf);
       //addHolidayForm( window,  tf);
    
