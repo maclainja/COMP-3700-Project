@@ -74,7 +74,7 @@ public class RequestDatabaseController {
    public ArrayList<Request> getSuperviseeRequests(int managerID) {
       ArrayList<Request> superviseeRequests = new ArrayList<Request>();
       for (Request r : rd.getRequestDatabase()) {
-         if ((r.supervisorID == managerID) && (c.getDate().compareTo(new DayWithTime(r.endMonth, r.endDay, r.endYear, r.endHour, r.endMinute)) == -1)) {
+         if ((r.supervisorID == managerID) && (c.getDate().compareTo(new DayWithTime(r.endMonth, r.endDay, r.endYear, r.endHour, r.endMinute)) <= 0)) {
             superviseeRequests.add(r);
          }
       }

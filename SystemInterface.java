@@ -11,6 +11,7 @@ public class SystemInterface {
    static PersonController pc;
    static PTOController ptoc;
    static CalendarController cc;
+   static RequestDatabase rd;
 
    public static void main(String[] args) {
    
@@ -20,16 +21,17 @@ public class SystemInterface {
       pc = c.pc;
       ptoc = c.ptoc;
       cc = c.cc;
+      rd = c.rdc.rd;
       JFrame window =new JFrame("Leave System"); 
       window.setExtendedState(JFrame.MAXIMIZED_BOTH); 
       window.setVisible(true);
-      window.setSize(600,600);  
+      window.setSize(700,700);  
       window.setLayout(null);  
       final JTextField tf=new JTextField();  
       tf.setBounds(50,50, 250,20); 
       window.add(tf);
-      logInScreen(window);
-     // makeRequestForm( window,  tf);
+     // logInScreen(window);
+      makeRequestForm( window,  tf);
       //hrMenu( window,  tf);
       //addHolidayForm( window,  tf);
    
@@ -197,10 +199,10 @@ public class SystemInterface {
    
    public static void setCurrentDay(JFrame window, JTextField tf)
    {
-   window.getContentPane().removeAll();
+      window.getContentPane().removeAll();
       window.repaint();
       window.add(tf);
-
+   
    
       final JLabel startMonthLabel = new JLabel("Current Month (number):");
       startMonthLabel.setBounds(20,100,150,20);
@@ -3686,7 +3688,12 @@ public class SystemInterface {
          }
          ); 
       window.add(backButton);
-      
+      String temp = "<html><pre>Request   Start       Start       End        End        Total      Leave         Status<br>  ID       Date       Time        Date       Time       Time       Type   </pre><html>";
+     
+      final JLabel headerLabel = new JLabel(temp);
+      headerLabel.setBounds(20,30,650,50);
+      window.add(headerLabel);
+                             
       ArrayList<Request> currentRequestArray =  erc.getEmployeeRequests(employeeID);
       String stringToPrint = "<html><pre>";
      
@@ -3695,20 +3702,21 @@ public class SystemInterface {
       
          for( Request currentRequest: currentRequestArray)
          {
-            stringToPrint = stringToPrint + Integer.toString(currentRequest.requestID) + "   ";
-            stringToPrint = stringToPrint + Integer.toString(currentRequest.employeeID) + "      ";
+            stringToPrint = stringToPrint + "  ";
+            stringToPrint = stringToPrint + Integer.toString(currentRequest.requestID) + "      ";
+            //stringToPrint = stringToPrint + Integer.toString(currentRequest.employeeID) + "      ";
             stringToPrint = stringToPrint + Integer.toString(currentRequest.startMonth) + "/";
             stringToPrint = stringToPrint + Integer.toString(currentRequest.startDay) + "/";
-            stringToPrint = stringToPrint + Integer.toString(currentRequest.startYear) + "    ";
-            stringToPrint = stringToPrint + Integer.toString(currentRequest.startHour) + "     ";
-            stringToPrint = stringToPrint + Integer.toString(currentRequest.startMinute) + "    ";
+            stringToPrint = stringToPrint + Integer.toString(currentRequest.startYear) + "   H: ";
+            stringToPrint = stringToPrint + Integer.toString(currentRequest.startHour) + "  M: ";
+            stringToPrint = stringToPrint + Integer.toString(currentRequest.startMinute) + "  ";
             stringToPrint = stringToPrint + Integer.toString(currentRequest.endMonth) + "/";
             stringToPrint = stringToPrint + Integer.toString(currentRequest.endDay) + "/";
-            stringToPrint = stringToPrint + Integer.toString(currentRequest.endYear) + "    ";
-            stringToPrint = stringToPrint + Integer.toString(currentRequest.endHour) + "  ";
-            stringToPrint = stringToPrint + Integer.toString(currentRequest.endMinute) + "  ";
-            stringToPrint = stringToPrint + Double.toString(currentRequest.totalTime) + "  ";
-            stringToPrint = stringToPrint + currentRequest.leaveType.toString() + "  ";
+            stringToPrint = stringToPrint + Integer.toString(currentRequest.endYear) + "    H: ";
+            stringToPrint = stringToPrint + Integer.toString(currentRequest.endHour) + "  M: ";
+            stringToPrint = stringToPrint + Integer.toString(currentRequest.endMinute) + "    ";
+            stringToPrint = stringToPrint + Double.toString(currentRequest.totalTime) + "     ";
+            stringToPrint = stringToPrint + currentRequest.leaveType.toString() + "     ";
             stringToPrint = stringToPrint + currentRequest.currentStatus.toString()  + "  ";
             stringToPrint = stringToPrint + "<br/>";
          }
@@ -3720,7 +3728,7 @@ public class SystemInterface {
       }
       stringToPrint = stringToPrint + "</pre><html>";
       final JLabel requestLabel = new JLabel(stringToPrint);
-      requestLabel.setBounds(20,50,560,280);
+      requestLabel.setBounds(20,50,650,280);
       window.add(requestLabel);
       
       
@@ -3738,9 +3746,11 @@ public class SystemInterface {
       withdrawButton.addActionListener(
          new ActionListener(){  
             public void actionPerformed(ActionEvent e){  
+               if (rd.getRequest(Integer.parseInt(idBox.getText())).getEmployeeID() == employeeID )
+               {
                erc.withdrawRequest(Integer.parseInt(idBox.getText()));
                employeeCurrentRequests( window,  tf);
-            
+               }
             }  
          }
          ); 
@@ -3811,32 +3821,41 @@ public class SystemInterface {
          ); 
       window.add(backButton);
       
+     
+      
+      String temp = "<html><pre>Request   Employee   Start       Start       End        End        Total      Leave         Status<br>  ID       ID   Date       Time        Date       Time       Time       Type   </pre><html>";
+     
+      final JLabel headerLabel = new JLabel(temp);
+      headerLabel.setBounds(20,30,650,50);
+      window.add(headerLabel);
+                             
       ArrayList<Request> currentRequestArray =  mrc.getCurrentRequests(employeeID);
       String stringToPrint = "<html><pre>";
-     
      
       if (currentRequestArray.size() > 0)
       {
       
          for( Request currentRequest: currentRequestArray)
          {
-            stringToPrint = stringToPrint + Integer.toString(currentRequest.requestID) + "   ";
+            stringToPrint = stringToPrint + "  ";
+            stringToPrint = stringToPrint + Integer.toString(currentRequest.requestID) + "      ";
             stringToPrint = stringToPrint + Integer.toString(currentRequest.employeeID) + "      ";
             stringToPrint = stringToPrint + Integer.toString(currentRequest.startMonth) + "/";
             stringToPrint = stringToPrint + Integer.toString(currentRequest.startDay) + "/";
-            stringToPrint = stringToPrint + Integer.toString(currentRequest.startYear) + "    ";
-            stringToPrint = stringToPrint + Integer.toString(currentRequest.startHour) + "     ";
-            stringToPrint = stringToPrint + Integer.toString(currentRequest.startMinute) + "    ";
+            stringToPrint = stringToPrint + Integer.toString(currentRequest.startYear) + "   H: ";
+            stringToPrint = stringToPrint + Integer.toString(currentRequest.startHour) + "  M: ";
+            stringToPrint = stringToPrint + Integer.toString(currentRequest.startMinute) + "  ";
             stringToPrint = stringToPrint + Integer.toString(currentRequest.endMonth) + "/";
             stringToPrint = stringToPrint + Integer.toString(currentRequest.endDay) + "/";
-            stringToPrint = stringToPrint + Integer.toString(currentRequest.endYear) + "    ";
-            stringToPrint = stringToPrint + Integer.toString(currentRequest.endHour) + "  ";
-            stringToPrint = stringToPrint + Integer.toString(currentRequest.endMinute) + "  ";
-            stringToPrint = stringToPrint + Double.toString(currentRequest.totalTime) + "  ";
-            stringToPrint = stringToPrint + currentRequest.leaveType.toString() + "  ";
+            stringToPrint = stringToPrint + Integer.toString(currentRequest.endYear) + "    H: ";
+            stringToPrint = stringToPrint + Integer.toString(currentRequest.endHour) + "  M: ";
+            stringToPrint = stringToPrint + Integer.toString(currentRequest.endMinute) + "    ";
+            stringToPrint = stringToPrint + Double.toString(currentRequest.totalTime) + "     ";
+            stringToPrint = stringToPrint + currentRequest.leaveType.toString() + "     ";
             stringToPrint = stringToPrint + currentRequest.currentStatus.toString()  + "  ";
             stringToPrint = stringToPrint + "<br/>";
          }
+         
       }
       else
       {
@@ -3844,8 +3863,9 @@ public class SystemInterface {
       }
       stringToPrint = stringToPrint + "</pre><html>";
       final JLabel requestLabel = new JLabel(stringToPrint);
-      requestLabel.setBounds(20,50,560,280);
+      requestLabel.setBounds(20,50,650,280);
       window.add(requestLabel);
+      
       
       
       final JLabel idLabel = new JLabel("Request ID:");
@@ -3862,9 +3882,11 @@ public class SystemInterface {
       approveButton.addActionListener(
          new ActionListener(){  
             public void actionPerformed(ActionEvent e){  
+               if (rd.getRequest(Integer.parseInt(idBox.getText())).supervisorID == employeeID )
+               {
                mrc.approveRequest(Integer.parseInt(idBox.getText()));
                managerCurrentRequests( window,  tf);
-            
+               }
             }  
          }
          ); 
@@ -3875,9 +3897,11 @@ public class SystemInterface {
       rejectButton.addActionListener(
          new ActionListener(){  
             public void actionPerformed(ActionEvent e){  
+               if (rd.getRequest(Integer.parseInt(idBox.getText())).supervisorID == employeeID )
+               {
                mrc.rejectRequest(Integer.parseInt(idBox.getText()));
                managerCurrentRequests( window,  tf);
-            
+               }
             }  
          }
          ); 
