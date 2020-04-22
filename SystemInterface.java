@@ -264,7 +264,7 @@ public class SystemInterface {
                
                String temp = "Current Date Set";
                tf.setText(temp);
-               mainMenu(window, tf); 
+               executiveMenu(window, tf); 
                
             }  
          });
@@ -4404,7 +4404,7 @@ public class SystemInterface {
          ); 
       window.add(backButton);
    
-      final JLabel titleLabel = new JLabel("Promote/Demote Employee");
+      final JLabel titleLabel = new JLabel("New Employee Information");
       titleLabel.setBounds(60,25,200,20);
       window.add(titleLabel);
       

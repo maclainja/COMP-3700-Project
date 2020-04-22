@@ -20,6 +20,9 @@ public class RequestDatabaseController {
       if (startDWT.compareTo(endDWT) == 1) {
          rd.rejectRequest(ID);
       }
+      if (endDWT.compareTo(c.getDate()) == -1) {
+         rd.rejectRequest(ID);
+      }
       if ((newRequest.leaveType == Leave.pto) && (newRequest.currentStatus == Status.pending)) {
          if ((ptoc.verifyPTO(workingTime, newRequest.getEmployeeID()))) {
             ptoc.deductPTO(workingTime, newRequest.getEmployeeID());
