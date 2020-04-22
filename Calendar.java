@@ -23,37 +23,6 @@ public class Calendar {
         obj.createWorkdays();
 
 
-        int start = obj.findDate(04, 16, 2020);
-        int end = obj.findDate(04, 20, 2020);
-
-        //12 hours
-       // double total = obj.getWorkingTime(9, 30, 11, 30, start, end);
-        //System.out.println("total is " + total);
-/*
-        int sb_start = obj.findDate(04, 7, 2020);
-        int sb_end = obj.findDate(04, 9, 2020);
-
-        obj.addTempHoliday("springbreak", obj.cal[sb_start], obj.cal[sb_end]);
-
-        System.out.println(holis.size());
-
-
-        int break_start = obj.findDate(04, 6, 2020);
-        int break_end = obj.findDate(04, 13, 2020);
-
-
-        //3.35 + 8 + 3.10 = 14.45
-        double sb_total = obj.getWorkingTime(8, 25, 11, 10, break_start, break_end);
-        System.out.println("total with spring break: " + sb_total);
-
-        obj.addRemoveNationalHoliday("springbreak", obj.cal[sb_start], obj.cal[sb_end], "remove");
-
-        //38.45
-        double remove_total = obj.getWorkingTime(13, 25, 11, 10, break_start, break_end);
-        System.out.println("total after spring break is removed: " + remove_total);
-
-        System.out.println(holis.size());
-*/
     }
 
     /*
@@ -211,7 +180,9 @@ public class Calendar {
         for (int i = start; i <= end; i++) {
             NonWorkday holi = new NonWorkday(cal[i].month, cal[i].day, cal[i].year, NWDtype.holiday);
             holi.setName(name);
+            holi.setDayName(cal[i].getDayName());
             holis.add(holi);
+            cal[i] = holi;
         }
 
     }
@@ -227,7 +198,9 @@ public class Calendar {
                 while (j < holis.size())    {
                     if (Calendar.holis.get(j).month == cal[i].month && Calendar.holis.get(j).day == cal[i].day && Calendar.holis.get(j).year == cal[i].year)  {
                         holis.remove(holis.get(j));
-
+                        Workday wd = new Workday(cal[i].month, cal[i].day, cal[i].year);
+                        wd.setDayName(cal[i].getDayName());
+                        cal[i] = wd;
                     }
                     else    {
                         j++;
@@ -238,10 +211,12 @@ public class Calendar {
         }
 
         if (type.equals("add"))  {
-            for (int i = start; i < end; i++) {
+            for (int i = start; i <= end; i++) {
                 NonWorkday holi = new NonWorkday(cal[i].month, cal[i].day, cal[i].year, NWDtype.holiday);
                 holi.setName(name);
+                holi.setDayName(cal[i].getDayName());
                 holis.add(holi);
+                cal[i] = holi;
             }
         }
 

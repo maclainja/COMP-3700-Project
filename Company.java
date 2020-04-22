@@ -44,6 +44,25 @@ public class Company {
       today.day.year = newYear;
       today.hour = newHour;
       today.minute = newMinute;
+      
+      if(newMonth == 4 && newDay == 1)
+      {
+      addQuarterlyPTO(2020, 1);
+      
+      }
+      else if(newMonth == 7 && newDay == 1)
+      {
+      addQuarterlyPTO(2020, 2);
+      
+      }
+      else if(newMonth == 10 && newDay == 1)
+      {
+      addQuarterlyPTO(2020, 3);
+      
+      }
+       
+      
+      
    }
   
    public DayWithTime getDate() {

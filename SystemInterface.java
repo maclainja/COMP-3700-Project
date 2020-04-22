@@ -4159,7 +4159,7 @@ public class SystemInterface {
       typeLabel.setBounds(20,250, 150,20);
       window.add(typeLabel);
    
-      String[] type = {"Add","Remove"};
+      String[] type = {"add","remove"};
      
       JComboBox<String> typeBox = new JComboBox<>(type);
       typeBox.setBounds(150,250, 90,20); 
@@ -4184,7 +4184,7 @@ public class SystemInterface {
                String type = (String) typeBox.getSelectedItem();
                cc.addRemoveNationalHoliday( name,  startMonth,  startDay,  startYear,  endMonth,  endDay,  endYear,  type) ;
                String temp;
-               if (type.compareTo("Add") == 0)
+               if (type.compareTo("add") == 0)
                {
                   temp = "National Holiday Added";
                }
