@@ -36,8 +36,11 @@ public class RequestDatabaseController {
    }
    
    public void rejectRequest(int ID) {
+      Request request = rd.getRequest(ID);
       rd.rejectRequest(ID);
-      ptoc.addPTO(rd.getRequest(ID).getTotalTime(), rd.getRequest(ID).getEmployeeID());
+      if (request.leaveType == Leave.pto) {
+         ptoc.addPTO(rd.getRequest(ID).getTotalTime(), rd.getRequest(ID).getEmployeeID());
+      }
    }
    
    public void withdrawRequest(int ID) {
